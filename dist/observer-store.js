@@ -88,10 +88,34 @@
       if(accepted.length)persist({...state,discoveries:[...accepted,...state.discoveries]});
       return accepted;
     }
+    function mergeNetworkCaptures(records){
+      const discoveries=[...state.discoveries];
+      const added=[];
+      let updated=0;
+      for(const record of records){
+        const objectId='capture:'+record.captureId;
+        const index=discoveries.findIndex(item=>(item.captureId||item.objectId)===record.captureId||item.objectId===objectId);
+        const old=discoveries[index];
+        if(old){
+          if(old.captureId!==record.captureId||old.batchId!==record.batchId||old.sourceDeviceId!==record.sourceDeviceId){
+            throw new Error('采集 ID 已属于另一个来源或批次。');
+          }
+          if(record.captureRevision<=old.captureRevision)continue;
+          discoveries[index]={...old,...record,originalPhoto:old.originalPhoto};
+          updated++;
+        }else{
+          const entry={...record,objectId,userNote:record.captureNote};
+          discoveries.push(entry);
+          added.push(entry);
+        }
+      }
+      if((added.length||updated)&&!persist({...state,discoveries},true))return null;
+      return {added:added.length,updated};
+    }
     return {
       subscribe(listener){listeners.add(listener);return ()=>listeners.delete(listener);},
       getSnapshot:()=>state, diskError:()=>diskError, unique, gameEvent, commit, ingest,
-      receiveBatch,
+      receiveBatch, mergeNetworkCaptures,
       receive(record){return receiveBatch([record]).length===1;},
       selectIsland(id){if(islands.some(i=>i.id===id)&&state.activeIsland!==id)persist({...state,activeIsland:id});},
       nextIsland(direction){const current=islands.findIndex(i=>i.id===state.activeIsland);this.selectIsland(islands[(current+direction+islands.length)%islands.length].id);},

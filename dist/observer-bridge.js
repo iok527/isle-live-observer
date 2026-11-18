@@ -94,10 +94,13 @@
       title:person.name+(observed?'发现了':'互动了：')+names[fromState],
       description:event.text||'沿可行走路径靠近物件。',
     },objectId+'/'+eventType+'/'+fromState+'/'+residentId)];
-    const entry=store.getSnapshot().entries[objectId];
+    const state=store.getSnapshot();
+    const entry=state.entries[objectId];
+    const source=state.discoveries.find(item=>item.objectId===entry?.sourceId);
+    const supported=source?.supportedEvolutionIds;
     const spec=world.type(object);
     const use=spec.evolutionUse||appleUses[fromState];
-    if(!observed&&entry&&!entry.proposal&&toState&&use&&!(spec.evolutionFromSurface==='land'&&object.floating)){
+    if(!observed&&entry&&!entry.proposal&&toState&&use&&(!supported||supported.includes(toState))&&!(spec.evolutionFromSurface==='land'&&object.floating)){
       const requiresLocation=world.types.get(toState).placementSurface==='water-only';
       const proposal={residentId,fromState,toState,description:use,...(requiresLocation&&{requiresLocation})};
       events.push(store.gameEvent(islandId,'USE_PROPOSED',{objectId,...proposal,title:person.name+'提议制作'+names[toState]},objectId+'/proposal/'+fromState));

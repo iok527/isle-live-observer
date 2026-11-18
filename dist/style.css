@@ -1,0 +1,59 @@
+:root {
+  color-scheme: dark;
+  --bg: #171328;
+  --panel: #251d3c;
+  --line: #504069;
+  --ink: #f8eff9;
+  --soft: #c7b9db;
+  --pink: #f0c8ed;
+  --gold: #fbe4aa;
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+* {box-sizing:border-box}
+[hidden] {display:none!important}
+body {margin:0;background:radial-gradient(ellipse at 40% 0,#2d2246 0%,transparent 68%),var(--bg);color:var(--ink);min-height:100dvh}
+.lab {width:min(calc((100dvh - 120px) * 688 / 432),calc(100% - 32px),1440px);margin:0 auto;padding:12px 0}
+.toolbar {display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:0 0 8px}
+.brand {display:flex;gap:9px;align-items:center;white-space:nowrap}
+.brand strong {font-size:22px;font-weight:900;letter-spacing:-.07em;font-style:italic}
+.brand span:last-child {font:600 10px ui-monospace,monospace;letter-spacing:.04em;color:var(--soft)}
+.mark {color:var(--gold);line-height:24px;width:25px;text-align:center;border:1px solid #8b72a4;background:#37294e}
+.actions {display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+button {appearance:none;border:1px solid #6b5984;border-radius:2px;color:var(--ink);background:#322544;font:650 12px/1.2 inherit;font-family:inherit;font-size:12px;min-height:36px;padding:5px 10px;cursor:pointer;touch-action:manipulation}
+button:hover:enabled {background:#4d3967;border-color:#bf9ed4}
+button[aria-pressed=true],button[aria-expanded=true],#confirm {background:#513c67;border-color:#e0afd9}
+button:disabled {color:#9f91b2;opacity:.64;cursor:default}
+button:focus-visible {outline:2px solid var(--gold);outline-offset:2px}
+.viewport {position:relative;border:1px solid #795e9f;box-shadow:0 14px 40px #100a2580;background:#37285c;overflow:hidden}
+#game {position:relative;aspect-ratio:688/432}
+#game canvas {display:block;image-rendering:pixelated;touch-action:none}
+#bubbles {position:absolute;inset:0;pointer-events:none}
+.thought {position:absolute;transform:translate(-50%,calc(-100% - 6px));background:#fcf0f8;color:#2b2041;box-shadow:2px 2px 0 #321d59;border:1px solid #664488;padding:4px 7px;font-size:clamp(10px,1vw,14px);font-weight:700;white-space:nowrap}
+.thought::after {content:"";position:absolute;left:calc(50% - 3px);bottom:-5px;width:5px;height:5px;background:#fcf0f8;border-right:1px solid #664488;border-bottom:1px solid #664488}
+.foot {display:grid;gap:5px;font:12px/1.32 inherit}
+.feedback {display:flex;align-items:center;min-height:41px;gap:9px;color:var(--soft);border-bottom:1px solid #443658;padding:4px 0;font-size:12px}
+.counter,#coord {font:600 10px ui-monospace,monospace;letter-spacing:.06em;white-space:nowrap}
+.counter {color:var(--gold);padding-right:9px;border-right:1px solid #6b567f}
+#status[data-error=true] {color:#ffc3d0}
+#coord {margin-left:auto}
+.feedback button {min-height:29px}
+.legend {display:flex;align-items:center;flex-wrap:wrap;gap:11px;color:var(--soft);font-size:11px}
+.legend i {display:inline-block;width:7px;height:7px;background:var(--tone);margin-right:4px}
+.walk {--tone:#9ed5ac}.placeable {--tone:#c6a4fb}.blocked {--tone:#fb94a9}.door {--tone:#ffda7d}.edge {--tone:#86eaff}.route {--tone:#fff3d0}
+.panel,.person {position:absolute;z-index:2;background:#251c3bf5;border:1px solid #a082b8;box-shadow:4px 4px 0 #221735c9;color:var(--ink)}
+.panel {top:9px;left:9px;width:min(284px,calc(100% - 18px));max-height:calc(100% - 18px);overflow:auto;padding:9px}
+.panel-head {display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:13px}
+.panel-head button {width:28px;min-height:28px;padding:0;font-size:17px}
+#panel-items {display:grid;gap:4px;margin-top:6px}
+#panel-items button {display:flex;align-items:center;gap:8px;text-align:left;min-height:36px}
+#panel-items img {width:27px;height:25px;object-fit:contain;image-rendering:pixelated}
+#panel-items p,.person p {color:var(--soft);font-size:12px;margin:3px 0}
+#panel-detail {margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;border-top:1px solid var(--line);padding-top:8px}
+.person {bottom:8px;left:9px;padding:8px 9px;min-width:143px}
+@media (max-width:810px),(orientation:portrait) {
+  .lab {width:min(calc(100% - 20px),1000px)}
+  .toolbar {flex-wrap:wrap;gap:7px}
+  .actions {gap:4px}
+}
+@media (pointer:coarse) {button {min-height:40px}.feedback button,.panel-head button {min-height:36px}}
+@media (max-width:460px) {.brand strong {font-size:20px}.actions button {padding:4px 7px}.feedback {flex-wrap:wrap}#coord {margin-left:0}}

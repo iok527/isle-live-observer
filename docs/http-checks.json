@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "bytes": 3062
+  },
+  {
+    "path": "observer-v10.js",
+    "status": 200,
+    "bytes": 226420
+  },
+  {
+    "path": "phaser.min.js",
+    "status": 200,
+    "bytes": 1196122
+  },
+  {
+    "path": "assets/terrain-map.json",
+    "status": 200,
+    "bytes": 67498
+  },
+  {
+    "path": "fonts/observer-cn.otf",
+    "status": 200,
+    "bytes": 140604
+  }
+]

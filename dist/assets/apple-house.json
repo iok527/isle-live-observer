@@ -1,0 +1,53 @@
+{
+  "id": "apple-house",
+  "sprite": "apple-house",
+  "drawSize": [
+    59,
+    54
+  ],
+  "footprint": [
+    [
+      0,
+      0
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      -1,
+      -1
+    ],
+    [
+      1,
+      -1
+    ]
+  ],
+  "interactionPoints": [
+    [
+      0,
+      1
+    ],
+    [
+      -1,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "anchor": [
+    0.5,
+    1
+  ],
+  "depth": "footpoint y"
+}

@@ -1,0 +1,3687 @@
+{
+  "id": "story-frontyard",
+  "projection": "orthogonal top-down 3/4",
+  "tileSize": 16,
+  "cells": [
+    {
+      "x": 12,
+      "y": 4,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 4,
+      "tile": 9,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 4,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 4,
+      "tile": 9,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 4,
+      "tile": 2,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 4,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 4,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 4,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 4,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 4,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 5,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 5,
+      "tile": 25,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 5,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 5,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 5,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 5,
+      "tile": 8,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 5,
+      "tile": 12,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 5,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 5,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 5,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 5,
+      "tile": 25,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 5,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 5,
+      "tile": 24,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 5,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 5,
+      "tile": 28,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 5,
+      "tile": 23,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 6,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 6,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 6,
+      "tile": 27,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 6,
+      "tile": 29,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 6,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 6,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 6,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 6,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 6,
+      "tile": 8,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 6,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 6,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 6,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 6,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 6,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 6,
+      "tile": 21,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 6,
+      "tile": 30,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 6,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 6,
+      "tile": 28,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 6,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 6,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 7,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 7,
+      "tile": 29,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 7,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "tile": 27,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 7,
+      "tile": 12,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 7,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 7,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 7,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 7,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 7,
+      "tile": 7,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 7,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 7,
+      "tile": 0,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 7,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 7,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 7,
+      "tile": 30,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 7,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 7,
+      "tile": 25,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 7,
+      "tile": 30,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 7,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 7,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 7,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "tile": 29,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 8,
+      "tile": 53,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 8,
+      "tile": 50,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 8,
+      "tile": 58,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 8,
+      "tile": 29,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 8,
+      "tile": 0,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 8,
+      "tile": 7,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 8,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 8,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 8,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 8,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 8,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 8,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 8,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 8,
+      "tile": 24,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 8,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 8,
+      "tile": 19,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 8,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 8,
+      "tile": 21,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 8,
+      "tile": 16,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 8,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 8,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 8,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 9,
+      "tile": 9,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 9,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 9,
+      "tile": 52,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 9,
+      "tile": 57,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 9,
+      "tile": 53,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 9,
+      "tile": 61,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 9,
+      "tile": 54,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 9,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 9,
+      "tile": 9,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 9,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 9,
+      "tile": 12,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 9,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 9,
+      "tile": 8,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 9,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 9,
+      "tile": 2,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 9,
+      "tile": 7,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 9,
+      "tile": 7,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 9,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 9,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 9,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 9,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 9,
+      "tile": 12,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 9,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 9,
+      "tile": 9,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 9,
+      "tile": 7,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 9,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 10,
+      "tile": 12,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 10,
+      "tile": 63,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 10,
+      "tile": 58,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 10,
+      "tile": 53,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 10,
+      "tile": 61,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 10,
+      "tile": 59,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 10,
+      "tile": 61,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 10,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 10,
+      "tile": 43,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 10,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 10,
+      "tile": 34,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 10,
+      "tile": 38,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 10,
+      "tile": 35,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 10,
+      "tile": 33,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 10,
+      "tile": 33,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 10,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 10,
+      "tile": 0,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 10,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 10,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 10,
+      "tile": 0,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 10,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 10,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 10,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 10,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 10,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 10,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 3,
+      "y": 11,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 11,
+      "tile": 59,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 11,
+      "tile": 63,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 11,
+      "tile": 48,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 11,
+      "tile": 61,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "tile": 58,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 11,
+      "tile": 52,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 11,
+      "tile": 53,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 11,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 11,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 11,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 11,
+      "tile": 32,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 11,
+      "tile": 35,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 11,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 11,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 11,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 11,
+      "tile": 43,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 11,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 11,
+      "tile": 7,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 11,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 11,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 11,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 11,
+      "tile": 12,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 11,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 11,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 11,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 11,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 3,
+      "y": 12,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 12,
+      "tile": 49,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "tile": 57,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 12,
+      "tile": 51,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 12,
+      "tile": 60,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 12,
+      "tile": 53,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 12,
+      "tile": 60,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 12,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 12,
+      "tile": 40,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 12,
+      "tile": 32,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 12,
+      "tile": 33,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 12,
+      "tile": 40,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 12,
+      "tile": 38,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 12,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 12,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 12,
+      "tile": 39,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 12,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 12,
+      "tile": 38,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 12,
+      "tile": 32,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 12,
+      "tile": 38,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 12,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 12,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 12,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 12,
+      "tile": 5,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 12,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 12,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 12,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 3,
+      "y": 13,
+      "tile": 54,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 13,
+      "tile": 55,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 13,
+      "tile": 51,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 13,
+      "tile": 63,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 13,
+      "tile": 53,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 13,
+      "tile": 55,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 13,
+      "tile": 54,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 13,
+      "tile": 38,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 13,
+      "tile": 42,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 13,
+      "tile": 42,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 13,
+      "tile": 34,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 13,
+      "tile": 40,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 13,
+      "tile": 39,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 13,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 13,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 13,
+      "tile": 40,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 13,
+      "tile": 32,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 13,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 13,
+      "tile": 32,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 13,
+      "tile": 43,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 13,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 13,
+      "tile": 35,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 13,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 13,
+      "tile": 9,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 13,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 13,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 13,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 3,
+      "y": 14,
+      "tile": 51,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 14,
+      "tile": 48,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 14,
+      "tile": 61,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 14,
+      "tile": 51,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 14,
+      "tile": 57,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 14,
+      "tile": 57,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 14,
+      "tile": 0,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 14,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 14,
+      "tile": 33,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 14,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 14,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 14,
+      "tile": 37,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 14,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 14,
+      "tile": 37,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 14,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 14,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 14,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 14,
+      "tile": 34,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 14,
+      "tile": 42,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 14,
+      "tile": 34,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 14,
+      "tile": 39,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 14,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 14,
+      "tile": 47,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 14,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 14,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 14,
+      "tile": 2,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 14,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 15,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 15,
+      "tile": 49,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 15,
+      "tile": 55,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 15,
+      "tile": 60,
+      "material": "water",
+      "walkable": false,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 15,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 15,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 15,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 15,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 15,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 15,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 15,
+      "tile": 40,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 15,
+      "tile": 42,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 15,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 15,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 15,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 15,
+      "tile": 42,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 15,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 15,
+      "tile": 33,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 15,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 15,
+      "tile": 32,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 15,
+      "tile": 37,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 15,
+      "tile": 40,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 15,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 15,
+      "tile": 35,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 15,
+      "tile": 34,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 15,
+      "tile": 37,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 4,
+      "y": 16,
+      "tile": 0,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 16,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 16,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 16,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 16,
+      "tile": 2,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 16,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 16,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 16,
+      "tile": 42,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 16,
+      "tile": 32,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 16,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 16,
+      "tile": 39,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 16,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 16,
+      "tile": 43,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 16,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 16,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 16,
+      "tile": 35,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 16,
+      "tile": 38,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 16,
+      "tile": 44,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 16,
+      "tile": 41,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 16,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 16,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 16,
+      "tile": 40,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 16,
+      "tile": 35,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 16,
+      "tile": 34,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 16,
+      "tile": 39,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 29,
+      "y": 16,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 17,
+      "tile": 24,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 17,
+      "tile": 27,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 17,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 17,
+      "tile": 28,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 17,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 17,
+      "tile": 28,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 17,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 17,
+      "tile": 47,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 17,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 17,
+      "tile": 46,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 17,
+      "tile": 47,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 17,
+      "tile": 38,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 17,
+      "tile": 47,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 17,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 17,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 17,
+      "tile": 21,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 17,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 17,
+      "tile": 27,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 17,
+      "tile": 30,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 17,
+      "tile": 16,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 17,
+      "tile": 19,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 17,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 17,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 17,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 5,
+      "y": 18,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 18,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 18,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 18,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 18,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 18,
+      "tile": 16,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 18,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 18,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 18,
+      "tile": 42,
+      "material": "paving",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 18,
+      "tile": 36,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 18,
+      "tile": 37,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 18,
+      "tile": 45,
+      "material": "paving",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 18,
+      "tile": 8,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 18,
+      "tile": 2,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 18,
+      "tile": 23,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 18,
+      "tile": 21,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 18,
+      "tile": 19,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 18,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 18,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 18,
+      "tile": 29,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 18,
+      "tile": 28,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 18,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 18,
+      "tile": 23,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 28,
+      "y": 18,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 6,
+      "y": 19,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 7,
+      "y": 19,
+      "tile": 24,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 19,
+      "tile": 20,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 19,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 19,
+      "tile": 19,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 19,
+      "tile": 9,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 19,
+      "tile": 14,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 19,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 19,
+      "tile": 7,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 19,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 19,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 19,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 19,
+      "tile": 1,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": true,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 19,
+      "tile": 18,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 19,
+      "tile": 27,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 19,
+      "tile": 16,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 19,
+      "tile": 16,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 19,
+      "tile": 23,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 19,
+      "tile": 16,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 19,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 26,
+      "y": 19,
+      "tile": 21,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 27,
+      "y": 19,
+      "tile": 26,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 8,
+      "y": 20,
+      "tile": 19,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 9,
+      "y": 20,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 10,
+      "y": 20,
+      "tile": 16,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 20,
+      "tile": 8,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 20,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 20,
+      "tile": 0,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 20,
+      "tile": 6,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 20,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 20,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 20,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 20,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 20,
+      "tile": 31,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 20,
+      "tile": 17,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 20,
+      "tile": 25,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 20,
+      "tile": 19,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 20,
+      "tile": 25,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 24,
+      "y": 20,
+      "tile": 22,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 25,
+      "y": 20,
+      "tile": 28,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 11,
+      "y": 21,
+      "tile": 13,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 12,
+      "y": 21,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 13,
+      "y": 21,
+      "tile": 2,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 14,
+      "y": 21,
+      "tile": 3,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 15,
+      "y": 21,
+      "tile": 4,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 16,
+      "y": 21,
+      "tile": 10,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 17,
+      "y": 21,
+      "tile": 11,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 18,
+      "y": 21,
+      "tile": 15,
+      "material": "lavender",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 19,
+      "y": 21,
+      "tile": 30,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 20,
+      "y": 21,
+      "tile": 21,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 21,
+      "y": 21,
+      "tile": 24,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 22,
+      "y": 21,
+      "tile": 24,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    },
+    {
+      "x": 23,
+      "y": 21,
+      "tile": 29,
+      "material": "moss",
+      "walkable": true,
+      "placeable": false,
+      "chunk": "frontyard"
+    }
+  ],
+  "fixedHouse": {
+    "x": 15,
+    "y": 10
+  },
+  "spawns": [
+    {
+      "id": "tantan",
+      "name": "探探",
+      "x": 12,
+      "y": 15
+    },
+    {
+      "id": "zaozhao",
+      "name": "造造",
+      "x": 18,
+      "y": 15
+    },
+    {
+      "id": "manman",
+      "name": "慢慢",
+      "x": 14,
+      "y": 17
+    }
+  ],
+  "interface": {
+    "direction": "east",
+    "oldEdge": [
+      29,
+      14
+    ],
+    "newLanding": [
+      35,
+      14
+    ]
+  }
+}

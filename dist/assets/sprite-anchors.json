@@ -1,0 +1,91 @@
+{
+  "terrain": {
+    "origin": [
+      0,
+      0
+    ],
+    "worldScale": 16
+  },
+  "residents": {
+    "origin": [
+      0.5,
+      1
+    ],
+    "drawHeight": 17,
+    "directions": [
+      "front",
+      "back",
+      "left",
+      "right"
+    ]
+  },
+  "objects": {
+    "apple": {
+      "origin": [
+        0.5,
+        1
+      ],
+      "drawSize": [
+        12,
+        14
+      ]
+    },
+    "apple-large": {
+      "origin": [
+        0.5,
+        1
+      ],
+      "drawSize": [
+        25,
+        29
+      ]
+    },
+    "apple-house": {
+      "origin": [
+        0.5,
+        1
+      ],
+      "drawSize": [
+        59,
+        54
+      ]
+    },
+    "chair": {
+      "origin": [
+        0.5,
+        1
+      ],
+      "drawSize": [
+        19,
+        23
+      ]
+    },
+    "leaf": {
+      "origin": [
+        0.5,
+        1
+      ],
+      "drawSize": [
+        15,
+        12
+      ]
+    },
+    "stone": {
+      "origin": [
+        0.5,
+        1
+      ],
+      "drawSize": [
+        19,
+        14
+      ]
+    }
+  },
+  "depthOrder": [
+    "sky",
+    "side walls / terrain / rim",
+    "world entities by y feet",
+    "debug and cursor"
+  ],
+  "position": "cell center (16x+8,16y+8); y depth at visible footpoint"
+}

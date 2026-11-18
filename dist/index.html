@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>isle live · Observer V10.0</title>
+<meta name="description" content="isle live 的居民、物件与悬浮岛地形测试。">
+<link rel="stylesheet" href="native.css">
+
+</head>
+<body>
+<div id="game-portal"></div>
+<main class="lab" id="legacy-lab">
+  <header class="toolbar">
+    <div class="brand"><span class="mark" aria-hidden="true">✦</span><strong>isle live</strong><span>OBSERVER / V9.1</span></div>
+    <nav class="actions" aria-label="实验操作">
+      <button type="button" id="pause" aria-pressed="false">暂停</button>
+      <button type="button" id="place" aria-expanded="false" aria-controls="panel">放置物件</button>
+      <button type="button" id="interact" aria-expanded="false" aria-controls="panel">交互测试</button>
+      <button type="button" id="expand">扩张地图</button>
+      <button type="button" id="debug" aria-pressed="false" title="按 D 切换">Debug</button>
+      <button type="button" id="reset">重置</button>
+    </nav>
+  </header>
+  <div id="observer-navigation"></div>
+  <section class="viewport" aria-label="悬浮岛">
+    <div id="stage"><div id="game" aria-label="悬浮岛画布"></div><div id="bubbles" aria-hidden="true"></div></div>
+    <section id="panel" class="panel" aria-label="物件菜单" hidden>
+      <div class="panel-head"><strong id="panel-title"></strong><button id="close-panel" aria-label="关闭面板" type="button">×</button></div>
+      <div id="panel-items"></div>
+      <div id="panel-detail" hidden></div>
+    </section>
+    <aside id="person" class="person" hidden aria-label="居民信息">
+      <div class="panel-head"><strong id="person-name"></strong><button id="close-person" aria-label="关闭居民信息" type="button">×</button></div>
+      <p id="person-state"></p>
+      <p id="person-goal"></p>
+    </aside>
+  </section>
+  <footer class="foot">
+    <div class="feedback">
+      <span class="counter" id="counter">01 CHUNK</span>
+      <span id="status" role="status" aria-live="polite">正在加载场景。</span>
+      <button type="button" id="cancel" hidden>取消放置</button>
+      <button type="button" id="confirm" hidden>确认放置</button>
+      <span id="coord" aria-label="光标格坐标"></span>
+    </div>
+    <div class="legend" id="legend" hidden>
+      <span><i class="walk"></i>可行走</span><span><i class="placeable"></i>可放置</span><span><i class="blocked"></i>阻挡</span><span><i class="door"></i>互动点</span><span><i class="edge"></i>Chunk 接缝</span><span><i class="route"></i>路径与目标</span><span id="tile-count"></span>
+    </div>
+  </footer>
+</main>
+<script src="phaser.min.js"></script>
+<script src="world.js"></script>
+<script src="terrain.js"></script>
+<script src="observer-store.js"></script>
+<script src="observer-bridge.js"></script>
+<script src="main.js"></script>
+<div id="observer-v10-root"></div>
+<script src="observer-v10.js"></script>
+</body>
+</html>

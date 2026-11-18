@@ -1,0 +1,4 @@
+Rollback baseline: 661686b0b907e84c03a24e51938ef3a37598363a
+Tag: observer-pre-v10-20261118
+Site saved version before native UI: 3
+world.js / terrain.js / main.js / observer-store.js / observer-bridge.js unchanged.

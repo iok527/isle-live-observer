@@ -1,0 +1,327 @@
+{
+  "tileSize": 16,
+  "columns": 8,
+  "image": "terrain-atlas.png",
+  "tiles": [
+    {
+      "id": 0,
+      "material": "lavender",
+      "variant": 0
+    },
+    {
+      "id": 1,
+      "material": "lavender",
+      "variant": 1
+    },
+    {
+      "id": 2,
+      "material": "lavender",
+      "variant": 2
+    },
+    {
+      "id": 3,
+      "material": "lavender",
+      "variant": 3
+    },
+    {
+      "id": 4,
+      "material": "lavender",
+      "variant": 4
+    },
+    {
+      "id": 5,
+      "material": "lavender",
+      "variant": 5
+    },
+    {
+      "id": 6,
+      "material": "lavender",
+      "variant": 6
+    },
+    {
+      "id": 7,
+      "material": "lavender",
+      "variant": 7
+    },
+    {
+      "id": 8,
+      "material": "lavender",
+      "variant": 8
+    },
+    {
+      "id": 9,
+      "material": "lavender",
+      "variant": 9
+    },
+    {
+      "id": 10,
+      "material": "lavender",
+      "variant": 10
+    },
+    {
+      "id": 11,
+      "material": "lavender",
+      "variant": 11
+    },
+    {
+      "id": 12,
+      "material": "lavender",
+      "variant": 12
+    },
+    {
+      "id": 13,
+      "material": "lavender",
+      "variant": 13
+    },
+    {
+      "id": 14,
+      "material": "lavender",
+      "variant": 14
+    },
+    {
+      "id": 15,
+      "material": "lavender",
+      "variant": 15
+    },
+    {
+      "id": 16,
+      "material": "moss",
+      "variant": 0
+    },
+    {
+      "id": 17,
+      "material": "moss",
+      "variant": 1
+    },
+    {
+      "id": 18,
+      "material": "moss",
+      "variant": 2
+    },
+    {
+      "id": 19,
+      "material": "moss",
+      "variant": 3
+    },
+    {
+      "id": 20,
+      "material": "moss",
+      "variant": 4
+    },
+    {
+      "id": 21,
+      "material": "moss",
+      "variant": 5
+    },
+    {
+      "id": 22,
+      "material": "moss",
+      "variant": 6
+    },
+    {
+      "id": 23,
+      "material": "moss",
+      "variant": 7
+    },
+    {
+      "id": 24,
+      "material": "moss",
+      "variant": 8
+    },
+    {
+      "id": 25,
+      "material": "moss",
+      "variant": 9
+    },
+    {
+      "id": 26,
+      "material": "moss",
+      "variant": 10
+    },
+    {
+      "id": 27,
+      "material": "moss",
+      "variant": 11
+    },
+    {
+      "id": 28,
+      "material": "moss",
+      "variant": 12
+    },
+    {
+      "id": 29,
+      "material": "moss",
+      "variant": 13
+    },
+    {
+      "id": 30,
+      "material": "moss",
+      "variant": 14
+    },
+    {
+      "id": 31,
+      "material": "moss",
+      "variant": 15
+    },
+    {
+      "id": 32,
+      "material": "paving",
+      "variant": 0
+    },
+    {
+      "id": 33,
+      "material": "paving",
+      "variant": 1
+    },
+    {
+      "id": 34,
+      "material": "paving",
+      "variant": 2
+    },
+    {
+      "id": 35,
+      "material": "paving",
+      "variant": 3
+    },
+    {
+      "id": 36,
+      "material": "paving",
+      "variant": 4
+    },
+    {
+      "id": 37,
+      "material": "paving",
+      "variant": 5
+    },
+    {
+      "id": 38,
+      "material": "paving",
+      "variant": 6
+    },
+    {
+      "id": 39,
+      "material": "paving",
+      "variant": 7
+    },
+    {
+      "id": 40,
+      "material": "paving",
+      "variant": 8
+    },
+    {
+      "id": 41,
+      "material": "paving",
+      "variant": 9
+    },
+    {
+      "id": 42,
+      "material": "paving",
+      "variant": 10
+    },
+    {
+      "id": 43,
+      "material": "paving",
+      "variant": 11
+    },
+    {
+      "id": 44,
+      "material": "paving",
+      "variant": 12
+    },
+    {
+      "id": 45,
+      "material": "paving",
+      "variant": 13
+    },
+    {
+      "id": 46,
+      "material": "paving",
+      "variant": 14
+    },
+    {
+      "id": 47,
+      "material": "paving",
+      "variant": 15
+    },
+    {
+      "id": 48,
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": 49,
+      "material": "water",
+      "variant": 1
+    },
+    {
+      "id": 50,
+      "material": "water",
+      "variant": 2
+    },
+    {
+      "id": 51,
+      "material": "water",
+      "variant": 3
+    },
+    {
+      "id": 52,
+      "material": "water",
+      "variant": 4
+    },
+    {
+      "id": 53,
+      "material": "water",
+      "variant": 5
+    },
+    {
+      "id": 54,
+      "material": "water",
+      "variant": 6
+    },
+    {
+      "id": 55,
+      "material": "water",
+      "variant": 7
+    },
+    {
+      "id": 56,
+      "material": "water",
+      "variant": 8
+    },
+    {
+      "id": 57,
+      "material": "water",
+      "variant": 9
+    },
+    {
+      "id": 58,
+      "material": "water",
+      "variant": 10
+    },
+    {
+      "id": 59,
+      "material": "water",
+      "variant": 11
+    },
+    {
+      "id": 60,
+      "material": "water",
+      "variant": 12
+    },
+    {
+      "id": 61,
+      "material": "water",
+      "variant": 13
+    },
+    {
+      "id": 62,
+      "material": "water",
+      "variant": 14
+    },
+    {
+      "id": 63,
+      "material": "water",
+      "variant": 15
+    }
+  ]
+}

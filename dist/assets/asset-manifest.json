@@ -1,0 +1,336 @@
+{
+  "version": "7.1",
+  "projection": "orthogonal top-down 3/4",
+  "files": {
+    "apple-house.json": {
+      "role": "runtime or exported logic data"
+    },
+    "apple-house.png": {
+      "size": [
+        59,
+        52
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite, reprocessed to logical pixels",
+      "source": "V6 kit / 02-Game-Assets/v6-landmarks/apple-house.png"
+    },
+    "apple-large.png": {
+      "size": [
+        203,
+        228
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/apple-large.png"
+    },
+    "apple-object.json": {
+      "role": "runtime or exported logic data"
+    },
+    "apple.png": {
+      "size": [
+        137,
+        159
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/apple.png"
+    },
+    "cat.png": {
+      "size": [
+        210,
+        180
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/cat.png"
+    },
+    "crystal-flower.png": {
+      "size": [
+        170,
+        211
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/crystal-flower.png"
+    },
+    "dock.png": {
+      "size": [
+        39,
+        38
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite, reprocessed to logical pixels",
+      "source": "V6 kit / 02-Game-Assets/v6-environment/dock.png"
+    },
+    "expansion-chunk.json": {
+      "role": "runtime or exported logic data"
+    },
+    "fixtures.json": {
+      "role": "runtime or exported logic data"
+    },
+    "island-boundary.json": {
+      "role": "runtime or exported logic data"
+    },
+    "lantern-tree.png": {
+      "size": [
+        62,
+        65
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite, reprocessed to logical pixels",
+      "source": "V6 kit / 02-Game-Assets/v6-environment/lantern-tree.png"
+    },
+    "leaf-boat.png": {
+      "size": [
+        44,
+        41
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite, reprocessed to logical pixels",
+      "source": "V6 kit / 02-Game-Assets/v6-landmarks/leaf-boat.png"
+    },
+    "manman-back.png": {
+      "size": [
+        225,
+        159
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/manman-back.png"
+    },
+    "manman-front.png": {
+      "size": [
+        225,
+        159
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/manman-front.png"
+    },
+    "manman-left.png": {
+      "size": [
+        220,
+        164
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/manman-left.png"
+    },
+    "manman-right.png": {
+      "size": [
+        215,
+        162
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/manman-right.png"
+    },
+    "mushrooms.png": {
+      "size": [
+        211,
+        185
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/mushrooms.png"
+    },
+    "objects.json": {
+      "role": "runtime or exported logic data"
+    },
+    "observatory.png": {
+      "size": [
+        61,
+        49
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite, reprocessed to logical pixels",
+      "source": "V6 kit / 02-Game-Assets/v6-environment/observatory.png"
+    },
+    "plant-grown.png": {
+      "size": [
+        36,
+        36
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/plant-grown.png"
+    },
+    "shore-rock.png": {
+      "size": [
+        36,
+        25
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite, reprocessed to logical pixels",
+      "source": "V6 kit / 02-Game-Assets/v6-environment/shore-rock.png"
+    },
+    "sky.png": {
+      "size": [
+        512,
+        288
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "role": "sky only",
+      "source": "V6 kit / 03-Tilemap/v5.1-expansion/Layers/v5-sky-plate.png"
+    },
+    "sprite-anchors.json": {
+      "role": "runtime or exported logic data"
+    },
+    "stone-rest.png": {
+      "size": [
+        64,
+        46
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "runtime sprite, reprocessed to logical pixels",
+      "source": "V6 kit / 02-Game-Assets/v6-landmarks/stone-rest.png"
+    },
+    "tantan-back.png": {
+      "size": [
+        175,
+        225
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/tantan-back.png"
+    },
+    "tantan-front.png": {
+      "size": [
+        165,
+        224
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/tantan-front.png"
+    },
+    "tantan-left.png": {
+      "size": [
+        161,
+        225
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/tantan-left.png"
+    },
+    "tantan-right.png": {
+      "size": [
+        162,
+        222
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/tantan-right.png"
+    },
+    "terrain-atlas.json": {
+      "role": "runtime or exported logic data"
+    },
+    "terrain-atlas.png": {
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "transparent": false,
+      "role": "64 source-resolution tiles",
+      "source": "V7 tools/make_terrain.py"
+    },
+    "terrain-map.json": {
+      "role": "runtime or exported logic data"
+    },
+    "terrain-masks.json": {
+      "role": "runtime or exported logic data"
+    },
+    "zaozhao-back.png": {
+      "size": [
+        183,
+        214
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/zaozhao-back.png"
+    },
+    "zaozhao-front.png": {
+      "size": [
+        183,
+        214
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/zaozhao-front.png"
+    },
+    "zaozhao-left.png": {
+      "size": [
+        185,
+        211
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/zaozhao-left.png"
+    },
+    "zaozhao-right.png": {
+      "size": [
+        183,
+        211
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "directional resident sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-residents/zaozhao-right.png"
+    },
+    "chair.png": {
+      "size": [
+        141,
+        196
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "placement catalog runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/chair.png"
+    },
+    "leaf.png": {
+      "size": [
+        169,
+        167
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "placement catalog runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/leaf.png"
+    },
+    "stone.png": {
+      "size": [
+        173,
+        139
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "role": "placement catalog runtime sprite",
+      "source": "V6 kit / 02-Game-Assets/v5-evolution/stone.png"
+    }
+  }
+}

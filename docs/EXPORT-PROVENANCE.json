@@ -1,0 +1,24 @@
+{
+  "exportDate": "2026-11-18",
+  "sourceUrl": "https://isle-live-v7-terrain-lab.jiaqilong527.chatgpt.site",
+  "packageVersion": "10.0.0",
+  "sitesSavedVersion": 4,
+  "sourceCommit": "4c9d37b18af4ff2315d9bae5cd056549e3e75fea",
+  "deploymentId": "appgdep_6afd91334654819199cfb45906ea9f1f",
+  "deploymentStatus": "succeeded",
+  "stack": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "phaser": "3.90.0",
+    "esbuild": "0.25.8"
+  },
+  "uiAndGameModified": false,
+  "publishedDistFileCount": 68,
+  "portableChanges": [
+    "Node development/preview server",
+    "README and migration documentation",
+    "Git-independent SHA256 baseline test",
+    "package/lock root metadata corrected",
+    "original Sites project binding removed"
+  ]
+}

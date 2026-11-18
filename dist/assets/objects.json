@@ -1,0 +1,342 @@
+{
+  "catalog": [
+    "apple",
+    "chair",
+    "leaf",
+    "stone",
+    "apple-house"
+  ],
+  "types": [
+    {
+      "id": "apple",
+      "sprite": "apple",
+      "drawSize": [
+        12,
+        14
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ]
+      ],
+      "interactionPoints": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "depth": "footpoint y",
+      "name": "苹果",
+      "reactions": [
+        "这颗果实是什么？",
+        "果皮原来有两种颜色。",
+        "闻起来像晒过太阳。"
+      ]
+    },
+    {
+      "id": "apple-large",
+      "sprite": "apple-large",
+      "drawSize": [
+        25,
+        29
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "interactionPoints": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "depth": "footpoint y",
+      "name": "巨型苹果",
+      "reactions": [
+        "苹果变大了！",
+        "它占了两个格子。",
+        "这里可以停一下。"
+      ]
+    },
+    {
+      "id": "apple-house",
+      "sprite": "apple-house",
+      "drawSize": [
+        59,
+        54
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "interactionPoints": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "depth": "footpoint y",
+      "name": "苹果屋",
+      "reactions": [
+        "我找到门了！",
+        "这是苹果变的房子吗？",
+        "门口适合歇一会。"
+      ]
+    },
+    {
+      "id": "chair",
+      "sprite": "chair",
+      "drawSize": [
+        19,
+        23
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ]
+      ],
+      "interactionPoints": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "name": "椅子",
+      "anchor": [
+        0.5,
+        1
+      ],
+      "reactions": [
+        "我可以坐这里吗？",
+        "我来看看椅脚。",
+        "在这儿歇一下。"
+      ]
+    },
+    {
+      "id": "leaf",
+      "sprite": "leaf",
+      "drawSize": [
+        15,
+        12
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ]
+      ],
+      "interactionPoints": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "allowWater": true,
+      "name": "叶子",
+      "anchor": [
+        0.5,
+        1
+      ],
+      "reactions": [
+        "叶尖在动！",
+        "这条叶脉真清楚。",
+        "它顺着水波漂走了。"
+      ]
+    },
+    {
+      "id": "stone",
+      "sprite": "stone",
+      "drawSize": [
+        19,
+        14
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ]
+      ],
+      "interactionPoints": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "name": "石头",
+      "anchor": [
+        0.5,
+        1
+      ],
+      "reactions": [
+        "石头上有纹路。",
+        "我记住这个形状了。",
+        "靠着石头歇一会。"
+      ]
+    },
+    {
+      "id": "cat",
+      "sprite": "cat",
+      "drawSize": [
+        21,
+        23
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ]
+      ],
+      "interactionPoints": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "depth": "footpoint y",
+      "name": "猫咪",
+      "reactions": [
+        "它在看我。",
+        "耳朵动了一下。",
+        "这里可以一起发呆。"
+      ]
+    }
+  ],
+  "evolution": {
+    "apple": "apple-large",
+    "apple-large": "apple-house"
+  }
+}

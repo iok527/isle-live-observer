@@ -1,0 +1,53 @@
+{
+  "transitions": [
+    "apple",
+    "apple-large",
+    "apple-house"
+  ],
+  "stages": [
+    {
+      "id": "apple",
+      "sprite": "apple",
+      "drawSize": [
+        12,
+        14
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ]
+      ],
+      "interactionPoints": [],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "depth": "footpoint y"
+    },
+    {
+      "id": "apple-large",
+      "sprite": "apple-large",
+      "drawSize": [
+        25,
+        29
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "interactionPoints": [],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "depth": "footpoint y"
+    }
+  ]
+}

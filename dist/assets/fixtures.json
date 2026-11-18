@@ -1,0 +1,17 @@
+[
+ {"id":"west-grove","sprite":"lantern-tree","at":{"x":10,"y":8},"size":[57,62],"footprint":[[0,0],[-1,0],[1,0]]},
+ {"id":"lookout","sprite":"observatory","at":{"x":23,"y":8},"size":[58,46],"footprint":[[-1,0],[0,0],[1,0],[0,-1]]},
+ {"id":"quiet-stone","sprite":"stone-rest","at":{"x":23,"y":19},"size":[53,44],"footprint":[[-1,0],[0,0],[1,0],[0,-1]]},
+ {"id":"water-boat","sprite":"leaf-boat","at":{"x":6,"y":12},"size":[32,29]},
+ {"id":"lake-edge","sprite":"shore-rock","at":{"x":8,"y":10},"size":[31,20]},
+ {"id":"pier","sprite":"dock","at":{"x":9,"y":14},"size":[35,32]},
+ {"id":"back-leaves","sprite":"plant-grown","at":{"x":19,"y":7},"size":[35,39],"footprint":[[0,0]]},
+ {"id":"left-shore-flowers","sprite":"crystal-flower","at":{"x":11,"y":11},"size":[21,17]},
+ {"id":"front-grove","sprite":"lantern-tree","at":{"x":9,"y":18},"size":[59,64],"footprint":[[-1,0],[0,0],[1,0]]},
+ {"id":"south-alien-bloom","sprite":"crystal-flower","at":{"x":18,"y":20},"size":[29,24]},
+ {"id":"little-cat","sprite":"cat","at":{"x":12,"y":17},"size":[16,14]},
+ {"id":"outer-mushrooms","sprite":"mushrooms","at":{"x":27,"y":10},"size":[25,20]},
+ {"id":"near-mushrooms","sprite":"mushrooms","at":{"x":12,"y":19},"size":[23,17]},
+ {"id":"east-shore","sprite":"crystal-flower","at":{"x":37,"y":16},"size":[24,23],"onExpansion":true},
+ {"id":"east-grove","sprite":"lantern-tree","at":{"x":35,"y":12},"size":[54,60],"footprint":[[0,0]],"onExpansion":true}
+]

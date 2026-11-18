@@ -10,6 +10,7 @@
     {
       "id": "apple",
       "explorationRole": "discovery",
+      "proposalResident": "zaozhao",
       "sprite": "apple",
       "drawSize": [
         12,

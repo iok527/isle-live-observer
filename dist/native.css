@@ -79,14 +79,10 @@ body {
 
 /* Typography V1.1. Installed fonts are optional and never fetched. */
 @font-face {
-  font-family: 'Observer Pixel 16 Local';
-  src: local('FZXS16--GB1-0'), local('FZXS16'), local('方正像素16');
+  font-family: 'Observer Web Pixel';
+  src: url('fonts/fusion-pixel/fusion-pixel-12px-proportional-zh_hans.otf.woff2') format('woff2');
   font-weight: 100 900;
-}
-@font-face {
-  font-family: 'Observer Pixel 12 Local';
-  src: local('FZXS12--GB1-0'), local('FZXS12'), local('方正像素12');
-  font-weight: 100 900;
+  font-display: swap;
 }
 .boot-subtitle,
 .mode-key > span > span,
@@ -182,3 +178,17 @@ body[data-import="true"] .terminal-toast { bottom: 225px; }
 .capture-network output { display: block; margin: 35px 0; min-height: 92px; }
 .capture-network output strong { font-family: var(--font-meta); }
 .capture-network-actions { display: flex; gap: 22px; }
+
+.resident-action-caption {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: 17%;
+  transform: translateX(-50%);
+  padding: .35em .75em;
+  background: #28203de8;
+  border: 1px solid #a4dfc7;
+  color: #fff0e8;
+  font: 16px/1.45 var(--font-body);
+  pointer-events: none;
+}

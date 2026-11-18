@@ -38,10 +38,12 @@ test('A resident arrival gates evolution, rejects illegal changes and persists s
   bridge.placed(world,object,capture);
   const id=object.collectionId;
   const eventTypes=()=>store.getSnapshot().events.map(e=>e.eventType);
-  const notice={kind:'noticed',objectId:object.id,resident:'tantan'};
+  const notice={kind:'noticed',objectId:object.id,resident:'zaozhao'};
   bridge.resident(world,notice);
   assert.ok(bridge.confirmEvolution(world,id).error);
   assert.equal(object.type,'apple');
+  bridge.resident(world,{...notice,kind:'reaction',resident:'tantan'});
+  assert.equal(eventTypes().includes('USE_PROPOSED'),false);
   bridge.resident(world,{...notice,kind:'reaction'});
   bridge.resident(world,{...notice,kind:'reaction'});
   assert.equal(eventTypes().filter(e=>e==='USE_PROPOSED').length,1);

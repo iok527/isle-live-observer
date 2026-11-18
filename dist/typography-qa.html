@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Observer 字体诊断</title>
+<link rel="stylesheet" href="/native.css">
+<style>
+  body { overflow:auto; }
+  main { max-width:52rem; margin:auto; padding:32px max(24px,env(safe-area-inset-left)); }
+  section { padding:12px 18px; margin:12px 0; border:1px solid #aaa2e9; }
+  .qa-display { font:32px/var(--leading-display) var(--font-display); }
+  .qa-meta { font:18px/var(--leading-meta) var(--font-meta); letter-spacing:var(--tracking-meta); }
+  .qa-dialogue { font:24px/var(--leading-dialogue) var(--font-display); width:min(100%,19rem); overflow-wrap:anywhere; }
+  .qa-fallback { font:24px/1.5 var(--font-body-fallback); }
+  a { color:#a4dfc7; }
+</style>
+</head>
+<body><main>
+<a href="/">返回 Observer</a>
+<h1 class="qa-display">Observer 字体诊断</h1>
+<output id="report" role="status">正在验证同源网页字体…</output>
+<section class="qa-display">Terminal · 启动终端<br>Collection · 苹果与叶子<br>Memories · 造造的新用途</section>
+<section class="qa-meta">WORLD LIVE 01 / 12:34:56 · 现场状态 0123</section>
+<section class="qa-dialogue">造造：我想把这颗苹果放大，让大家在这里休息。罕见字测试：𠮷。</section>
+<section class="qa-fallback">随包 Noto 与系统回退参考。苹果、叶子、居民与 0123。</section>
+</main>
+<script>
+(async()=>{
+  const report=document.getElementById('report');
+  const draw=async()=>{
+    let loaded=false;
+    try{
+      const faces=await document.fonts.load('24px "Observer Web Pixel"','造造苹果');
+      loaded=faces.some(face=>face.status==='loaded');
+    }catch{}
+    report.textContent=`CSS 视口 ${innerWidth}×${innerHeight} · DPR ${devicePixelRatio} · 网页字库 ${loaded?'已加载':'未加载，正在回退'}`;
+  };
+  addEventListener('resize',draw);
+  await draw();
+})();
+</script>
+</body></html>

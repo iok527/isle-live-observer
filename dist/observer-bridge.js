@@ -100,7 +100,7 @@
     const supported=source?.supportedEvolutionIds;
     const spec=world.type(object);
     const use=spec.evolutionUse||appleUses[fromState];
-    if(!observed&&entry&&!entry.proposal&&toState&&use&&(!supported||supported.includes(toState))&&!(spec.evolutionFromSurface==='land'&&object.floating)){
+    if(!observed&&entry&&!entry.proposal&&toState&&use&&(!spec.proposalResident||spec.proposalResident===residentId)&&(!supported||supported.includes(toState))&&!(spec.evolutionFromSurface==='land'&&object.floating)){
       const requiresLocation=world.types.get(toState).placementSurface==='water-only';
       const proposal={residentId,fromState,toState,description:use,...(requiresLocation&&{requiresLocation})};
       events.push(store.gameEvent(islandId,'USE_PROPOSED',{objectId,...proposal,title:person.name+'提议制作'+names[toState]},objectId+'/proposal/'+fromState));

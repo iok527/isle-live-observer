@@ -20,6 +20,7 @@
   }
   class Lab extends Phaser.Scene {
     preload() {
+      IsleResidentActions.preload(this);
       for(const id of ['terrain-map','expansion-chunk','objects'])this.load.json(id,'assets/'+id+'.json');
       if(calibration)for(const {sprite} of calibration.candidates)this.load.image(sprite,'assets/'+sprite+'.png');
       for(const id of sprites.concat(people.flatMap(p=>faces.map(f=>p+'-'+f))))this.load.image(id,'assets/'+id+'.png');
@@ -59,6 +60,7 @@
         get('bubbles').append(note);
         this.thoughts.set(p.id,note);
       }
+      this.actions=new IsleResidentActions(this,bridge,center);
       this.drawTerrain();
       this.refreshEntities();
       this.bind();
@@ -151,7 +153,7 @@
           }));
           const to=this.config.evolution[o.type];
           if(to&&this.world.types.get(to).placementSurface!=='water-only')detail.append(this.option(to==='apple-large'?'确认放大苹果':'确认演变苹果屋',null,()=>{
-            const result=this.confirmEvolution(o.collectionId);
+            const result=this.actions.request(o.collectionId)||this.confirmEvolution(o.collectionId);
             if(result.error)this.notice(result.error,true);
           }));
           detail.append(this.option('收回物件',null,()=>{
@@ -214,6 +216,7 @@
       });
       watch('debug',()=>this.toggleDebug());
       watch('reset',()=>{
+        this.actions.cancel();
         this.world=this.newWorld();
         bridge.reset(this.world);
         this.placing=null;this.pendingDiscovery=null;this.hover=null;this.touchPlacement=false;
@@ -249,7 +252,7 @@
       });
       window.addEventListener('isle:observer-evolve',event=>{
         const {objectId}=event.detail;
-        event.detail.result=this.confirmEvolution(objectId);
+        event.detail.result=this.actions.request(objectId)||this.confirmEvolution(objectId);
         event.preventDefault();
       });
       window.addEventListener('isle:observer-inspect',event=>{
@@ -265,7 +268,7 @@
         if(!e.repeat&&!e.isComposing&&!e.target?.closest?.('input,textarea,select,[contenteditable]')&&document.body.dataset.mode==='world')this.toggleDebug();
       });
       window.addEventListener('isle:observer-close',event=>{
-        if(this.placing)this.cancel();else if(this.activePanel)this.closePanel();else if(this.inspectId)this.inspectId=null;else return;
+        if(this.placing)this.cancel();else if(this.actions.cancel())this.notice('已取消改造，苹果保持原状。');else if(this.activePanel)this.closePanel();else if(this.inspectId)this.inspectId=null;else return;
         event.preventDefault();
       });
       this.input.on('pointermove',p=>{
@@ -321,6 +324,7 @@
       for(const event of this.world.events.splice(0)){
         this.eventTrace.push(event);
         if(event.kind==='noticed'||event.kind==='reaction')bridge.resident(this.world,event);
+        this.actions.reaction(event);
         if(this.eventTrace.length>60)this.eventTrace.shift();
         if(!this.placing && event.kind==='noticed'){
           const p=this.world.residents.find(person=>person.id===event.resident);
@@ -348,6 +352,7 @@
           put(thought,p.bubble);thought.style.left=(x/gridWidth*100)+'%';thought.style.top=((y-18)/gridHeight*100)+'%';
         }
       }
+      this.actions.update();
       for(const o of this.world.objects)if(o.floating){
         const img=this.entitySprites.get(o.id);
         img.x=center(o.at.x)+Math.round(Math.sin(time/660)*2);

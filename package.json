@@ -1,6 +1,6 @@
 {
   "name": "isle-live-observer",
-  "version": "10.5.1",
+  "version": "10.6.0-preview.1",
   "private": true,
   "scripts": {
     "build": "node scripts/build.mjs",

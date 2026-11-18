@@ -1,5 +1,4 @@
 {
-  "dist/main.js": "72eb640afb972674a4f904f838c0e105e639c96792c5fb693087961408c5005e",
   "dist/world.js": "4798beed3136abeec1029c464a8b097bf4870d1edc8fb7ef6a99421e7e86fe1a",
   "dist/terrain.js": "b25359e2b1b0dc8f96d576721deb4e814b7b4889514deb55f5c4d3f91c7eabf6",
   "dist/observer-bridge.js": "51f281e7d4afb303ac90de1167a8ef0c491c9a9a05bbc68a2e8ea6664ce5b5c3",

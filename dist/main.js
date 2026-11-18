@@ -8,10 +8,15 @@
   const get = id=>document.getElementById(id);
   const people = ['tantan','zaozhao','manman'];
   const faces = ['front','back','left','right'];
-  const sprites=['sky','terrain-atlas','apple','apple-large','apple-house','chair','leaf','stone','cat'];
+  const sprites=['terrain-atlas','apple','apple-large','apple-house','chair','leaf','stone','cat'];
   const colors=[0xffd391,0xb4ffdc,0xfface2];
   const states={IDLE:'待机',CHOOSE_TARGET:'寻找目标',WALK:'行走',INTERACT:'互动'};
   function put(node,value){if(node.textContent!==value)node.textContent=value;}
+  function fitObjectSprite(image,spec){
+    image.setTexture(spec.sprite).setOrigin(...spec.anchor);
+    const [maxWidth,maxHeight]=spec.drawSize;
+    return image.setScale(Math.min(maxWidth/image.width,maxHeight/image.height));
+  }
   class Lab extends Phaser.Scene {
     preload() {
       for(const id of ['terrain-map','expansion-chunk','objects'])this.load.json(id,'assets/'+id+'.json');
@@ -30,7 +35,6 @@
       this.selectedObject=null;
       this.eventTrace=[];
       const layer=(depth)=>this.add.graphics().setDepth(depth);
-      this.add.image(0,0,'sky').setOrigin(0).setDisplaySize(gridWidth,gridHeight).setDepth(-100);
       this.terrain=this.textures.createCanvas('composited-terrain',gridWidth,gridHeight);
       this.add.image(0,0,'composited-terrain').setOrigin(0).setDepth(-80);
       this.water=layer(-6);
@@ -100,7 +104,7 @@
         let img=this.entitySprites.get(o.id);
         if(!img){img=this.add.image(0,0,spec.sprite);this.entitySprites.set(o.id,img);}
         const x=center(o.at.x),y=center(o.at.y);
-        img.setTexture(spec.sprite).setOrigin(...spec.anchor).setDisplaySize(...spec.drawSize).setPosition(x,y).setDepth(y);
+        fitObjectSprite(img,spec).setPosition(x,y).setDepth(y);
       }
     }
     closePanel(){this.activePanel=null;this.selectedObject=null;this.syncUI();}
@@ -429,12 +433,12 @@
       const c=check.error?0xff92ab:0xabf4c4;
       g.clear();g.fillStyle(c,.29);g.lineStyle(1,c,1);
       for(const p of near){g.fillRect(p.x*T+1,p.y*T+1,T-2,T-2);g.strokeRect(p.x*T,p.y*T,T,T);}
-      this.ghost.setTexture(spec.sprite).setOrigin(...spec.anchor).setDisplaySize(...spec.drawSize)
+      fitObjectSprite(this.ghost,spec)
         .setPosition(center(obj.at.x),center(obj.at.y)).setTint(c).setVisible(true);
     }
   }
   new Phaser.Game({
-    type:Phaser.CANVAS,parent:'game',width:gridWidth,height:gridHeight,backgroundColor:'#372855',
+    type:Phaser.CANVAS,parent:'game',width:gridWidth,height:gridHeight,transparent:true,
     pixelArt:true,roundPixels:true,scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},scene:Lab,
   });
 })();

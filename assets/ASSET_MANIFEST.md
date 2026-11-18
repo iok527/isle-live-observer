@@ -1,0 +1,324 @@
+# isle live 资产清单
+
+Ready 表示可沿用其当前用途。Needs Cleanup 表示候选资产需转换或验证。Needs Redraw 用于已有独立素材经审查确认无法满足表现目标的情况，本轮没有定案。Concept Only 表示仅作为视觉参考、岛屿预览或历史证据。Missing 表示当前输入缺失。图像尺寸为文件像素，α 为逐图像检查的实际取值范围。字节级重复按优先保留 V10、V7、V6 的次序记录。现有运行时映射见 V10 `dist/assets/asset-manifest.json`、`objects.json` 和 `sprite-anchors.json`。
+
+## Missing Asset
+
+- V10 四张正式 UI 参考图及实际网页截图原件。V10 交接记录描述了原参考，本轮未收到对应文件。V6 图册与 V7 截图已收到。
+- My Land、Red Land、D&I Land 的可玩地图、出生点、岸线、碰撞和放置数据。V10 随包有三个静态预览。
+- 真实 Explorer 摄影与接入记录、AI 输出样本及服务协议、真机与 HID 规格。包内原图与故事截图属于演示数据。
+- 目标展览目录若纳入种子、松果、牛马及节日道具，需先确认独立素材及配置。现有 SVG 杯子可用于 UI 示意，尚无杯子世界物件配置。
+- 新的真实事件实况截图与录像资源。现有本地事件可用物件图标呈现。
+
+## isle-live-observer-v10
+
+本组 52 条。
+
+- `dist/assets/apple-house.json` — **Ready**。当前运行包。
+- `dist/assets/apple-house.png` — **Ready** · 59×52 · α 0–255。当前运行包。
+- `dist/assets/apple-large.png` — **Ready** · 203×228 · α 0–255。当前运行包。
+- `dist/assets/apple-object.json` — **Ready**。当前运行包。
+- `dist/assets/apple-source-sample.png` — **Ready** · 1536×1024 · 无 alpha 通道。本地演示素材。
+- `dist/assets/apple.png` — **Ready** · 137×159 · α 0–255。当前运行包。
+- `dist/assets/asset-manifest.json` — **Ready**。当前运行包。
+- `dist/assets/cat.png` — **Ready** · 210×180 · α 0–255。当前运行包。
+- `dist/assets/chair.png` — **Ready** · 141×196 · α 0–255。当前运行包。
+- `dist/assets/crystal-flower.png` — **Ready** · 170×211 · α 0–255。当前运行包。
+- `dist/assets/dock.png` — **Ready** · 39×38 · α 0–255。当前运行包。
+- `dist/assets/event-1.png` — **Ready** · 688×432 · α 255–255。本地演示素材。
+- `dist/assets/event-4.png` — **Ready** · 688×432 · α 255–255。本地演示素材。
+- `dist/assets/event-6.png` — **Ready** · 688×432 · α 255–255。本地演示素材。
+- `dist/assets/expansion-chunk.json` — **Ready**。当前运行包。
+- `dist/assets/fixtures.json` — **Ready**。当前运行包。
+- `dist/assets/island-boundary.json` — **Ready**。当前运行包。
+- `dist/assets/island-di.png` — **Concept Only** · 2048×1152 · 无 alpha 通道。当前可作岛屿预览；可玩地图缺失。
+- `dist/assets/island-my.png` — **Concept Only** · 1672×941 · 无 alpha 通道。当前可作岛屿预览；可玩地图缺失。
+- `dist/assets/island-red.webp` — **Concept Only** · 1672×941 · 无 alpha 通道。当前可作岛屿预览；可玩地图缺失。
+- `dist/assets/lantern-tree.png` — **Ready** · 62×65 · α 0–255。当前运行包。
+- `dist/assets/leaf-boat.png` — **Ready** · 44×41 · α 0–255。当前运行包。
+- `dist/assets/leaf.png` — **Ready** · 169×167 · α 0–255。当前运行包。
+- `dist/assets/manman-back.png` — **Ready** · 225×159 · α 0–255。当前运行包。
+- `dist/assets/manman-front.png` — **Ready** · 225×159 · α 0–255。当前运行包。
+- `dist/assets/manman-left.png` — **Ready** · 220×164 · α 0–255。当前运行包。
+- `dist/assets/manman-right.png` — **Ready** · 215×162 · α 0–255。当前运行包。
+- `dist/assets/mushrooms.png` — **Ready** · 211×185 · α 0–255。当前运行包。
+- `dist/assets/objects.json` — **Ready**。当前运行包。
+- `dist/assets/observatory.png` — **Ready** · 61×49 · α 0–255。当前运行包。
+- `dist/assets/plant-grown.png` — **Ready** · 36×36 · α 0–255。当前运行包。
+- `dist/assets/sample-leaf.jpg` — **Ready** · 500×500 · 无 alpha 通道。本地演示素材。
+- `dist/assets/sample-stone.jpg` — **Ready** · 500×500 · 无 alpha 通道。本地演示素材。
+- `dist/assets/shore-rock.png` — **Ready** · 36×25 · α 0–255。当前运行包。
+- `dist/assets/sky.png` — **Ready** · 512×288 · 无 alpha 通道。当前运行包。
+- `dist/assets/sprite-anchors.json` — **Ready**。当前运行包。
+- `dist/assets/stone-rest.png` — **Ready** · 64×46 · α 0–255。当前运行包。
+- `dist/assets/stone.png` — **Ready** · 173×139 · α 0–255。当前运行包。
+- `dist/assets/tantan-back.png` — **Ready** · 175×225 · α 0–255。当前运行包。
+- `dist/assets/tantan-front.png` — **Ready** · 165×224 · α 0–255。当前运行包。
+- `dist/assets/tantan-left.png` — **Ready** · 161×225 · α 0–255。当前运行包。
+- `dist/assets/tantan-right.png` — **Ready** · 162×222 · α 0–255。当前运行包。
+- `dist/assets/terrain-atlas.json` — **Ready**。当前运行包。
+- `dist/assets/terrain-atlas.png` — **Ready** · 128×128 · α 255–255。当前运行包。
+- `dist/assets/terrain-map.json` — **Ready**。当前运行包。
+- `dist/assets/terrain-masks.json` — **Ready**。当前运行包。
+- `dist/assets/zaozhao-back.png` — **Ready** · 183×214 · α 0–255。当前运行包。
+- `dist/assets/zaozhao-front.png` — **Ready** · 183×214 · α 0–255。当前运行包。
+- `dist/assets/zaozhao-left.png` — **Ready** · 185×211 · α 0–255。当前运行包。
+- `dist/assets/zaozhao-right.png` — **Ready** · 183×211 · α 0–255。当前运行包。
+- `dist/fonts/isle-terminal-pixel.ttf` — **Ready**。当前运行包。
+- `dist/fonts/observer-cn.otf` — **Ready**。当前运行包。
+
+## isle-live-V7-Technical-Art-Prototype
+
+本组 42 条。
+
+- `dist/assets/apple-house.json` — **Ready**。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/apple-house.json` 字节相同。
+- `dist/assets/apple-house.png` — **Ready** · 59×52 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/apple-house.png` 字节相同。
+- `dist/assets/apple-large.png` — **Ready** · 203×228 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/apple-large.png` 字节相同。
+- `dist/assets/apple-object.json` — **Ready**。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/apple-object.json` 字节相同。
+- `dist/assets/apple.png` — **Ready** · 137×159 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/apple.png` 字节相同。
+- `dist/assets/asset-manifest.json` — **Ready**。V7 原型运行包。
+- `dist/assets/cat.png` — **Ready** · 210×180 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/cat.png` 字节相同。
+- `dist/assets/crystal-flower.png` — **Ready** · 170×211 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/crystal-flower.png` 字节相同。
+- `dist/assets/dock.png` — **Ready** · 39×38 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/dock.png` 字节相同。
+- `dist/assets/expansion-chunk.json` — **Ready**。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/expansion-chunk.json` 字节相同。
+- `dist/assets/fixtures.json` — **Ready**。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/fixtures.json` 字节相同。
+- `dist/assets/island-boundary.json` — **Ready**。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/island-boundary.json` 字节相同。
+- `dist/assets/lantern-tree.png` — **Ready** · 62×65 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/lantern-tree.png` 字节相同。
+- `dist/assets/leaf-boat.png` — **Ready** · 44×41 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/leaf-boat.png` 字节相同。
+- `dist/assets/manman-back.png` — **Ready** · 225×159 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/manman-back.png` 字节相同。
+- `dist/assets/manman-front.png` — **Ready** · 225×159 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/manman-front.png` 字节相同。
+- `dist/assets/manman-left.png` — **Ready** · 220×164 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/manman-left.png` 字节相同。
+- `dist/assets/manman-right.png` — **Ready** · 215×162 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/manman-right.png` 字节相同。
+- `dist/assets/mushrooms.png` — **Ready** · 211×185 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/mushrooms.png` 字节相同。
+- `dist/assets/objects.json` — **Ready**。V7 原型运行包。
+- `dist/assets/observatory.png` — **Ready** · 61×49 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/observatory.png` 字节相同。
+- `dist/assets/plant-grown.png` — **Ready** · 36×36 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/plant-grown.png` 字节相同。
+- `dist/assets/shore-rock.png` — **Ready** · 36×25 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/shore-rock.png` 字节相同。
+- `dist/assets/sky.png` — **Ready** · 512×288 · 无 alpha 通道。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/sky.png` 字节相同。
+- `dist/assets/sprite-anchors.json` — **Ready**。V7 原型运行包。
+- `dist/assets/stone-rest.png` — **Ready** · 64×46 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/stone-rest.png` 字节相同。
+- `dist/assets/tantan-back.png` — **Ready** · 175×225 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/tantan-back.png` 字节相同。
+- `dist/assets/tantan-front.png` — **Ready** · 165×224 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/tantan-front.png` 字节相同。
+- `dist/assets/tantan-left.png` — **Ready** · 161×225 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/tantan-left.png` 字节相同。
+- `dist/assets/tantan-right.png` — **Ready** · 162×222 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/tantan-right.png` 字节相同。
+- `dist/assets/terrain-atlas.json` — **Ready**。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/terrain-atlas.json` 字节相同。
+- `dist/assets/terrain-atlas.png` — **Ready** · 128×128 · α 255–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/terrain-atlas.png` 字节相同。
+- `dist/assets/terrain-map.json` — **Ready**。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/terrain-map.json` 字节相同。
+- `dist/assets/terrain-masks.json` — **Ready**。V7 原型运行包。
+- `dist/assets/zaozhao-back.png` — **Ready** · 183×214 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/zaozhao-back.png` 字节相同。
+- `dist/assets/zaozhao-front.png` — **Ready** · 183×214 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/zaozhao-front.png` 字节相同。
+- `dist/assets/zaozhao-left.png` — **Ready** · 185×211 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/zaozhao-left.png` 字节相同。
+- `dist/assets/zaozhao-right.png` — **Ready** · 183×211 · α 0–255。V7 原型运行包；与 `isle-live-observer-v10/dist/assets/zaozhao-right.png` 字节相同。
+- `evidence/01-door-browser-state.json` — **Concept Only**。原型验收证据。
+- `evidence/02-expanded-browser-state.json` — **Concept Only**。原型验收证据。
+- `evidence/isle-live-V7-Debug.jpg` — **Concept Only** · 1348×926 · 无 alpha 通道。原型验收证据。
+- `evidence/isle-live-V7-Terrain.jpg` — **Concept Only** · 1348×926 · 无 alpha 通道。原型验收证据。
+
+## isle-live-V6-Visual-Asset-Kit
+
+本组 194 条。
+
+- `01-World/00-My-Land-Initial.png` — **Concept Only** · 1672×941 · 无 alpha 通道。设计参考；与 `isle-live-observer-v10/dist/assets/island-my.png` 字节相同。
+- `01-World/01-My-Land-Terrain-Plate.png` — **Concept Only** · 1672×941 · 无 alpha 通道。设计参考。
+- `01-World/02-Story-Land-Scene.png` — **Concept Only** · 1671×941 · 无 alpha 通道。设计参考。
+- `01-World/02-Story-Land-V6-Plate.webp` — **Concept Only** · 1671×941 · 无 alpha 通道。设计参考。
+- `01-World/03-Red-Land-Scene.png` — **Concept Only** · 1672×941 · 无 alpha 通道。设计参考。
+- `01-World/03-Red-Land-V6-Plate.webp` — **Concept Only** · 1672×941 · 无 alpha 通道。设计参考；与 `isle-live-observer-v10/dist/assets/island-red.webp` 字节相同。
+- `01-World/V6-Approved-Two-Island-Reference.png` — **Concept Only** · 1672×941 · α 255–255。设计参考。
+- `01-World/initial-resident-placement.json` — **Concept Only**。设计参考。
+- `02-Game-Assets/Asset-Index.csv` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/apple-house.png` — **Needs Cleanup** · 237×255 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/apple-large.png` — **Needs Cleanup** · 203×228 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/apple-source-sample.png` — **Needs Cleanup** · 1536×1024 · 无 alpha 通道。本地演示素材；与 `isle-live-observer-v10/dist/assets/apple-source-sample.png` 字节相同。
+- `02-Game-Assets/v5-evolution/apple.png` — **Needs Cleanup** · 137×159 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/bridge.png` — **Needs Cleanup** · 276×159 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/cat.png` — **Needs Cleanup** · 210×180 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/chair.png` — **Needs Cleanup** · 141×196 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-observer-v10/dist/assets/chair.png` 字节相同。
+- `02-Game-Assets/v5-evolution/crystal-flower.png` — **Needs Cleanup** · 170×211 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/leaf-boat.png` — **Needs Cleanup** · 232×210 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/leaf.png` — **Needs Cleanup** · 169×167 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-observer-v10/dist/assets/leaf.png` 字节相同。
+- `02-Game-Assets/v5-evolution/mug.png` — **Needs Cleanup** · 142×130 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/mushrooms.png` — **Needs Cleanup** · 211×185 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/parade.png` — **Needs Cleanup** · 642×747 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/plant-grown.png` — **Needs Cleanup** · 284×281 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/plant-young.png` — **Needs Cleanup** · 174×176 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/sprout.png` — **Needs Cleanup** · 111×143 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/stone-rest.png` — **Needs Cleanup** · 278×215 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-evolution/stone.png` — **Needs Cleanup** · 173×139 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-observer-v10/dist/assets/stone.png` 字节相同。
+- `02-Game-Assets/v5-residents/manman-back.png` — **Needs Cleanup** · 225×159 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/manman-front.png` — **Needs Cleanup** · 225×159 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/manman-inspect.png` — **Needs Cleanup** · 301×228 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/manman-interact.png` — **Needs Cleanup** · 323×240 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/manman-left.png` — **Needs Cleanup** · 220×164 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/manman-right.png` — **Needs Cleanup** · 215×162 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/tantan-back.png` — **Needs Cleanup** · 175×225 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/tantan-front.png` — **Needs Cleanup** · 165×224 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/tantan-inspect.png` — **Needs Cleanup** · 225×291 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/tantan-interact.png` — **Needs Cleanup** · 242×318 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/tantan-left.png` — **Needs Cleanup** · 161×225 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/tantan-right.png` — **Needs Cleanup** · 162×222 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/zaozhao-back.png` — **Needs Cleanup** · 183×214 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/zaozhao-front.png` — **Needs Cleanup** · 183×214 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/zaozhao-inspect.png` — **Needs Cleanup** · 259×271 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/zaozhao-interact.png` — **Needs Cleanup** · 254×280 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/zaozhao-left.png` — **Needs Cleanup** · 185×211 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-residents/zaozhao-right.png` — **Needs Cleanup** · 183×211 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-theme-props/foam-studio.png` — **Needs Cleanup** · 446×417 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-theme-props/instant-camera.png` — **Needs Cleanup** · 336×432 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-theme-props/material-pavilion.png` — **Needs Cleanup** · 393×386 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-theme-props/memory-kiosk.png` — **Needs Cleanup** · 385×422 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-theme-props/moka-cafe.png` — **Needs Cleanup** · 403×466 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v5-theme-props/square-lab.png` — **Needs Cleanup** · 414×381 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-environment/dock.png` — **Needs Cleanup** · 375×361 · α 0–253。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-environment/harbor-crane.png` — **Needs Cleanup** · 366×378 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-environment/lantern-tree.png` — **Needs Cleanup** · 412×430 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-environment/market-tent.png` — **Needs Cleanup** · 407×371 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-environment/observatory.png` — **Needs Cleanup** · 452×362 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-environment/shore-rock.png` — **Needs Cleanup** · 423×294 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-landmarks/apple-house.png` — **Needs Cleanup** · 411×365 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-landmarks/camera-station.png` — **Needs Cleanup** · 345×421 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-landmarks/gamepad-portal.png` — **Needs Cleanup** · 479×382 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-landmarks/leaf-boat.png` — **Needs Cleanup** · 383×354 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-landmarks/moka-cafe.png` — **Needs Cleanup** · 359×416 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `02-Game-Assets/v6-landmarks/stone-rest.png` — **Needs Cleanup** · 420×303 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/Expansion-1.png` — **Needs Cleanup** · 897×531 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/Expansion-2.png` — **Needs Cleanup** · 897×531 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/Expansion-3.png` — **Needs Cleanup** · 897×531 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/Expansion-4.png` — **Needs Cleanup** · 897×531 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/corner-mask.png` — **Needs Cleanup** · 960×240 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/ground-samples.png` — **Needs Cleanup** · 1080×120 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/isle-v5-ground-16.png` — **Needs Cleanup** · 256×176 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/road-mask.png` — **Needs Cleanup** · 960×240 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-alternate.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-dust.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-grass.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-ground.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-path.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-plaza.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-soil.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-stone.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/sample-water.png` — **Needs Cleanup** · 128×128 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/tile-index.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/base-tileset/water-mask.png` — **Needs Cleanup** · 960×240 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Chunks/east-extension.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/assembly-after-terrain.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/assembly-after-world.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/assembly-before-terrain.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/assembly-before-world.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/my-land-ground-and-texture.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/my-land-south-wall.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/my-land-surface-accents.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/red-land-ground-and-texture.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/red-land-surface-accents.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/story-land-ground-and-texture.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/story-land-surface-accents.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Layers/v5-sky-plate.png` — **Needs Cleanup** · 512×288 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/assembly-after-cells.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/assembly-after.tmj` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/assembly-before-cells.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/assembly-before.tmj` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/my-land-arrival-cells.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/03-Tilemap/v5.1-expansion/Maps/assembly-after-cells.json` 字节相同。
+- `03-Tilemap/v5.1-expansion/Maps/my-land-arrival.tmj` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/my-land-cells.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/03-Tilemap/v5.1-expansion/Maps/assembly-after-cells.json` 字节相同。
+- `03-Tilemap/v5.1-expansion/Maps/my-land.tmj` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/red-land-cells.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/red-land.tmj` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/story-land-cells.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Maps/story-land.tmj` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Scenes/01-My-Land-Empty.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Scenes/02-My-Land-First-Arrival.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Scenes/03-Story-Land-Living.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Scenes/04-Red-Land-Everyday-Discovery.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Scenes/05-World-Overview.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Scenes/06-Tileset-Assembly-Test.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.1-expansion/Sprites/apple-house.png` — **Needs Cleanup** · 237×255 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/apple-house.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/apple.png` — **Needs Cleanup** · 137×159 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/apple.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/cat.png` — **Needs Cleanup** · 210×180 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/cat.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/chair.png` — **Needs Cleanup** · 141×196 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-observer-v10/dist/assets/chair.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/crystal-flower.png` — **Needs Cleanup** · 170×211 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/crystal-flower.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/instant-camera.png` — **Needs Cleanup** · 336×432 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-theme-props/instant-camera.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/leaf-boat.png` — **Needs Cleanup** · 232×210 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/leaf-boat.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/manman-back.png` — **Needs Cleanup** · 225×159 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/manman-back.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/manman-front.png` — **Needs Cleanup** · 225×159 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/manman-front.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/manman-left.png` — **Needs Cleanup** · 220×164 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/manman-left.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/memory-kiosk.png` — **Needs Cleanup** · 385×422 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-theme-props/memory-kiosk.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/moka-cafe.png` — **Needs Cleanup** · 403×466 · α 0–254。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-theme-props/moka-cafe.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/mug.png` — **Needs Cleanup** · 142×130 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/mug.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/mushrooms.png` — **Needs Cleanup** · 211×185 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/mushrooms.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/plant-grown.png` — **Needs Cleanup** · 284×281 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/plant-grown.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/plant-young.png` — **Needs Cleanup** · 174×176 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/plant-young.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/sprout.png` — **Needs Cleanup** · 111×143 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/sprout.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/stone-rest.png` — **Needs Cleanup** · 278×215 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/stone-rest.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/tantan-front.png` — **Needs Cleanup** · 165×224 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/tantan-front.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/tantan-right.png` — **Needs Cleanup** · 162×222 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/tantan-right.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/zaozhao-front.png` — **Needs Cleanup** · 183×214 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/zaozhao-front.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Sprites/zaozhao-left.png` — **Needs Cleanup** · 185×211 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/zaozhao-left.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Tiles/isle-v5-ground-16.png` — **Needs Cleanup** · 256×176 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/03-Tilemap/base-tileset/isle-v5-ground-16.png` 字节相同。
+- `03-Tilemap/v5.1-expansion/Tiles/tile-index.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/03-Tilemap/base-tileset/tile-index.json` 字节相同。
+- `03-Tilemap/v5.1-expansion/camera-and-assembly.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Layers/story-land-v52-ground-texture.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Layers/story-land-v52-surface-accents.png` — **Needs Cleanup** · 768×544 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Maps/story-land-v52-cells.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Maps/story-land-v52-objects.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Maps/story-land-v52.tmj` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Scenes/01-Story-Land-V5.2.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Scenes/02-Story-Land-Zones.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Scenes/03-Story-Land-Before-After.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Scenes/04-Story-Land-Details.png` — **Needs Cleanup** · 1920×1080 · 无 alpha 通道。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Sprites/apple-house.png` — **Needs Cleanup** · 237×255 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/apple-house.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/cat.png` — **Needs Cleanup** · 210×180 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/cat.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/crystal-flower.png` — **Needs Cleanup** · 170×211 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/crystal-flower.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/leaf-boat.png` — **Needs Cleanup** · 232×210 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/leaf-boat.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/manman-left.png` — **Needs Cleanup** · 220×164 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/manman-left.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/mushrooms.png` — **Needs Cleanup** · 211×185 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/mushrooms.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/plant-grown.png` — **Needs Cleanup** · 284×281 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/plant-grown.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/plant-young.png` — **Needs Cleanup** · 174×176 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/plant-young.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/stone-rest.png` — **Needs Cleanup** · 278×215 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/stone-rest.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/tantan-right.png` — **Needs Cleanup** · 162×222 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/tantan-right.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Sprites/zaozhao-front.png` — **Needs Cleanup** · 183×214 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/zaozhao-front.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Tiles/isle-v5-ground-16.png` — **Needs Cleanup** · 256×176 · α 0–255。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/03-Tilemap/base-tileset/isle-v5-ground-16.png` 字节相同。
+- `03-Tilemap/v5.2-story-land/Tiles/story-path-soft-16.png` — **Needs Cleanup** · 256×16 · α 255–255。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Tiles/story-path-soft-index.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用。
+- `03-Tilemap/v5.2-story-land/Tiles/tile-index.json` — **Needs Cleanup**。旧版候选，检查遮罩、接地、占地及授权后选用；与 `isle-live-V6-Visual-Asset-Kit/03-Tilemap/base-tileset/tile-index.json` 字节相同。
+- `04-Observer-Demo/dist/assets/island.svg` — **Concept Only**。旧演示参考。
+- `04-Observer-Demo/dist/assets/objects/apple-house.png` — **Concept Only** · 237×255 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/apple-house.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/apple-large.png` — **Concept Only** · 203×228 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/apple-large.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/apple-source-sample.png` — **Concept Only** · 1536×1024 · 无 alpha 通道。本地演示素材；与 `isle-live-observer-v10/dist/assets/apple-source-sample.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/apple.png` — **Concept Only** · 137×159 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/apple.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/cat.png` — **Concept Only** · 210×180 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/cat.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/leaf-boat.png` — **Concept Only** · 232×210 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/leaf-boat.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/parade.png` — **Concept Only** · 642×747 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/parade.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/plant-grown.png` — **Concept Only** · 284×281 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/plant-grown.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/plant-young.png` — **Concept Only** · 174×176 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/plant-young.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/sprout.png` — **Concept Only** · 111×143 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/sprout.png` 字节相同。
+- `04-Observer-Demo/dist/assets/objects/stone-rest.png` — **Concept Only** · 278×215 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-evolution/stone-rest.png` 字节相同。
+- `04-Observer-Demo/dist/assets/plates/red.webp` — **Concept Only** · 1672×941 · 无 alpha 通道。旧演示参考；与 `isle-live-observer-v10/dist/assets/island-red.webp` 字节相同。
+- `04-Observer-Demo/dist/assets/plates/story.webp` — **Concept Only** · 1671×941 · 无 alpha 通道。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/01-World/02-Story-Land-V6-Plate.webp` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/manman-front.png` — **Concept Only** · 225×159 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/manman-front.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/manman-left.png` — **Concept Only** · 220×164 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/manman-left.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/manman-right.png` — **Concept Only** · 215×162 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/manman-right.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/tantan-front.png` — **Concept Only** · 165×224 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/tantan-front.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/tantan-left.png` — **Concept Only** · 161×225 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/tantan-left.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/tantan-right.png` — **Concept Only** · 162×222 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/tantan-right.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/zaozhao-front.png` — **Concept Only** · 183×214 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/zaozhao-front.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/zaozhao-left.png` — **Concept Only** · 185×211 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/zaozhao-left.png` 字节相同。
+- `04-Observer-Demo/dist/assets/residents/zaozhao-right.png` — **Concept Only** · 183×211 · α 0–255。旧演示参考；与 `isle-live-V6-Visual-Asset-Kit/02-Game-Assets/v5-residents/zaozhao-right.png` 字节相同。
+- `05-Asset-Sheets/07-Ground-Materials.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `05-Asset-Sheets/08-Tile-Connections.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `05-Asset-Sheets/09-Expansion-Assembly.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `05-Asset-Sheets/10-Asset-Library.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `05-Asset-Sheets/11-Alien-Residents.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `05-Asset-Sheets/12-V6-Landmarks.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `05-Asset-Sheets/13-V6-Environment.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `05-Asset-Sheets/14-Object-Evolution.png` — **Concept Only** · 1920×1080 · 无 alpha 通道。设计参考。
+- `isle-live-V6-Visual-Atlas.pdf` — **Concept Only**。设计参考。
+
+## V10.2 游戏美术校准
+
+以下状态针对正式世界用途，保留上方原始接收清单供溯源。像素、配置与逐项视觉判断见 V10.2 的 `docs/ART_CALIBRATION_REPORT.md`。
+
+- **Ready** — Terrain Atlas、宇宙背景、三位居民四向、普通苹果、巨型苹果、苹果屋、叶子、石头、猫咪。沿用母图。叶子/石头/猫咪/苹果屋的逻辑外接盒已校准为 15×15、19×15、22×19、59×52。
+- **Needs Cleanup** — 叶子船、石头休憩点。开发场景已验证等比显示和格规则；正式世界注册、叶子船跨格轮廓及休憩点入口美术待定。
+- **Needs Cleanup** — plant-grown、crystal-flower、dock、lantern-tree、mushrooms、observatory、shore-rock。独立图片存在，`fixtures.json` 是候选摆位记录。这些素材尚未作为正式 V10.2 世界设施加载。
+- **Needs Redraw** — 本轮无须立即重绘的正式素材。植物需要先试做原母图的低分辨率对比度清理。
+- 巨型苹果保留 25×29 盒，锚点由 `[.5,1]` 调至 `[.18,1]`，让图像对齐原来向右展开的两格。

@@ -297,6 +297,7 @@
           }else this.drop(at);
           return;
         }
+        if(this.placementProbe?.(at))return;
         const residents=this.world.residents.filter(person=>{
           const s=this.personSprites.get(person.id);return Math.abs(p.x-s.x)<12&&p.y>=s.y-22&&p.y<=s.y+6;
         });

@@ -78,16 +78,27 @@
     checkPlacement(at,type,replace=null) {
       const candidate={at,type};
       const spec=this.type(candidate);
-      if(!spec)return {error:'物件类型不可用。'};
+      if(!spec)return {code:'type',error:'物件类型不可用。'};
+      if(!this.cells.has(key(at.x,at.y))){
+        return {code:'outside',cell:at,error:`落点 (${at.x}, ${at.y}) 在岛屿外。请选择岛内可放置格。`};
+      }
       const space=this.cellsOf(candidate);
       const floating=spec.allowWater && space.every(p=>this.cells.get(key(p.x,p.y))?.material==='water');
       const occupied=new Set(this.objects.filter(o=>o!==replace)
         .flatMap(o=>this.cellsOf(o).map(p=>key(p.x,p.y))));
       for(const p of space){
         const id=key(p.x,p.y), cell=this.cells.get(id);
-        if(!cell || (!floating&&!cell.placeable))return {error:'这里不在可放置区域。'};
-        if(occupied.has(id))return {error:'物件占地重叠，请换一个位置。'};
-        if(this.residents.some(person=>equal(person.at,p)||equal(person.next,p)))return {error:'居民正在这里经过，请等一下。'};
+        const position=`(${p.x}, ${p.y})`;
+        if(!cell)return {code:'footprint',cell:p,error:`占地不足：物件覆盖的 ${position} 超出岛屿边界。`};
+        if(!floating&&!cell.placeable){
+          const reason=cell.material==='water'?'是水域，本物件不可放置':cell.walkable?'是只供通行的地面，不是可放置区域':'不是可放置地形';
+          const code=equal(p,at)?'terrain':'footprint';
+          return {code,cell:p,error:`${code==='footprint'?'占地不足：':''}${position} ${reason}。`};
+        }
+        if(occupied.has(id))return {code:'occupied',cell:p,error:`占地重叠：${position} 已有另一件物件。`};
+        if(this.residents.some(person=>equal(person.at,p)||equal(person.next,p))){
+          return {code:'resident',cell:p,error:`居民正在经过 ${position}，请稍等再试。`};
+        }
       }
       const before=this.blocked(replace), proposed=new Set(before);
       if(!floating)for(const p of space)proposed.add(key(p.x,p.y));
@@ -95,16 +106,17 @@
       const initiallyConnected=this.reachable(starts[0],before);
       const after=this.reachable(starts[0],proposed);
       if(starts.some(p=>!after.has(key(p.x,p.y))) || after.size+space.length<initiallyConnected.size){
-        return {error:'这个位置会切断通行，请留出通道。'};
+        return {code:'route',error:'这个位置会切断通行，请留出通道。'};
       }
       const accessible=object=>this.doors(object).filter(p=>after.has(key(p.x,p.y)));
       const doors=accessible(candidate);
-      if(!doors.length)return {error:floating?'请把叶子放在居民能靠近的水岸边。':'请为物件留出可到达的互动点。'};
-      if(spec.id==='apple-house'&&!after.has(key(at.x,at.y+1)))return {error:'需要保留苹果屋正门通道。'};
-      if(this.objects.some(o=>o!==replace && (!accessible(o).length || (o.type==='apple-house'&&!after.has(key(o.at.x,o.at.y+1)))))){
-        return {error:'会挡住已有物件的入口或互动点。'};
+      if(!doors.length)return {code:'entrance',error:floating?'请把叶子放在居民能靠近的水岸边。':'请为物件留出可到达的互动点。'};
+      if(spec.id==='apple-house'&&!after.has(key(at.x,at.y+1)))return {code:'entrance',cell:{x:at.x,y:at.y+1},error:'需要保留苹果屋正门通道。'};
+      const blockedObject=this.objects.find(o=>o!==replace && (!accessible(o).length || (o.type==='apple-house'&&!after.has(key(o.at.x,o.at.y+1)))));
+      if(blockedObject){
+        return {code:'entrance',cell:blockedObject.at,error:`会挡住 ${this.type(blockedObject).name} 的入口或互动点 (${blockedObject.at.x}, ${blockedObject.at.y})。`};
       }
-      return {error:'',floating,doors};
+      return {code:'valid',error:'',floating,doors};
     }
     place(at,type) {
       const check=this.checkPlacement(at,type);

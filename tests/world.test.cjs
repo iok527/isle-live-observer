@@ -135,3 +135,18 @@ if(process.argv.includes('--write-evidence')){
   write('island-boundary',{before:initial.boundary,after:expanded.boundary,interface:map.interface});
   write('terrain-masks',{initial:initial.masks,expanded:expanded.masks});
 }
+
+test('Placement diagnostics distinguish bounds, terrain, footprint, occupancy and entrance',()=>{
+  const world=make();
+  assert.equal(world.checkPlacement(at(0,0),'apple').code,'outside');
+  assert.equal(world.checkPlacement(at(7,10),'apple').code,'terrain');
+  const footprint=world.checkPlacement(at(18,11),'apple-house');
+  assert.equal(footprint.code,'footprint');
+  assert.deepEqual(footprint.cell,at(17,11));
+  assert.equal(world.checkPlacement(at(7,11),'leaf').code,'entrance');
+  assert.equal(world.checkPlacement(at(22,13),'apple').code,'valid');
+  place(world,'apple',22,13);
+  const occupied=world.checkPlacement(at(22,13),'apple');
+  assert.equal(occupied.code,'occupied');
+  assert.deepEqual(occupied.cell,at(22,13));
+});

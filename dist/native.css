@@ -164,3 +164,7 @@ input, textarea, select {
 .living-forms, .living-proposal-actions { display: flex; justify-content: center; align-items: center; gap: 26px; }
 .living-forms img { width: 180px; height: 180px; object-fit: contain; image-rendering: pixelated; }
 .living-forms span { font-size: 45px; }
+
+.placement-controls[data-placement="valid"] p { color: #a4dfc7; }
+.placement-controls[data-placement="invalid"] p { color: #f3c3df; }
+body[data-import="true"] .terminal-toast { bottom: 225px; }

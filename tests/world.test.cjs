@@ -150,3 +150,28 @@ test('Placement diagnostics distinguish bounds, terrain, footprint, occupancy an
   assert.equal(occupied.code,'occupied');
   assert.deepEqual(occupied.cell,at(22,13));
 });
+
+test('North forecourt supports apple evolution while preserving its entrance and resident routes',()=>{
+  const world=make();
+  assert.equal([...world.cells.values()].filter(cell=>cell.placeable).length,94);
+  assert.equal(world.checkPlacement(at(18,8),'apple').code,'terrain');
+  const object=place(world,'apple',20,9);
+  assert.equal(world.evolve(object.id).error,'');
+  assert.equal(world.evolve(object.id).error,'');
+  assert.equal(object.type,'apple-house');
+  const entrance=at(20,10);
+  for(const resident of world.residents)assert.notEqual(world.route(resident.at,entrance),null);
+  assert.equal(world.checkPlacement(entrance,'apple').code,'entrance');
+  assert.equal(world.checkPlacement(at(22,13),'apple').code,'valid');
+});
+
+test('Discovery, research and facilities give preference to different residents without skipping the others',()=>{
+  for(const [type,first] of [['apple','tantan'],['apple-large','zaozhao'],['apple-house','manman']]){
+    const world=make();
+    const object=place(world,type,20,9);
+    simulate(world,()=>world.events.some(e=>e.kind==='explored'));
+    const reactions=world.events.filter(e=>e.kind==='reaction'&&e.objectId===object.id);
+    assert.equal(reactions[0]?.resident,first);
+    assert.equal(new Set(reactions.map(e=>e.resident)).size,3);
+  }
+});

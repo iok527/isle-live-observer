@@ -135,7 +135,7 @@ function App(){const data=useSyncExternalStore(store.subscribe,store.getSnapshot
  <div className="living-proposal-actions"><Button onClick={()=>setProposalId(null)}>暂不改变</Button><Button tone="dark" onClick={confirmProposal}>确认用途并演变</Button></div>
  </div></TransmissionOverlay>}
 
- {draft?.step==='placing'&&<div className="placement-controls"><div><strong>{draft.item.displayName} / PLACING</strong><p>{draft.error|| (draft.at?`位置 ${draft.at.x}, ${draft.at.y} · 可确认`:'轻触岛屿选择合法位置')}</p></div><Button tone="dark" disabled={!draft.at||!!draft.error} onClick={()=>bridge.command('confirm',draft.id)}>确认投放</Button><Button onClick={cancelDraft}>取消</Button></div>}
+ {draft?.step==='placing'&&<div className="placement-controls" data-placement={draft.error?'invalid':draft.at?'valid':'selecting'}><div><strong>{draft.item.displayName} / PLACING</strong><p role="status">{draft.error||(draft.at?`位置 ${draft.at.x}, ${draft.at.y} · 可确认`:'轻触或拖动预览，选择落点')}</p></div><Button tone="dark" disabled={!draft.at||!!draft.error} onClick={()=>bridge.command('confirm',draft.id)}>确认投放</Button><Button onClick={cancelDraft}>取消</Button></div>}
  {prefs.keyDebug&&<output className="keyboard-debug">{lastKey?`KEY ${lastKey.key} / ${lastKey.code} → ${lastKey.action}`:'等待键盘输入'} · {displayMode.toUpperCase()}</output>}{banner&&<div className="terminal-toast" role="status">{banner}</div>}
  </CRTShell></div></main>;}
 createRoot(document.getElementById('observer-v10-root')).render(<App/>);

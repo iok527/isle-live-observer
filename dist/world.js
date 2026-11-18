@@ -28,6 +28,11 @@
   }
   const distance=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
   const clockParams=[[.21,.40,1.15],[.25,.65,1.45],[.30,.90,1.85]];
+  const explorationWeights={
+    tantan:{discovery:3},
+    zaozhao:{research:3},
+    manman:{facility:3},
+  };
   class World {
     constructor(map, chunk, config, random=Math.random) {
       this.map=map;
@@ -214,13 +219,20 @@
     }
     updateJobs() {
       const crossing=this.residents.some(p=>p.activity==='visit');
-      if(!this.job&&!this.visiting&&!crossing&&this.queue.length)this.job={id:this.queue.shift(),index:0,person:null,retryUntil:0,missed:0};
+      if(!this.job&&!this.visiting&&!crossing&&this.queue.length){
+        const id=this.queue.shift();
+        const object=this.objects.find(o=>o.id===id);
+        const role=object&&this.type(object).explorationRole;
+        const weight=person=>explorationWeights[person.id]?.[role]??1;
+        const order=[...this.residents].sort((a,b)=>weight(b)-weight(a));
+        this.job={id,order,index:0,person:null,retryUntil:0,missed:0};
+      }
       const job=this.job;
       if(job){
         const object=this.objects.find(o=>o.id===job.id);
         if(!object){this.job=null;return;}
         if(job.person)return;
-        const person=this.residents[job.index];
+        const person=job.order[job.index];
         if(!person){this.events.push({kind:'explored',objectId:object.id,missed:job.missed});this.job=null;return;}
         const options=this.doors(object).filter(p=>!this.claimed(person,p));
         options.sort((a,b)=>distance(person.at,a)-distance(person.at,b));

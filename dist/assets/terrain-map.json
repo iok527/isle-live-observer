@@ -747,7 +747,7 @@
       "tile": 17,
       "material": "moss",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {
@@ -756,7 +756,7 @@
       "tile": 24,
       "material": "moss",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {
@@ -765,7 +765,7 @@
       "tile": 26,
       "material": "moss",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {
@@ -774,7 +774,7 @@
       "tile": 19,
       "material": "moss",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {
@@ -972,7 +972,7 @@
       "tile": 7,
       "material": "lavender",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {
@@ -981,7 +981,7 @@
       "tile": 7,
       "material": "lavender",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {
@@ -990,7 +990,7 @@
       "tile": 11,
       "material": "lavender",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {
@@ -999,7 +999,7 @@
       "tile": 10,
       "material": "lavender",
       "walkable": true,
-      "placeable": false,
+      "placeable": true,
       "chunk": "frontyard"
     },
     {

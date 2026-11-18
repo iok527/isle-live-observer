@@ -9,6 +9,7 @@
   "types": [
     {
       "id": "apple",
+      "explorationRole": "discovery",
       "sprite": "apple",
       "drawSize": [
         12,
@@ -52,6 +53,7 @@
     },
     {
       "id": "apple-large",
+      "explorationRole": "research",
       "sprite": "apple-large",
       "drawSize": [
         25,
@@ -107,6 +109,7 @@
     },
     {
       "id": "apple-house",
+      "explorationRole": "facility",
       "sprite": "apple-house",
       "drawSize": [
         59,
@@ -166,6 +169,7 @@
     },
     {
       "id": "chair",
+      "explorationRole": "facility",
       "sprite": "chair",
       "drawSize": [
         19,
@@ -208,6 +212,7 @@
     },
     {
       "id": "leaf",
+      "explorationRole": "discovery",
       "sprite": "leaf",
       "drawSize": [
         15,
@@ -251,6 +256,7 @@
     },
     {
       "id": "stone",
+      "explorationRole": "research",
       "sprite": "stone",
       "drawSize": [
         19,
@@ -293,6 +299,7 @@
     },
     {
       "id": "cat",
+      "explorationRole": "discovery",
       "sprite": "cat",
       "drawSize": [
         22,

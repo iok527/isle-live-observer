@@ -147,7 +147,7 @@
           detail.hidden=false;
           detail.append(this.option('开始探索',null,()=>{
             this.world.explore(o.id);this.closePanel();
-            this.notice('探索已排入队列。探探、造造、慢慢会依次查看。');
+            this.notice('探索已排入队列。居民会按偏好依次查看。');
           }));
           const to=this.config.evolution[o.type];
           if(to)detail.append(this.option(to==='apple-large'?'确认放大苹果':'确认演变苹果屋',null,()=>{
@@ -447,8 +447,8 @@
       const check=this.world.checkPlacement(obj.at,obj.type);
       if(this.pendingDiscovery?.draftId)bridge.signal({draftId:this.pendingDiscovery.draftId,at:obj.at,error:check.error});
       const spec=this.world.type(obj);
-      const c=check.error?0xff92ab:0xabf4c4;
-      g.clear();g.fillStyle(c,.29);g.lineStyle(1,c,1);
+      const c=check.error?0xf3b8ce:0xa4dfc7;
+      g.clear();g.fillStyle(c,.22);g.lineStyle(1,c,.78);
       for(const p of near){g.fillRect(p.x*T+1,p.y*T+1,T-2,T-2);g.strokeRect(p.x*T,p.y*T,T,T);}
       fitObjectSprite(this.ghost,spec)
         .setPosition(center(obj.at.x),center(obj.at.y)).setTint(c).setVisible(true);

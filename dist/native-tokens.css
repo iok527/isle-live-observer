@@ -5,9 +5,11 @@
 
 :root {
   --font-logo: 'IslePixel', monospace;
-  --font-body: 'ObserverCN', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
-  --font-display: 'Observer Pixel 16 Local', var(--font-body);
-  --font-meta: 'Observer Pixel 12 Local', 'IslePixel', var(--font-body);
+  --font-body-fallback: 'ObserverCN', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-display: 'Observer Pixel 16 Local', var(--font-body-fallback);
+  --font-meta: 'Observer Pixel 12 Local', 'IslePixel', var(--font-body-fallback);
+  --font-body: var(--font-display);
+  --leading-body: 1.5;
   --leading-display: 1.25;
   --leading-meta: 1.25;
   --leading-dialogue: 1.45;

@@ -14,7 +14,7 @@
     {objectId:'sample-cat',type:'cat',displayName:'猫咪',originalPhoto:null,userNote:'测试一只猫咪的像素转译。',importedSprite:'cat.png'},
   ].map(item=>({...item,createdAt:'2026-11-16T00:00:00Z',importStatus:'available',demo:true}));
   const names={apple:'苹果','apple-large':'巨型苹果','apple-house':'苹果屋',leaf:'叶子',stone:'石头',chair:'椅子',cat:'猫咪'};
-  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张'};
+  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张',USE_PROPOSED:'居民提出用途',USE_CONFIRMED:'用户确认用途'};
   const initial=()=>({activeIsland:'story',events:[],entries:{},worlds:{},discoveries});
   function keyboardAction(input){
     if(input.repeat||input.editable||input.modified||input.composing)return null;
@@ -64,13 +64,28 @@
       persist({...state,discoveries:[entry,...state.discoveries.filter(x=>x.objectId!==entry.objectId)]});
       return true;
     }
+    function receiveBatch(records){
+      const knownCaptures=new Set(state.discoveries.map(item=>item.captureId||item.objectId));
+      const knownObjects=new Set(state.discoveries.map(item=>item.objectId));
+      const accepted=[];
+      for(const record of records){
+        const captureId=record?.captureId||record?.objectId;
+        if(typeof captureId!=='string'||!captureId.trim()||!record.displayName||
+           (!record.originalPhoto&&!record.importedSprite))continue;
+        const objectId=record.objectId||'capture:'+captureId;
+        if(knownCaptures.has(captureId)||knownObjects.has(objectId))continue;
+        knownCaptures.add(captureId);
+        knownObjects.add(objectId);
+        accepted.push({createdAt:stamp(),importStatus:'available',userNote:'',originalPhoto:null,...record,objectId,captureId});
+      }
+      if(accepted.length)persist({...state,discoveries:[...accepted,...state.discoveries]});
+      return accepted;
+    }
     return {
       subscribe(listener){listeners.add(listener);return ()=>listeners.delete(listener);},
       getSnapshot:()=>state, diskError:()=>diskError, unique, gameEvent, commit, ingest,
-      receive(record){
-        if(!record?.objectId||state.discoveries.some(item=>item.objectId===record.objectId))return false;
-        return ingest(record);
-      },
+      receiveBatch,
+      receive(record){return receiveBatch([record]).length===1;},
       selectIsland(id){if(islands.some(i=>i.id===id)&&state.activeIsland!==id)persist({...state,activeIsland:id});},
       nextIsland(direction){const current=islands.findIndex(i=>i.id===state.activeIsland);this.selectIsland(islands[(current+direction+islands.length)%islands.length].id);},
     };

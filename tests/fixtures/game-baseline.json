@@ -1,6 +1,4 @@
 {
   "dist/world.js": "4798beed3136abeec1029c464a8b097bf4870d1edc8fb7ef6a99421e7e86fe1a",
-  "dist/terrain.js": "b25359e2b1b0dc8f96d576721deb4e814b7b4889514deb55f5c4d3f91c7eabf6",
-  "dist/observer-bridge.js": "51f281e7d4afb303ac90de1167a8ef0c491c9a9a05bbc68a2e8ea6664ce5b5c3",
-  "dist/observer-store.js": "5038e7a8ed2bbfe284e37533b69583bf4bcb38139269e711540c2912902d0d2a"
+  "dist/terrain.js": "b25359e2b1b0dc8f96d576721deb4e814b7b4889514deb55f5c4d3f91c7eabf6"
 }

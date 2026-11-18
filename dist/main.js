@@ -150,12 +150,9 @@
             this.notice('探索已排入队列。探探、造造、慢慢会依次查看。');
           }));
           const to=this.config.evolution[o.type];
-          if(to)detail.append(this.option(to==='apple-large'?'放大苹果':'演变苹果屋',null,()=>{
-            const from=o.type;
-            const result=this.world.evolve(o.id);
-            if(result.error){this.notice(result.error,true);return;}
-            bridge.evolved(this.world,result.object,from);
-            this.refreshEntities();this.closePanel();this.notice('物件已更新，居民正在重新规划路线。');
+          if(to)detail.append(this.option(to==='apple-large'?'确认放大苹果':'确认演变苹果屋',null,()=>{
+            const result=this.confirmEvolution(o.collectionId);
+            if(result.error)this.notice(result.error,true);
           }));
           detail.append(this.option('收回物件',null,()=>{
             if(this.world.remove(o.id))bridge.removed(this.world,o);this.refreshEntities();this.showPanel('interaction');
@@ -164,6 +161,15 @@
         }
       }
       this.syncUI();
+    }
+    confirmEvolution(objectId){
+      const result=bridge.confirmEvolution(this.world,objectId);
+      if(!result.error){
+        this.refreshEntities();
+        this.closePanel();
+        this.notice('物件已更新，居民正在重新规划路线。');
+      }
+      return result;
     }
     option(label,sprite,action){
       const button=document.createElement('button');button.type='button';
@@ -237,6 +243,11 @@
         this.pendingDiscovery.type=type;this.placing=type;
         this.targetKey=null;event.preventDefault();
         if(this.hover)this.drawTarget();
+      });
+      window.addEventListener('isle:observer-evolve',event=>{
+        const {objectId}=event.detail;
+        event.detail.result=this.confirmEvolution(objectId);
+        event.preventDefault();
       });
       window.addEventListener('isle:observer-inspect',event=>{
         const object=this.world.objects.find(o=>o.collectionId===event.detail);

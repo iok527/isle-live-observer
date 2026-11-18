@@ -123,3 +123,44 @@ input, textarea, select {
   font-family: var(--font-body);
   line-height: var(--leading-body);
 }
+
+.collection-view.has-pocket {
+  width: 440px;
+  left: auto;
+  right: 0;
+  top: 60px;
+  height: 56px;
+}
+.collection-view.has-pocket .archive-tabs {
+  grid-template-columns: auto auto 1fr;
+  width: 100%;
+  gap: 8px;
+}
+.collection-view.has-pocket .archive-tabs button {
+  writing-mode: horizontal-tb;
+  min-height: 54px;
+  padding: 8px 14px;
+  font-size: 21px;
+}
+.collection-page .status-tabs { top: 0; height: 54px; }
+.collection-page .status-tabs button { min-height: 54px; padding-block: 0; }
+.discovery-pocket .photo-grid { grid-auto-rows: max-content; }
+.living-proposals {
+  position: absolute;
+  right: 95px;
+  top: 160px;
+  z-index: 70;
+  max-height: 320px;
+  overflow: auto;
+  display: grid;
+  gap: 12px;
+  pointer-events: auto;
+}
+.living-proposals:empty { display: none; }
+.living-proposals .pixel-button { min-width: 330px; font-size: 27px; }
+.living-proposal-dialog { max-width: 960px; margin: auto; text-align: center; }
+.living-proposal-dialog h3 { font-size: 38px; }
+.living-proposal-dialog p { font-size: 30px; }
+.living-forms, .living-proposal-actions { display: flex; justify-content: center; align-items: center; gap: 26px; }
+.living-forms img { width: 180px; height: 180px; object-fit: contain; image-rendering: pixelated; }
+.living-forms span { font-size: 45px; }

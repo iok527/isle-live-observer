@@ -4,6 +4,7 @@
   const {gridWidth,gridHeight}=IsleTerrain;
   const T=16;
   const bridge=globalThis.IsleGameBridge;
+  const calibration=globalThis.IsleArtCalibration;
   const center = n=>n*T+T/2;
   const get = id=>document.getElementById(id);
   const people = ['tantan','zaozhao','manman'];
@@ -20,13 +21,16 @@
   class Lab extends Phaser.Scene {
     preload() {
       for(const id of ['terrain-map','expansion-chunk','objects'])this.load.json(id,'assets/'+id+'.json');
+      if(calibration)for(const {sprite} of calibration.candidates)this.load.image(sprite,'assets/'+sprite+'.png');
       for(const id of sprites.concat(people.flatMap(p=>faces.map(f=>p+'-'+f))))this.load.image(id,'assets/'+id+'.png');
       this.load.on('loaderror',f=>this.notice('无法加载 '+f.key,true));
     }
     create() {
       this.config=this.cache.json.get('objects');
+      if(calibration)this.config={...this.config,types:[...this.config.types,...calibration.candidates]};
       this.world=this.newWorld();
       bridge.restore(this.world);
+      calibration?.seed(this.world);
       this.hover=null;
       this.placing=null;
       this.debug=false;
@@ -61,6 +65,7 @@
       this.syncUI();
       this.notice('居民正在自主闲逛。点居民可查看状态。');
       globalThis.isleLab={snapshot:()=>JSON.parse(JSON.stringify(this.snapshot()))};
+      calibration?.attach(this,T);
       get('game').dataset.ready='true';
     }
     newWorld(){return new World(this.cache.json.get('terrain-map'),this.cache.json.get('expansion-chunk'),this.config);}

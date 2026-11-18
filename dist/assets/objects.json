@@ -94,7 +94,7 @@
         ]
       ],
       "anchor": [
-        0.5,
+        0.18,
         1
       ],
       "depth": "footpoint y",
@@ -110,7 +110,7 @@
       "sprite": "apple-house",
       "drawSize": [
         59,
-        54
+        52
       ],
       "footprint": [
         [
@@ -211,7 +211,7 @@
       "sprite": "leaf",
       "drawSize": [
         15,
-        12
+        15
       ],
       "footprint": [
         [
@@ -254,7 +254,7 @@
       "sprite": "stone",
       "drawSize": [
         19,
-        14
+        15
       ],
       "footprint": [
         [
@@ -295,8 +295,8 @@
       "id": "cat",
       "sprite": "cat",
       "drawSize": [
-        21,
-        23
+        22,
+        19
       ],
       "footprint": [
         [

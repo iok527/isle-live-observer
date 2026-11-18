@@ -212,7 +212,9 @@
     },
     {
       "id": "leaf",
-      "explorationRole": "discovery",
+      "explorationRole": "research",
+      "evolutionUse": "把这片叶子折成一艘小船。我们可以在岸边看它。",
+      "evolutionFromSurface": "land",
       "sprite": "leaf",
       "drawSize": [
         15,
@@ -340,10 +342,67 @@
         "耳朵动了一下。",
         "这里可以一起发呆。"
       ]
+    },
+    {
+      "id": "leaf-boat",
+      "sprite": "leaf-boat",
+      "name": "叶子船",
+      "explorationRole": "research",
+      "placementSurface": "water-only",
+      "drawSize": [
+        32,
+        29
+      ],
+      "anchor": [
+        0.24,
+        1
+      ],
+      "footprint": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "interactionPoints": [
+        [
+          -1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "reactions": [
+        "叶子真的在漂！",
+        "帆面朝向岸边。",
+        "坐在岸边就能看见小船。"
+      ]
     }
   ],
   "evolution": {
     "apple": "apple-large",
-    "apple-large": "apple-house"
+    "apple-large": "apple-house",
+    "leaf": "leaf-boat"
   }
 }

@@ -9,7 +9,7 @@
   const get = id=>document.getElementById(id);
   const people = ['tantan','zaozhao','manman'];
   const faces = ['front','back','left','right'];
-  const sprites=['terrain-atlas','apple','apple-large','apple-house','chair','leaf','stone','cat'];
+  const sprites=['terrain-atlas','apple','apple-large','apple-house','chair','leaf','leaf-boat','stone','cat'];
   const colors=[0xffd391,0xb4ffdc,0xfface2];
   const states={IDLE:'待机',CHOOSE_TARGET:'寻找目标',WALK:'行走',INTERACT:'互动'};
   function put(node,value){if(node.textContent!==value)node.textContent=value;}
@@ -150,7 +150,7 @@
             this.notice('探索已排入队列。居民会按偏好依次查看。');
           }));
           const to=this.config.evolution[o.type];
-          if(to)detail.append(this.option(to==='apple-large'?'确认放大苹果':'确认演变苹果屋',null,()=>{
+          if(to&&this.world.types.get(to).placementSurface!=='water-only')detail.append(this.option(to==='apple-large'?'确认放大苹果':'确认演变苹果屋',null,()=>{
             const result=this.confirmEvolution(o.collectionId);
             if(result.error)this.notice(result.error,true);
           }));
@@ -162,8 +162,8 @@
       }
       this.syncUI();
     }
-    confirmEvolution(objectId){
-      const result=bridge.confirmEvolution(this.world,objectId);
+    confirmEvolution(objectId,at){
+      const result=bridge.confirmEvolution(this.world,objectId,at);
       if(!result.error){
         this.refreshEntities();
         this.closePanel();
@@ -180,20 +180,20 @@
     }
     toggleDebug(){this.debug=!this.debug;this.syncUI();}
     drop(p){
-      const draftId=this.pendingDiscovery?.draftId;
-      const result=this.world.place(p,this.placing);
+      const {draftId,relocationId}=this.pendingDiscovery||{};
+      const result=relocationId?this.confirmEvolution(relocationId,p):this.world.place(p,this.placing);
       if(result.error){
         this.notice(result.error,true);
         if(draftId)bridge.signal({draftId,at:p,error:result.error});
         return;
       }
       const {object}=result;
-      bridge.placed(this.world,object,this.pendingDiscovery);
+      if(!relocationId)bridge.placed(this.world,object,this.pendingDiscovery);
       this.pendingDiscovery=null;
       this.refreshEntities();
       this.placing=null;this.touchPlacement=false;this.hover=null;
       const name=this.world.type(object).name;
-      this.notice(name+'已放置在 ('+p.x+', '+p.y+')。'+(this.world.paused?'恢复行走后开始探索。':'居民会主动探索。'));
+      this.notice(name+(relocationId?'已迁入':'已放置在')+' ('+p.x+', '+p.y+')。'+(this.world.paused?'恢复行走后开始探索。':'居民会主动探索。'));
       this.syncUI();
       if(draftId)bridge.signal({draftId,completed:true,objectId:object.collectionId,at:p});
     }
@@ -223,7 +223,10 @@
       });
       window.addEventListener('isle:placement',event=>{
         const discovery=event.detail;
-        if(!bridge.active()||!this.world.types.has(discovery.type))return;
+        const target=discovery.relocationId&&bridge.evolutionTarget(this.world,discovery.relocationId);
+        if(!bridge.active()||!this.world.types.has(discovery.type)||
+           (discovery.relocationId&&(!target?.needsLocation||target.proposal.toState!==discovery.type))||
+           (!discovery.relocationId&&this.world.types.get(discovery.type).placementSurface==='water-only'))return;
         event.preventDefault();
         this.closePanel();this.inspectId=null;this.hover=null;this.touchPlacement=false;
         this.pendingDiscovery=discovery;this.placing=discovery.type;
@@ -239,7 +242,7 @@
       });
       window.addEventListener('isle:observer-size',event=>{
         const {draftId,type}=event.detail;
-        if(this.pendingDiscovery?.draftId!==draftId||!this.world.types.has(type))return;
+        if(this.pendingDiscovery?.draftId!==draftId||this.pendingDiscovery.relocationId||!this.world.types.has(type)||this.world.types.get(type).placementSurface==='water-only')return;
         this.pendingDiscovery.type=type;this.placing=type;
         this.targetKey=null;event.preventDefault();
         if(this.hover)this.drawTarget();
@@ -444,7 +447,10 @@
       const cache=[obj.type,obj.at.x,obj.at.y,this.world.revision,signature].join(':');
       if(cache===this.targetKey)return;
       this.targetKey=cache;
-      const check=this.world.checkPlacement(obj.at,obj.type);
+      const relocating=this.pendingDiscovery?.relocationId;
+      const target=relocating&&bridge.evolutionTarget(this.world,relocating);
+      const check=relocating&&!target?{error:'原物件或用途提议已不可用。'}:
+        this.world.checkPlacement(obj.at,obj.type,target?.object);
       if(this.pendingDiscovery?.draftId)bridge.signal({draftId:this.pendingDiscovery.draftId,at:obj.at,error:check.error});
       const spec=this.world.type(obj);
       const c=check.error?0xf3b8ce:0xa4dfc7;

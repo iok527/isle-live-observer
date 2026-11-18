@@ -7,12 +7,6 @@
 
   const candidates = [
     {
-      id: 'leaf-boat', sprite: 'leaf-boat', name: '叶子船',
-      drawSize: [32, 29], anchor: [.5, 1], allowWater: true,
-      footprint: [[0, 0]], interactionPoints: [[0, 1], [-1, 0], [1, 0], [0, -1]],
-      reactions: ['帆在水面上移动。'],
-    },
-    {
       id: 'stone-rest', sprite: 'stone-rest', name: '石头休憩点',
       drawSize: [53, 44], anchor: [.5, 1],
       footprint: [[-1, 0], [0, 0], [1, 0], [0, -1]],
@@ -24,7 +18,7 @@
   const placements = [
     ['apple-house', 23, 12], ['stone-rest', 23, 17], ['apple-large', 24, 14],
     ['apple', 19, 12], ['leaf', 19, 16], ['stone', 26, 17],
-    ['leaf-boat', 9, 12], ['cat', 16, 19],
+    ['leaf-boat', 8, 12], ['cat', 16, 19],
   ];
 
   const layers = [

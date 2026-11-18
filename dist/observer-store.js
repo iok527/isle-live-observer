@@ -13,8 +13,8 @@
     {objectId:'sample-stone',type:'stone',displayName:'石头',originalPhoto:'sample-stone.jpg',userNote:'散步时捡到的浅纹小石头。',importedSprite:'stone.png'},
     {objectId:'sample-cat',type:'cat',displayName:'猫咪',originalPhoto:null,userNote:'测试一只猫咪的像素转译。',importedSprite:'cat.png'},
   ].map(item=>({...item,createdAt:'2026-11-16T00:00:00Z',importStatus:'available',demo:true}));
-  const names={apple:'苹果','apple-large':'巨型苹果','apple-house':'苹果屋',leaf:'叶子',stone:'石头',chair:'椅子',cat:'猫咪'};
-  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张',USE_PROPOSED:'居民提出用途',USE_CONFIRMED:'用户确认用途'};
+  const names={apple:'苹果','apple-large':'巨型苹果','apple-house':'苹果屋',leaf:'叶子','leaf-boat':'叶子船',stone:'石头',chair:'椅子',cat:'猫咪'};
+  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张',USE_PROPOSED:'居民提出用途',USE_CONFIRMED:'用户确认用途',OBJECT_RELOCATED:'物件迁移'};
   const initial=()=>({activeIsland:'story',events:[],entries:{},worlds:{},discoveries});
   function keyboardAction(input){
     if(input.repeat||input.editable||input.modified||input.composing)return null;
@@ -36,18 +36,25 @@
         if(saved?.events && saved.entries && saved.worlds)state={...initial(),...saved};
       }
     } catch {diskError=true;}
-    const persist=next=>{
-      try {storage?.setItem(key,JSON.stringify(next));} catch {diskError=true;}
+    const persist=(next,requireDurable=false)=>{
+      try {
+        if(requireDurable&&!storage)return false;
+        storage?.setItem(key,JSON.stringify(next));
+      } catch {
+        diskError=true;
+        if(requireDurable)return false;
+      }
       state=next;
       listeners.forEach(listener=>listener());
+      return true;
     };
     const stamp=()=>new Date().toISOString();
     const unique=()=>globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+(++serial);
     function gameEvent(islandId,eventType,payload={},eventId=unique()){
-      const {objectId,residentId,title=eventNames[eventType],description='',fromState,toState}=payload;
-      return {eventId,islandId,objectId,residentId,eventType,timestamp:stamp(),title,description,fromState,toState};
+      const {objectId,residentId,title=eventNames[eventType],description='',fromState,toState,fromAt,toAt}=payload;
+      return {eventId,islandId,objectId,residentId,eventType,timestamp:stamp(),title,description,fromState,toState,...(fromAt&&{fromAt,toAt})};
     }
-    function commit({events=[],entry,world,islandId,archive}){
+    function commit({events=[],entry,world,islandId,archive,requireDurable=false}){
       const seen=new Set(state.events.map(event=>event.eventId));
       const fresh=events.filter(event=>{
         if(seen.has(event.eventId))return false;
@@ -56,7 +63,7 @@
       const entries={...state.entries};
       if(entry)entries[entry.objectId]={...entries[entry.objectId],...entry};
       if(archive)for(const id of archive)if(entries[id])entries[id]={...entries[id],status:'已重置'};
-      persist({...state,entries,events:[...state.events,...fresh],worlds:world?{...state.worlds,[islandId]:world}:state.worlds});
+      return persist({...state,entries,events:[...state.events,...fresh],worlds:world?{...state.worlds,[islandId]:world}:state.worlds},requireDurable);
     }
     function ingest(record){
       if(!record?.objectId||!record.displayName||(!record.originalPhoto&&!record.importedSprite))return false;

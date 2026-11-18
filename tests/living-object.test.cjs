@@ -64,3 +64,63 @@ test('A resident arrival gates evolution, rejects illegal changes and persists s
   assert.equal(state.worlds.story.objects[0].type,'apple-large');
   assert.deepEqual(state.events.slice(-2).map(e=>e.eventType),['USE_CONFIRMED','OBJECT_SCALED']);
 });
+
+test('Land leaf relocation validates both water tiles and rolls back failed storage',()=>{
+  let save,fail=false;
+  const disk={getItem:()=>save,setItem:(_key,value)=>{
+    if(fail)throw new Error('storage full');
+    save=value;
+  }};
+  const {store,bridge,world}=setup(disk);
+  const [capture]=store.receiveBatch([{captureId:'leaf-photo',type:'leaf',displayName:'叶子',originalPhoto:'sample-leaf.jpg'}]);
+  const from={x:19,y:16},to={x:8,y:12};
+  const {object}=world.place(from,'leaf');
+  bridge.placed(world,object,capture);
+  const id=object.collectionId;
+  bridge.resident(world,{kind:'reaction',objectId:object.id,resident:'zaozhao'});
+  assert.equal(store.getSnapshot().entries[id].proposal.requiresLocation,true);
+
+  assert.ok(bridge.confirmEvolution(world,id).error);
+  assert.equal(bridge.confirmEvolution(world,id,{x:9,y:12}).code,'footprint');
+  assert.equal(bridge.confirmEvolution(world,id,{x:7,y:11}).code,'entrance');
+  assert.equal(bridge.confirmEvolution(world,id,from).code,'terrain');
+
+  const collision=world.place({x:9,y:12},'leaf').object;
+  assert.ok(collision);
+  assert.equal(bridge.confirmEvolution(world,id,to).code,'occupied');
+  world.remove(collision.id);
+
+  const priorSave=save;
+  const priorState=store.getSnapshot();
+  const revision=world.revision;
+  fail=true;
+  assert.match(bridge.confirmEvolution(world,id,to).error,/无法保存/);
+  assert.equal(save,priorSave);
+  assert.equal(store.getSnapshot(),priorState);
+  assert.equal(world.revision,revision);
+  assert.deepEqual(object.at,from);
+  assert.equal(object.type,'leaf');
+  assert.equal(world.canWalk(from),false);
+  assert.equal(world.objects.length,1);
+
+  const reloaded=setup(disk);
+  reloaded.bridge.restore(reloaded.world);
+  assert.equal(reloaded.world.objects[0].type,'leaf');
+  fail=false;
+  const moved=bridge.confirmEvolution(world,id,to);
+  assert.equal(moved.object,object);
+  assert.equal(object.collectionId,id);
+  assert.equal(object.type,'leaf-boat');
+  assert.deepEqual(object.at,to);
+  assert.equal(world.canWalk(from),true);
+  assert.equal(world.canWalk(to),false);
+  assert.equal(world.objects.length,1);
+  assert.ok(bridge.confirmEvolution(world,id,to).error);
+  const final=setup(disk).store.getSnapshot();
+  assert.equal(final.entries[id].sourceId,capture.objectId);
+  assert.deepEqual(final.events.slice(-3).map(e=>e.eventType),['USE_CONFIRMED','OBJECT_TRANSFORMED','OBJECT_RELOCATED']);
+  const relocation=final.events.at(-1);
+  assert.deepEqual(relocation.fromAt,from);
+  assert.deepEqual(relocation.toAt,to);
+  assert.equal(final.discoveries.find(d=>d.objectId===capture.objectId).originalPhoto,'sample-leaf.jpg');
+});

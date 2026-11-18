@@ -7,8 +7,8 @@
     'apple-large':'在大苹果上开一扇门，做成下雨时也能歇脚的苹果屋。',
   };
   const profile=()=>store.getSnapshot().worlds[islandId];
-  const snapshot=world=>({
-    expanded:world.expanded,sequence:world.sequence,objects:world.objects.map(o=>({...o,at:{...o.at}})),
+  const snapshot=(world,replacement)=>({
+    expanded:world.expanded,sequence:world.sequence,objects:world.objects.map(o=>{const value=replacement?.id===o.id?replacement:o;return {...value,at:{...value.at}};}),
     residents:world.residents.map(p=>({id:p.id,x:p.at.x,y:p.at.y})),
   });
   const commit=(world,options)=>store.commit({islandId,world:snapshot(world),...options});
@@ -43,22 +43,40 @@
     events.push(store.gameEvent(islandId,'OBJECT_PLACED',{objectId,title:name+'来到岛上',description:'放置于 ('+object.at.x+', '+object.at.y+')。',toState:object.type},objectId+'/place'));
     commit(world,{events,entry:{objectId,sourceId:source?.objectId,islandId,name,form:object.type,status:'在岛上',at:object.at}});
   }
-  function confirmEvolution(world,id){
+  function evolutionTarget(world,id){
     const state=store.getSnapshot();
     const entry=state.entries[id];
     const object=world.objects.find(o=>collectionId(o)===id);
     const proposal=entry?.proposal;
     if(state.activeIsland!==islandId||entry?.status!=='在岛上'||!object||
-       !proposal||proposal.fromState!==object.type||proposal.toState!==world.evolution[object.type]){
-      return {error:'请先等待居民提出当前形态的用途。'};
-    }
-    const result=world.evolve(object.id);
-    if(result.error)return result;
+       !proposal||proposal.fromState!==object.type||proposal.toState!==world.evolution[object.type]||
+       (world.type(object).evolutionFromSurface==='land'&&object.floating))return null;
+    return {object,proposal,needsLocation:world.types.get(proposal.toState).placementSurface==='water-only'};
+  }
+  function confirmEvolution(world,id,targetAt){
+    const target=evolutionTarget(world,id);
+    if(!target)return {error:'请先等待居民提出当前形态的用途。'};
+    const {object,proposal,needsLocation}=target;
+    if(needsLocation!==!!targetAt)return {error:'请为新形态选择有效水域落点。'};
     const {fromState,toState,residentId,description}=proposal;
-    const confirmed=store.gameEvent(islandId,'USE_CONFIRMED',{objectId:id,residentId,fromState,toState,description},id+'/confirm/'+fromState);
     const type=toState==='apple-large'?'OBJECT_SCALED':'OBJECT_TRANSFORMED';
-    const evolved=store.gameEvent(islandId,type,{objectId:id,fromState,toState,description:names[fromState]+' → '+names[toState]},id+'/'+toState);
-    commit(world,{entry:{objectId:id,form:toState,proposal:null},events:[confirmed,evolved]});
+    const record=evolved=>{
+      const payload={objectId:id,fromState,toState};
+      const events=[
+        store.gameEvent(islandId,'USE_CONFIRMED',{...payload,residentId,description},id+'/confirm/'+fromState),
+        store.gameEvent(islandId,type,{...payload,description:names[fromState]+' → '+names[toState]},id+'/'+toState),
+      ];
+      if(needsLocation){
+        const fromAt={...object.at},toAt={...evolved.at};
+        events.push(store.gameEvent(islandId,'OBJECT_RELOCATED',{
+          ...payload,fromAt,toAt,description:`(${fromAt.x}, ${fromAt.y}) → (${toAt.x}, ${toAt.y})`,
+        },id+'/relocate/'+fromState));
+      }
+      return store.commit({islandId,events,entry:{objectId:id,form:toState,at:{...evolved.at},proposal:null},
+        world:snapshot(world,evolved),requireDurable:needsLocation});
+    };
+    const result=world.evolve(object.id,targetAt,needsLocation?record:undefined);
+    if(!result.error&&!needsLocation)record(result.object);
     return result;
   }
   function resident(world,event){
@@ -77,8 +95,11 @@
       description:event.text||'沿可行走路径靠近物件。',
     },objectId+'/'+eventType+'/'+fromState+'/'+residentId)];
     const entry=store.getSnapshot().entries[objectId];
-    if(!observed&&entry&&!entry.proposal&&toState&&appleUses[fromState]){
-      const proposal={residentId,fromState,toState,description:appleUses[fromState]};
+    const spec=world.type(object);
+    const use=spec.evolutionUse||appleUses[fromState];
+    if(!observed&&entry&&!entry.proposal&&toState&&use&&!(spec.evolutionFromSurface==='land'&&object.floating)){
+      const requiresLocation=world.types.get(toState).placementSurface==='water-only';
+      const proposal={residentId,fromState,toState,description:use,...(requiresLocation&&{requiresLocation})};
       events.push(store.gameEvent(islandId,'USE_PROPOSED',{objectId,...proposal,title:person.name+'提议制作'+names[toState]},objectId+'/proposal/'+fromState));
       commit(world,{entry:{objectId,proposal},events});
       return;
@@ -86,7 +107,7 @@
     store.commit({islandId,events});
   }
   globalThis.IsleGameBridge={
-    restore,placed,confirmEvolution,resident,
+    restore,placed,evolutionTarget,confirmEvolution,resident,
     expanded(world){commit(world,{events:[store.gameEvent(islandId,'ISLAND_EXPANDED',{description:world.cells.size+' 格场地已连通。',fromState:'base',toState:'expanded'})]});},
     removed(world,object){commit(world,{entry:{objectId:collectionId(object),status:'已收回'}});},
     reset(world){commit(world,{archive:(profile()?.objects||[]).map(collectionId).filter(Boolean)});},

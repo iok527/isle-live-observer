@@ -88,14 +88,19 @@
         return {code:'outside',cell:at,error:`落点 (${at.x}, ${at.y}) 在岛屿外。请选择岛内可放置格。`};
       }
       const space=this.cellsOf(candidate);
-      const floating=spec.allowWater && space.every(p=>this.cells.get(key(p.x,p.y))?.material==='water');
+      const waterOnly=spec.placementSurface==='water-only';
+      const floating=(spec.allowWater||waterOnly) && space.every(p=>this.cells.get(key(p.x,p.y))?.material==='water');
       const occupied=new Set(this.objects.filter(o=>o!==replace)
         .flatMap(o=>this.cellsOf(o).map(p=>key(p.x,p.y))));
       for(const p of space){
         const id=key(p.x,p.y), cell=this.cells.get(id);
         const position=`(${p.x}, ${p.y})`;
         if(!cell)return {code:'footprint',cell:p,error:`占地不足：物件覆盖的 ${position} 超出岛屿边界。`};
-        if(!floating&&!cell.placeable){
+        if(waterOnly&&cell.material!=='water'){
+          const code=equal(p,at)?'terrain':'footprint';
+          return {code,cell:p,error:`需要连续水域：${position} 不是水格。`};
+        }
+        if(!waterOnly&&!floating&&!cell.placeable){
           const reason=cell.material==='water'?'是水域，本物件不可放置':cell.walkable?'是只供通行的地面，不是可放置区域':'不是可放置地形';
           const code=equal(p,at)?'terrain':'footprint';
           return {code,cell:p,error:`${code==='footprint'?'占地不足：':''}${position} ${reason}。`};
@@ -108,14 +113,15 @@
       const before=this.blocked(replace), proposed=new Set(before);
       if(!floating)for(const p of space)proposed.add(key(p.x,p.y));
       const starts=this.residents.map(person=>person.next||person.at);
-      const initiallyConnected=this.reachable(starts[0],before);
+      const relocating=replace&&!equal(at,replace.at);
+      const initiallyConnected=this.reachable(starts[0],relocating?this.blocked():before);
       const after=this.reachable(starts[0],proposed);
       if(starts.some(p=>!after.has(key(p.x,p.y))) || after.size+space.length<initiallyConnected.size){
         return {code:'route',error:'这个位置会切断通行，请留出通道。'};
       }
       const accessible=object=>this.doors(object).filter(p=>after.has(key(p.x,p.y)));
       const doors=accessible(candidate);
-      if(!doors.length)return {code:'entrance',error:floating?'请把叶子放在居民能靠近的水岸边。':'请为物件留出可到达的互动点。'};
+      if(!doors.length)return {code:'entrance',error:floating?'请选择居民能靠近的水岸边。':'请为物件留出可到达的互动点。'};
       if(spec.id==='apple-house'&&!after.has(key(at.x,at.y+1)))return {code:'entrance',cell:{x:at.x,y:at.y+1},error:'需要保留苹果屋正门通道。'};
       const blockedObject=this.objects.find(o=>o!==replace && (!accessible(o).length || (o.type==='apple-house'&&!after.has(key(o.at.x,o.at.y+1)))));
       if(blockedObject){
@@ -132,15 +138,20 @@
       this.explore(object.id);
       return {object,error:''};
     }
-    evolve(id) {
+    evolve(id,targetAt,beforeApply) {
       const object=this.objects.find(o=>o.id===id);
       const type=object&&this.evolution[object.type];
       if(!type)return {error:'该物件没有下一阶段。'};
-      const check=this.checkPlacement(object.at,type,object);
+      if(this.types.get(type).placementSurface==='water-only'&&!targetAt){
+        return {error:'此形态需要重新选择水域落点。'};
+      }
+      const at=targetAt||object.at;
+      const check=this.checkPlacement(at,type,object);
       if(check.error)return check;
+      const evolved={...object,type,at:{...at},floating:!!check.floating};
+      if(beforeApply&&!beforeApply(evolved))return {error:'无法保存演变，原物件保留。请检查本地存储。'};
       this.stopExploration(id);
-      object.type=type;
-      object.floating=!!check.floating;
+      Object.assign(object,evolved);
       this.recompute();
       this.explore(object.id);
       return {object,error:''};

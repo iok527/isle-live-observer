@@ -1,13 +1,14 @@
 {
   "name": "isle-live-observer",
-  "version": "10.5.0",
+  "version": "10.5.1",
   "private": true,
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.cjs",
     "dev": "node scripts/dev.mjs",
     "start": "node scripts/dev.mjs",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "capture:lan": "node scripts/lan.mjs --host 0.0.0.0"
   },
   "dependencies": {
     "react": "19.1.1",

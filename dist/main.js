@@ -21,6 +21,7 @@
   class Lab extends Phaser.Scene {
     preload() {
       IsleResidentActions.preload(this);
+      IsleLivingSky.preloadWeather(this,IsleSkyConfig);
       for(const id of ['terrain-map','expansion-chunk','objects'])this.load.json(id,'assets/'+id+'.json');
       if(calibration)for(const {sprite} of calibration.candidates)this.load.image(sprite,'assets/'+sprite+'.png');
       for(const id of sprites.concat(people.flatMap(p=>faces.map(f=>p+'-'+f))))this.load.image(id,'assets/'+id+'.png');
@@ -61,6 +62,10 @@
         this.thoughts.set(p.id,note);
       }
       this.actions=new IsleResidentActions(this,bridge,center);
+      this.sky=IsleLivingSky.createWeather(this,IsleSkyConfig,{
+        startId:IsleObserver.store.getSnapshot().weather.weatherId,
+      });
+      this.overview=false;
       this.drawTerrain();
       this.refreshEntities();
       this.bind();
@@ -199,7 +204,10 @@
       this.syncUI();
       if(draftId)bridge.signal({draftId,completed:true,objectId:object.collectionId,at:p});
     }
-    pointerCell(p){return {x:Math.floor(p.x/T),y:Math.floor(p.y/T)};}
+    pointerCell(p){
+      const point=p.positionToCamera(this.cameras.main);
+      return {x:Math.floor(point.x/T),y:Math.floor(point.y/T)};
+    }
     bind(){
       const watch=(id,fn)=>{get(id).onclick=fn;};
       watch('pause',()=>{
@@ -249,6 +257,14 @@
         this.pendingDiscovery.type=type;this.placing=type;
         this.targetKey=null;event.preventDefault();
         if(this.hover)this.drawTarget();
+      });
+      window.addEventListener('isle:observer-weather',event=>{
+        if(this.sky?.setWeather(event.detail))event.preventDefault();
+      });
+      window.addEventListener('isle:observer-overview',event=>{
+        this.overview=!!event.detail;
+        this.cameras.main.setZoom(this.overview ? .82 : 1).centerOn(gridWidth/2,gridHeight/2);
+        event.preventDefault();
       });
       window.addEventListener('isle:observer-evolve',event=>{
         const {objectId}=event.detail;
@@ -304,14 +320,15 @@
           return;
         }
         if(this.placementProbe?.(at))return;
+        const point=p.positionToCamera(this.cameras.main);
         const residents=this.world.residents.filter(person=>{
-          const s=this.personSprites.get(person.id);return Math.abs(p.x-s.x)<12&&p.y>=s.y-22&&p.y<=s.y+6;
+          const s=this.personSprites.get(person.id);return Math.abs(point.x-s.x)<12&&point.y>=s.y-22&&point.y<=s.y+6;
         });
         if(residents.length){
           residents.sort((a,b)=>this.personSprites.get(b.id).y-this.personSprites.get(a.id).y);
           this.closePanel();this.inspectId=residents[0].id;return;
         }
-        const objects=this.world.objects.filter(o=>this.entitySprites.get(o.id).getBounds().contains(p.x,p.y));
+        const objects=this.world.objects.filter(o=>this.entitySprites.get(o.id).getBounds().contains(point.x,point.y));
         if(objects.length){
           objects.sort((a,b)=>b.at.y-a.at.y);
           this.showPanel('interaction',objects[0].id);
@@ -320,6 +337,14 @@
     }
     update(time,delta){
       if(!this.world)return;
+      this.sky?.update(time);
+      const weather=this.sky?.status();
+      if(weather){
+        const dataset=get('game').dataset;
+        if(dataset.weather!==weather.weatherId)dataset.weather=weather.weatherId;
+        if(dataset.weatherTransition!==weather.transitionState)dataset.weatherTransition=weather.transitionState;
+        if(Number(dataset.weatherLayers)!==weather.layerCount)dataset.weatherLayers=weather.layerCount;
+      }
       this.world.update(delta/1000);
       for(const event of this.world.events.splice(0)){
         this.eventTrace.push(event);
@@ -349,7 +374,11 @@
         const thought=this.thoughts.get(p.id);
         thought.hidden=!p.bubble;
         if(p.bubble){
-          put(thought,p.bubble);thought.style.left=(x/gridWidth*100)+'%';thought.style.top=((y-18)/gridHeight*100)+'%';
+          const camera=this.cameras.main;
+          const zoom=camera.zoom;
+          const sx=gridWidth/2+(x-camera.scrollX-gridWidth/2)*zoom;
+          const sy=gridHeight/2+(y-18-camera.scrollY-gridHeight/2)*zoom;
+          put(thought,p.bubble);thought.style.left=(sx/gridWidth*100)+'%';thought.style.top=(sy/gridHeight*100)+'%';
         }
       }
       this.actions.update();

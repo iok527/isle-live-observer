@@ -192,3 +192,30 @@ body[data-import="true"] .terminal-toast { bottom: 225px; }
   font: 16px/1.45 var(--font-body);
   pointer-events: none;
 }
+
+.game-surface:has(#game[data-weather]) { background: #251d43; }
+.weather-world-tools {
+  position: absolute; left: 100px; top: 120px; z-index: 71;
+  display: flex; gap: 12px; pointer-events: auto;
+}
+.weather-world-tools button, .weather-controls button:not(.pixel-button) {
+  min-height: 60px; padding: 8px 18px; border: 2px solid #b98bd9;
+  background: #3b246ae8; color: #fff0e8; font: 25px var(--font-body);
+}
+.weather-controls {
+  position: absolute; left: 100px; top: 189px; z-index: 90;
+  width: 430px; height: 530px; pointer-events: auto; color: #fff0e8;
+}
+.weather-controls .frame-content { padding: 27px; display: grid; gap: 10px; }
+.weather-controls h2, .weather-controls p { margin: 0; }
+.weather-controls h2 { font-size: 33px; }
+.weather-controls p, .weather-controls label { font-size: 23px; }
+.weather-presets, .weather-actions { display: flex; gap: 6px; }
+.weather-presets button { flex: 1; padding-inline: 5px !important; white-space: nowrap; }
+.weather-controls button[aria-pressed="true"] { color: #a4dfc7; border-color: #a4dfc7; }
+.weather-controls input { display: block; width: 100%; margin-top: 5px; }
+.weather-actions .pixel-button { font-size: 24px; flex: 1; padding-inline: 8px; }
+.sky-backplate {
+  position: absolute; inset: 0; pointer-events: none;
+  background-position: center; background-size: cover; background-repeat: no-repeat;
+}

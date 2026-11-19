@@ -56,3 +56,21 @@ test('Device transfer deduplicates capture IDs and preserves photo-only records'
   assert.equal(keyboardAction({key:'t',code:'KeyT'}),'transfer');
   assert.equal(keyboardAction({key:'t',code:'KeyT',composing:true}),null);
 });
+
+test('Weather confirmation durably writes one event and preserves environment photo provenance',()=>{
+  const disk=storage(),store=createStore(disk);
+  assert.equal(store.getSnapshot().weather.weatherId,'stardust-clear');
+  assert.equal(store.applyWeather('cosmic-dusk','simulated','missing'),false);
+  const capture=store.addEnvironmentPhoto('data:image/png;base64,AA==','日落');
+  assert.equal(capture.type,'environment');
+  assert.equal(store.getSnapshot().events.length,0);
+  assert.equal(store.applyWeather('cosmic-dusk','simulated',capture.captureId),true);
+  assert.equal(store.applyWeather('cosmic-dusk','simulated',capture.captureId),true);
+  const recovered=createStore(disk).getSnapshot();
+  assert.equal(recovered.weather.weatherId,'cosmic-dusk');
+  assert.equal(recovered.weather.captureId,capture.captureId);
+  assert.equal(recovered.events.length,1);
+  assert.equal(recovered.events[0].eventType,'WEATHER_APPLIED');
+  assert.deepEqual(recovered.worlds,{});
+  assert.equal(recovered.discoveries.find(x=>x.captureId===capture.captureId).originalPhoto,capture.originalPhoto);
+});

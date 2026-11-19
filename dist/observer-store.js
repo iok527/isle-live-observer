@@ -14,8 +14,10 @@
     {objectId:'sample-cat',type:'cat',displayName:'猫咪',originalPhoto:null,userNote:'测试一只猫咪的像素转译。',importedSprite:'cat.png'},
   ].map(item=>({...item,createdAt:'2026-11-16T00:00:00Z',importStatus:'available',demo:true}));
   const names={apple:'苹果','apple-large':'巨型苹果','apple-house':'苹果屋',leaf:'叶子','leaf-boat':'叶子船',stone:'石头',chair:'椅子',cat:'猫咪'};
-  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张',USE_PROPOSED:'居民提出用途',USE_CONFIRMED:'用户确认用途',OBJECT_RELOCATED:'物件迁移'};
-  const initial=()=>({activeIsland:'story',events:[],entries:{},worlds:{},discoveries});
+  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张',USE_PROPOSED:'居民提出用途',USE_CONFIRMED:'用户确认用途',OBJECT_RELOCATED:'物件迁移',WEATHER_APPLIED:'天空气候变化'};
+  const weatherIds=new Set(['stardust-clear','cosmic-rain','cosmic-dusk']);
+  const defaultWeather={weatherId:'stardust-clear',source:'default',activeSince:null,transitionState:'settled'};
+  const initial=()=>({weather:defaultWeather,activeIsland:'story',events:[],entries:{},worlds:{},discoveries});
   function keyboardAction(input){
     if(input.repeat||input.editable||input.modified||input.composing)return null;
     const {key,code}=input;
@@ -112,10 +114,30 @@
       if((added.length||updated)&&!persist({...state,discoveries},true))return null;
       return {added:added.length,updated};
     }
+    function addEnvironmentPhoto(originalPhoto,displayName){
+      const captureId='environment:'+unique();
+      const entry={objectId:'capture:'+captureId,captureId,type:'environment',originalPhoto,displayName,
+        createdAt:stamp(),weatherSuggestion:'cosmic-dusk',userNote:'本机演示：手动模拟晚霞建议。'};
+      return persist({...state,discoveries:[entry,...state.discoveries]},true)?entry:null;
+    }
+    function applyWeather(weatherId,source,captureId){
+      if(!weatherIds.has(weatherId)||!['manual','default','simulated'].includes(source))return false;
+      if(source==='simulated'&&!state.discoveries.some(item=>
+        item.captureId===captureId&&item.type==='environment'&&item.weatherSuggestion===weatherId))return false;
+      if(state.weather.weatherId===weatherId&&state.weather.source===source&&state.weather.captureId===captureId)return true;
+      const weather={weatherId,source,activeSince:stamp(),transitionState:'settled',...(captureId&&{captureId})};
+      const displayNames={'stardust-clear':'星尘晴','cosmic-rain':'星雨','cosmic-dusk':'宇宙晚霞'};
+      const event=gameEvent('story','WEATHER_APPLIED',{
+        objectId:captureId?'capture:'+captureId:undefined, title:'天空变为'+displayNames[weatherId],
+        description:source==='simulated'?'用户确认模拟环境建议。':'用户确认手动天气。',
+        fromState:state.weather.weatherId,toState:weatherId,
+      });
+      return persist({...state,weather,events:[...state.events,event]},true);
+    }
     return {
       subscribe(listener){listeners.add(listener);return ()=>listeners.delete(listener);},
       getSnapshot:()=>state, diskError:()=>diskError, unique, gameEvent, commit, ingest,
-      receiveBatch, mergeNetworkCaptures,
+      receiveBatch, mergeNetworkCaptures, addEnvironmentPhoto, applyWeather,
       receive(record){return receiveBatch([record]).length===1;},
       selectIsland(id){if(islands.some(i=>i.id===id)&&state.activeIsland!==id)persist({...state,activeIsland:id});},
       nextIsland(direction){const current=islands.findIndex(i=>i.id===state.activeIsland);this.selectIsland(islands[(current+direction+islands.length)%islands.length].id);},

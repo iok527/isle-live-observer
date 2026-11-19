@@ -74,3 +74,24 @@ test('Weather confirmation durably writes one event and preserves environment ph
   assert.deepEqual(recovered.worlds,{});
   assert.equal(recovered.discoveries.find(x=>x.captureId===capture.captureId).originalPhoto,capture.originalPhoto);
 });
+
+test('Layout snapshots persist validated identities independently of the world and originals',()=>{
+  const disk=storage(),store=createStore(disk);
+  const planet=store.getSnapshot().weather.weatherId;
+  const id='island-object-1';
+  store.commit({islandId:'story',entry:{objectId:id,islandId:'story',status:'在岛上',sourceId:'sample-apple'},
+    world:{objects:[{collectionId:id,type:'apple',at:{x:22,y:13}}],expanded:false}});
+  const item={objectInstanceId:id,objectFormId:'apple',position:{x:22,y:13},orientation:0,footprint:[{x:22,y:13}]};
+  const draft={islandId:'story',objects:[item],expanded:false,skyStateId:planet,thumbnail:'data:image/png;base64,AA=='};
+  assert.equal(store.saveLayout({...draft,objects:[{...item,objectInstanceId:'missing'}]}),null);
+  const first=store.saveLayout({...draft,name:'上午'});
+  const second=store.saveLayout(draft);
+  assert.notEqual(first.layoutId,second.layoutId);
+  item.position.x=10;
+  const recovered=createStore(disk);
+  assert.equal(recovered.getSnapshot().layouts[1].objects[0].position.x,22);
+  assert.equal(recovered.deleteLayout(first.layoutId),true);
+  assert.equal(recovered.getSnapshot().layouts.length,1);
+  assert.deepEqual(recovered.getSnapshot().worlds,store.getSnapshot().worlds);
+  assert.deepEqual(recovered.getSnapshot().discoveries,store.getSnapshot().discoveries);
+});

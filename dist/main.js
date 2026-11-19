@@ -61,6 +61,8 @@
         get('bubbles').append(note);
         this.thoughts.set(p.id,note);
       }
+      this.windowLight=this.add.graphics().setDepth(595);
+      try{this.hideWindowLight=JSON.parse(localStorage.getItem('isle.observer.v10.preferences')||'{}').windowLight===false;}catch{}
       this.actions=new IsleResidentActions(this,bridge,center);
       this.sky=IsleLivingSky.createWeather(this,IsleSkyConfig,{
         startId:IsleObserver.store.getSnapshot().weather.weatherId,
@@ -85,6 +87,54 @@
         residents:this.world.residents.map(p=>({id:p.id,state:p.state,at:p.at,next:p.next,goal:p.goal,path:p.path,bubble:p.bubble,activity:p.activity})),
         events:this.eventTrace,
       };
+    }
+    layoutSnapshot(){
+      const state=IsleObserver.store.getSnapshot();
+      const skyStateId=state.weather.weatherId;
+      const objects=this.world.objects.map(object=>({
+        objectInstanceId:object.collectionId,objectFormId:object.type,position:{...object.at},
+        orientation:0,footprint:this.world.cellsOf(object),
+      }));
+      // Recompose from the same terrain and object textures without HUD, CRT or capture photos.
+      const canvas=document.createElement('canvas');
+      canvas.width=gridWidth;canvas.height=gridHeight;
+      const ctx=canvas.getContext('2d');
+      IsleTerrain.draw(ctx,this.world,this.textures.get('terrain-atlas').getSourceImage());
+      const key='living-sky:'+skyStateId+':sky';
+      ctx.globalCompositeOperation='destination-over';
+      if(this.textures.exists(key))ctx.drawImage(this.textures.get(key).getSourceImage(),0,0);
+      else{ctx.fillStyle='#251d43';ctx.fillRect(0,0,gridWidth,gridHeight);}
+      ctx.globalCompositeOperation='source-over';
+      for(const object of [...this.world.objects].sort((a,b)=>a.at.y-b.at.y)){
+        const spec=this.world.type(object);
+        const image=this.textures.get(spec.sprite).getSourceImage();
+        const scale=Math.min(spec.drawSize[0]/image.width,spec.drawSize[1]/image.height);
+        const width=image.width*scale,height=image.height*scale;
+        ctx.drawImage(image,center(object.at.x)-width*spec.anchor[0],center(object.at.y)-height*spec.anchor[1],width,height);
+      }
+      const thumb=document.createElement('canvas');
+      thumb.width=gridWidth/2;thumb.height=gridHeight/2;
+      const small=thumb.getContext('2d');small.imageSmoothingEnabled=false;small.drawImage(canvas,0,0,thumb.width,thumb.height);
+      return {islandId:'story',objects,expanded:this.world.expanded,skyStateId,thumbnail:thumb.toDataURL('image/webp',.7)};
+    }
+    drawGrowth(){
+      const events=IsleObserver.store.getSnapshot().events;
+      if(events!==this.growthEvents){
+        this.growthEvents=events;
+        this.litHouses=new Set(events.filter(event=>event.eventType==='WINDOW_LIT').map(event=>event.objectId));
+      }
+      const light=this.windowLight;
+      light.clear();
+      if(!this.litHouses.size||this.hideWindowLight)return;
+      for(const object of this.world.objects){
+        if(object.type!=='apple-house'||!this.litHouses.has(object.collectionId))continue;
+        const box=this.entitySprites.get(object.id)?.getBounds();
+        if(!box)continue;
+        const x=box.x+box.width*.73,y=box.y+box.height*.48;
+        light.fillStyle(0xffc16c,.19).fillCircle(x,y,9);
+        light.fillStyle(0xffc16c,.34).fillCircle(x,y,5);
+        light.fillStyle(0xffdf88,.82).fillCircle(x,y,3);
+      }
     }
     drawTerrain(){
       IsleTerrain.draw(this.terrain.getContext(),this.world,this.textures.get('terrain-atlas').getSourceImage());
@@ -258,6 +308,15 @@
         this.targetKey=null;event.preventDefault();
         if(this.hover)this.drawTarget();
       });
+      window.addEventListener('isle:observer-layout-snapshot',event=>{
+        if(!bridge.active()||this.placing||this.actions.pending)return;
+        event.detail.snapshot=this.layoutSnapshot();
+        event.preventDefault();
+      });
+      window.addEventListener('isle:observer-window-light',event=>{
+        this.hideWindowLight=!event.detail;
+        event.preventDefault();
+      });
       window.addEventListener('isle:observer-weather',event=>{
         if(this.sky?.setWeather(event.detail))event.preventDefault();
       });
@@ -382,6 +441,7 @@
         }
       }
       this.actions.update();
+      this.drawGrowth();
       for(const o of this.world.objects)if(o.floating){
         const img=this.entitySprites.get(o.id);
         img.x=center(o.at.x)+Math.round(Math.sin(time/660)*2);

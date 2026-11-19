@@ -126,3 +126,24 @@ test('Land leaf relocation validates both water tiles and rolls back failed stor
   assert.deepEqual(relocation.toAt,to);
   assert.equal(final.discoveries.find(d=>d.objectId===capture.objectId).originalPhoto,'sample-leaf.jpg');
 });
+
+test('The same apple house lights once on the third distinct actual resident visit',()=>{
+  const disk={data:null,getItem(){return this.data;},setItem(_key,value){this.data=value;}};
+  const a=setup(disk),{world,bridge,store}=a;
+  const placed=world.place({x:22,y:13},'apple-house').object;
+  bridge.placed(world,placed,{objectId:'sample-apple'});
+  const event={kind:'reaction',objectId:placed.id,resident:'tantan'};
+  const count=s=>s.getSnapshot().events.filter(e=>e.eventType==='WINDOW_LIT').length;
+  bridge.resident(world,{...event,kind:'noticed'});
+  bridge.resident(world,event);
+  bridge.resident(world,event);
+  bridge.resident(world,{...event,resident:'zaozhao'});
+  assert.equal(count(store),0);
+  const b=setup(disk);b.bridge.restore(b.world);
+  b.bridge.resident(b.world,{...event,resident:'manman'});
+  b.bridge.resident(b.world,{...event,resident:'manman'});
+  assert.equal(count(b.store),1);
+  assert.equal(b.world.objects[0].collectionId,placed.collectionId);
+  assert.equal(b.world.objects[0].type,'apple-house');
+  assert.deepEqual(b.world.cellsOf(b.world.objects[0]),world.cellsOf(placed));
+});

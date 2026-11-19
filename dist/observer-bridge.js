@@ -27,7 +27,8 @@
     }
     const {events}=store.getSnapshot();
     for(const object of world.objects){
-      if(object.collectionId&&!events.some(e=>e.eventType==='RESIDENT_INTERACTED'&&e.objectId===object.collectionId&&e.toState===object.type)){
+      const completion=object.type==='apple-house'?'WINDOW_LIT':'RESIDENT_INTERACTED';
+      if(object.collectionId&&!events.some(e=>e.eventType===completion&&e.objectId===object.collectionId&&e.toState===object.type)){
         world.explore(object.id);
       }
     }
@@ -99,6 +100,17 @@
       },objectId+'/RESIDENT_INTERACTED/'+fromState+'/'+residentId),
     ];
     const state=store.getSnapshot();
+    if(fromState==='apple-house'){
+      const visitors=new Set(state.events.filter(item=>item.eventType==='RESIDENT_INTERACTED'&&
+        item.objectId===objectId&&item.toState===fromState).map(item=>item.residentId));
+      visitors.add(residentId);
+      const growthId=objectId+'/window-lit';
+      if(world.residents.every(resident=>visitors.has(resident.id))&&!state.events.some(item=>item.eventId===growthId)){
+        events.push(store.gameEvent(islandId,'WINDOW_LIT',{
+          objectId, toState:fromState, description:'三位居民都曾到访，苹果屋的窗灯亮了。',
+        },growthId));
+      }
+    }
     const entry=state.entries[objectId];
     const source=state.discoveries.find(item=>item.objectId===entry?.sourceId);
     const supported=source?.supportedEvolutionIds;

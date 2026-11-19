@@ -14,10 +14,10 @@
     {objectId:'sample-cat',type:'cat',displayName:'猫咪',originalPhoto:null,userNote:'测试一只猫咪的像素转译。',importedSprite:'cat.png'},
   ].map(item=>({...item,createdAt:'2026-11-16T00:00:00Z',importStatus:'available',demo:true}));
   const names={apple:'苹果','apple-large':'巨型苹果','apple-house':'苹果屋',leaf:'叶子','leaf-boat':'叶子船',stone:'石头',chair:'椅子',cat:'猫咪'};
-  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张',USE_PROPOSED:'居民提出用途',USE_CONFIRMED:'用户确认用途',OBJECT_RELOCATED:'物件迁移',WEATHER_APPLIED:'天空气候变化'};
+  const eventNames={OBJECT_IMPORTED:'从发现口袋导入',OBJECT_PLACED:'物件到来',OBJECT_SCALED:'物件放大',OBJECT_TRANSFORMED:'物件演变',RESIDENT_INSPECTED:'居民发现物件',RESIDENT_INTERACTED:'居民互动',ISLAND_EXPANDED:'岛屿扩张',USE_PROPOSED:'居民提出用途',USE_CONFIRMED:'用户确认用途',OBJECT_RELOCATED:'物件迁移',WEATHER_APPLIED:'天空气候变化',WINDOW_LIT:'苹果屋亮起窗灯'};
   const weatherIds=new Set(['stardust-clear','cosmic-rain','cosmic-dusk']);
   const defaultWeather={weatherId:'stardust-clear',source:'default',activeSince:null,transitionState:'settled'};
-  const initial=()=>({weather:defaultWeather,activeIsland:'story',events:[],entries:{},worlds:{},discoveries});
+  const initial=()=>({layouts:[],weather:defaultWeather,activeIsland:'story',events:[],entries:{},worlds:{},discoveries});
   function keyboardAction(input){
     if(input.repeat||input.editable||input.modified||input.composing)return null;
     const {key,code}=input;
@@ -134,10 +134,39 @@
       });
       return persist({...state,weather,events:[...state.events,event]},true);
     }
+    function saveLayout({islandId,name,objects,expanded,skyStateId,thumbnail}){
+      if(islandId!=='story'||state.activeIsland!==islandId||state.layouts.length>=12||
+         skyStateId!==state.weather.weatherId||!Array.isArray(objects)||typeof thumbnail!=='string'||
+         !/^data:image\/(png|webp);base64,/.test(thumbnail)||thumbnail.length>200000)return null;
+      const world=state.worlds[islandId];
+      const current=world?.objects||[];
+      const byId=new Map(current.map(object=>[object.collectionId,object]));
+      if(objects.length!==current.length||new Set(objects.map(item=>item.objectInstanceId)).size!==objects.length||
+         !!expanded!==!!world?.expanded)return null;
+      const items=[];
+      for(const item of objects){
+        const previous=byId.get(item.objectInstanceId);
+        const entry=state.entries[item.objectInstanceId];
+        if(!previous||entry?.status!=='在岛上'||entry.islandId!==islandId||previous.type!==item.objectFormId||
+           previous.at.x!==item.position?.x||previous.at.y!==item.position?.y||item.orientation!==0||
+           !Array.isArray(item.footprint)||!item.footprint.length||
+           !item.footprint.every(cell=>Number.isInteger(cell.x)&&Number.isInteger(cell.y)))return null;
+        items.push({objectInstanceId:item.objectInstanceId,objectFormId:item.objectFormId,
+          position:{...item.position},orientation:0,footprint:item.footprint.map(({x,y})=>({x,y})),floating:!!previous.floating});
+      }
+      const layout={layoutId:unique(),schemaVersion:1,timestamp:stamp(),islandId,
+        name:name?.trim().slice(0,30)||'Story Land 布置 '+(state.layouts.length+1),
+        expanded:!!expanded,skyStateId,objects:items,thumbnail};
+      return persist({...state,layouts:[layout,...state.layouts]},true)?layout:null;
+    }
+    function deleteLayout(layoutId){
+      const layouts=state.layouts.filter(layout=>layout.layoutId!==layoutId);
+      return layouts.length!==state.layouts.length&&persist({...state,layouts},true);
+    }
     return {
       subscribe(listener){listeners.add(listener);return ()=>listeners.delete(listener);},
       getSnapshot:()=>state, diskError:()=>diskError, unique, gameEvent, commit, ingest,
-      receiveBatch, mergeNetworkCaptures, addEnvironmentPhoto, applyWeather,
+      receiveBatch, mergeNetworkCaptures, addEnvironmentPhoto, applyWeather, saveLayout, deleteLayout,
       receive(record){return receiveBatch([record]).length===1;},
       selectIsland(id){if(islands.some(i=>i.id===id)&&state.activeIsland!==id)persist({...state,activeIsland:id});},
       nextIsland(direction){const current=islands.findIndex(i=>i.id===state.activeIsland);this.selectIsland(islands[(current+direction+islands.length)%islands.length].id);},

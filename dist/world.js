@@ -28,11 +28,7 @@
   }
   const distance=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
   const clockParams=[[.21,.40,1.15],[.25,.65,1.45],[.30,.90,1.85]];
-  const explorationWeights={
-    tantan:{discovery:3},
-    zaozhao:{research:3},
-    manman:{facility:3},
-  };
+  const {BehaviorScheduler}=typeof module!=='undefined'?require('./behavior-scheduler.js'):IsleBehavior;
   class World {
     constructor(map, chunk, config, random=Math.random) {
       this.map=map;
@@ -43,6 +39,7 @@
       this.objects=[];
       this.residents=map.spawns.map(({id,name,x,y},i)=>({id,name,at:{x,y},goal:null,path:[],next:null,
         progress:0,facing:'front',state:'IDLE',wait:i*.32,pace:clockParams[i],activity:null,bubble:null}));
+      this.scheduler=new BehaviorScheduler();
       this.queue=[];
       this.job=null;
       this.visiting=false;
@@ -228,14 +225,22 @@
       }
       this.idle(person,.45);
     }
+    pauseExploration(){
+      this.scheduler.suspended=true;
+      if(this.job?.person){
+        this.idle(this.job.person,0);
+        this.job.person=null;
+        this.job.retryUntil=0;
+      }
+    }
     updateJobs() {
+      if(this.scheduler.suspended)return;
       const crossing=this.residents.some(p=>p.activity==='visit');
       if(!this.job&&!this.visiting&&!crossing&&this.queue.length){
         const id=this.queue.shift();
         const object=this.objects.find(o=>o.id===id);
         const role=object&&this.type(object).explorationRole;
-        const weight=person=>explorationWeights[person.id]?.[role]??1;
-        const order=[...this.residents].sort((a,b)=>weight(b)-weight(a));
+        const order=this.scheduler.order(this.residents,role);
         this.job={id,order,index:0,person:null,retryUntil:0,missed:0};
       }
       const job=this.job;
@@ -245,6 +250,7 @@
         if(job.person)return;
         const person=job.order[job.index];
         if(!person){this.events.push({kind:'explored',objectId:object.id,missed:job.missed});this.job=null;return;}
+        if(!this.scheduler.ready(person,object,this.clock)||person.activity==='build')return;
         const options=this.doors(object).filter(p=>!this.claimed(person,p));
         options.sort((a,b)=>distance(person.at,a)-distance(person.at,b));
         if(options.some(p=>this.command(person,p,'inspect'))){
@@ -287,7 +293,9 @@
           person.state='INTERACT';
           person.wait=1.9+index*.22;
           person.bubble=this.type(object).reactions[index];
-          this.events.push({kind:'reaction',objectId:object.id,resident:person.id,text:person.bubble});
+          const action=this.scheduler.action(person,object);
+          this.scheduler.completed(person,object,this.clock);
+          this.events.push({kind:'reaction',objectId:object.id,resident:person.id,text:person.bubble,action});
         }else {
           const arrived=person.activity==='visit'&&equal(person.at,person.goal);
           if(arrived)this.events.push({kind:'arrived',resident:person.id,at:{...person.at}});
@@ -309,7 +317,7 @@
       this.clock+=dt;
       this.updateJobs();
       for(const person of this.residents)this.tickPerson(person,dt);
-      if(this.job?.person && this.job.person.state==='IDLE'){
+      if(this.job?.person && this.job.person.activity!=='inspect'){
         this.job.person=null;
         this.job.retryUntil=0;
       }

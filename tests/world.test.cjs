@@ -175,3 +175,49 @@ test('Discovery, research and facilities give preference to different residents 
     assert.equal(new Set(reactions.map(e=>e.resident)).size,3);
   }
 });
+
+test('Six object types produce the configured actions only on legal arrival for all three residents',()=>{
+  const objects=[
+    ['apple',22,13,['curious','think','inspect']],
+    ['leaf',22,13,['curious','think','inspect']],
+    ['stone',22,13,['curious','think','inspect']],
+    ['apple-large',22,13,['curious','think','inspect']],
+    ['apple-house',22,13,['inspect','think','rest']],
+    ['leaf-boat',8,12,['inspect','think','use']],
+  ];
+  for(const [type,x,y,expected] of objects){
+    const w=make(),object=place(w,type,x,y);
+    const rows=new Map();
+    let seen=0;
+    simulate(w,()=>{
+      for(const event of w.events.slice(seen)){
+        if(event.kind!=='reaction')continue;
+        const person=w.residents.find(p=>p.id===event.resident);
+        assert.ok(w.doors(object).some(door=>door.x===person.at.x&&door.y===person.at.y));
+        assert.ok(w.canWalk(person.at));
+        rows.set(person.id,event.action);
+      }
+      seen=w.events.length;
+      return rows.size===3;
+    });
+    assert.deepEqual(['tantan','zaozhao','manman'].map(id=>rows.get(id)),expected,type);
+  }
+});
+
+test('Active exploration can suspend and resume without duplicating queue entries',()=>{
+  const w=make(),object=place(w,'apple',22,13);
+  w.explore(object.id);
+  assert.deepEqual(w.queue,[object.id]);
+  w.update(.05);
+  assert.ok(w.job.person);
+  w.pauseExploration();
+  assert.equal(w.job.person,null);
+  for(let i=0;i<25;i++)w.update(.075);
+  assert.equal(w.events.filter(e=>e.kind==='reaction').length,0);
+  w.scheduler.suspended=false;
+  simulate(w,()=>w.events.some(e=>e.kind==='explored'));
+  const reactions=w.events.filter(e=>e.kind==='reaction');
+  assert.equal(reactions.length,3);
+  const resident=w.residents.find(p=>p.id===reactions.at(-1).resident);
+  assert.equal(w.scheduler.ready(resident,object,w.clock),false);
+});

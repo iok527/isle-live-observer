@@ -348,7 +348,7 @@
       this.world.update(delta/1000);
       for(const event of this.world.events.splice(0)){
         this.eventTrace.push(event);
-        if(event.kind==='noticed'||event.kind==='reaction')bridge.resident(this.world,event);
+        if(event.kind==='reaction')bridge.resident(this.world,event);
         this.actions.reaction(event);
         if(this.eventTrace.length>60)this.eventTrace.shift();
         if(!this.placing && event.kind==='noticed'){

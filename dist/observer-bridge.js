@@ -83,24 +83,28 @@
     const object=world.objects.find(o=>o.id===event.objectId);
     const person=world.residents.find(p=>p.id===event.resident);
     const objectId=collectionId(object);
-    if(!objectId||!person)return;
-    const observed=event.kind==='noticed';
+    if(!objectId||!person||event.kind!=='reaction')return;
     const fromState=object.type;
     const toState=world.evolution[fromState];
     const residentId=person.id;
-    const eventType=observed?'RESIDENT_INSPECTED':'RESIDENT_INTERACTED';
-    const events=[store.gameEvent(islandId,eventType,{
-      objectId,residentId,toState:fromState,
-      title:person.name+(observed?'发现了':'互动了：')+names[fromState],
-      description:event.text||'沿可行走路径靠近物件。',
-    },objectId+'/'+eventType+'/'+fromState+'/'+residentId)];
+    const observations={inspect:'观察了',curious:'好奇地打量了',think:'研究了',rest:'在这里休息：',use:'使用了'};
+    const events=[
+      store.gameEvent(islandId,'RESIDENT_INSPECTED',{
+        objectId,residentId,toState:fromState,title:person.name+'发现了'+names[fromState],
+        description:'居民已实际抵达互动点。',
+      },objectId+'/RESIDENT_INSPECTED/'+fromState+'/'+residentId),
+      store.gameEvent(islandId,'RESIDENT_INTERACTED',{
+        objectId,residentId,toState:fromState,title:person.name+(observations[event.action]||'互动了：')+names[fromState],
+        description:event.text||'居民已实际抵达互动点。',
+      },objectId+'/RESIDENT_INTERACTED/'+fromState+'/'+residentId),
+    ];
     const state=store.getSnapshot();
     const entry=state.entries[objectId];
     const source=state.discoveries.find(item=>item.objectId===entry?.sourceId);
     const supported=source?.supportedEvolutionIds;
     const spec=world.type(object);
     const use=spec.evolutionUse||appleUses[fromState];
-    if(!observed&&entry&&!entry.proposal&&toState&&use&&(!spec.proposalResident||spec.proposalResident===residentId)&&(!supported||supported.includes(toState))&&!(spec.evolutionFromSurface==='land'&&object.floating)){
+    if(entry&&!entry.proposal&&toState&&use&&(!spec.proposalResident||spec.proposalResident===residentId)&&(!supported||supported.includes(toState))&&!(spec.evolutionFromSurface==='land'&&object.floating)){
       const requiresLocation=world.types.get(toState).placementSurface==='water-only';
       const proposal={residentId,fromState,toState,description:use,...(requiresLocation&&{requiresLocation})};
       events.push(store.gameEvent(islandId,'USE_PROPOSED',{objectId,...proposal,title:person.name+'提议制作'+names[toState]},objectId+'/proposal/'+fromState));

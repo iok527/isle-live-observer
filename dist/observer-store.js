@@ -18,13 +18,21 @@
   const weatherIds=new Set(['stardust-clear','cosmic-rain','cosmic-dusk']);
   const defaultWeather={weatherId:'stardust-clear',source:'default',activeSince:null,transitionState:'settled'};
   const initial=()=>({layouts:[],weather:defaultWeather,activeIsland:'story',events:[],entries:{},worlds:{},discoveries});
+  const physical={
+      Digit1:'TOGGLE_LAYOUT_BOOK',Numpad1:'TOGGLE_LAYOUT_BOOK',Digit2:'TOGGLE_COLLECTION',Numpad2:'TOGGLE_COLLECTION',
+      Digit3:'TOGGLE_MEMORIES',Numpad3:'TOGGLE_MEMORIES',ArrowLeft:'ISLAND_PREVIOUS',ArrowRight:'ISLAND_NEXT',
+      Enter:'CONFIRM_SELECTION',NumpadEnter:'CONFIRM_SELECTION',BracketLeft:'ISLAND_PREVIOUS',BracketRight:'ISLAND_NEXT',
+  };
   function keyboardAction(input){
     if(input.repeat||input.editable||input.modified||input.composing)return null;
     const {key,code}=input;
     if(key==='Escape')return 'close';
-    if(key==='1'||key==='2'||key==='3')return {'1':'world','2':'collection','3':'memories'}[key];
-    if(code==='KeyQ'||key?.toLowerCase()==='q')return 'previous';
-    if(code==='KeyE'||key?.toLowerCase()==='e')return 'next';
+    if(key==='AudioVolumeUp'||key==='AudioVolumeDown'||key==='AudioVolumeMute')return null;
+    if(Object.hasOwn(physical,code))return physical[code];
+    if(key==='1'||key==='2'||key==='3')return physical['Digit'+key];
+    if(key==='ArrowLeft'||key==='ArrowRight'||key==='Enter')return physical[key];
+    if(code==='KeyQ'||key?.toLowerCase()==='q'||key==='[')return 'ISLAND_PREVIOUS';
+    if(code==='KeyE'||key?.toLowerCase()==='e'||key===']')return 'ISLAND_NEXT';
     if(code==='KeyT'||key?.toLowerCase()==='t')return 'transfer';
     return null;
   }
@@ -159,6 +167,20 @@
         expanded:!!expanded,skyStateId,objects:items,thumbnail};
       return persist({...state,layouts:[layout,...state.layouts]},true)?layout:null;
     }
+    function restoreLayout(layoutId,world){
+      const islandId=state.activeIsland;
+      const layout=state.layouts.find(item=>item.layoutId===layoutId&&item.islandId===islandId);
+      if(!layout||world.objects.length!==layout.objects.length)return false;
+      const entries={...state.entries};
+      for(const object of world.objects){
+        const entry=entries[object.collectionId];
+        const saved=layout.objects.find(item=>item.objectInstanceId===object.collectionId);
+        if(!entry||entry.status!=='在岛上'||entry.islandId!==islandId||!saved||
+           saved.objectFormId!==object.type||saved.position.x!==object.at.x||saved.position.y!==object.at.y)return false;
+        entries[object.collectionId]={...entry,at:{...object.at}};
+      }
+      return persist({...state,entries,worlds:{...state.worlds,[islandId]:world}},true);
+    }
     function deleteLayout(layoutId){
       const layouts=state.layouts.filter(layout=>layout.layoutId!==layoutId);
       return layouts.length!==state.layouts.length&&persist({...state,layouts},true);
@@ -166,10 +188,10 @@
     return {
       subscribe(listener){listeners.add(listener);return ()=>listeners.delete(listener);},
       getSnapshot:()=>state, diskError:()=>diskError, unique, gameEvent, commit, ingest,
-      receiveBatch, mergeNetworkCaptures, addEnvironmentPhoto, applyWeather, saveLayout, deleteLayout,
+      receiveBatch, mergeNetworkCaptures, addEnvironmentPhoto, applyWeather, saveLayout, restoreLayout, deleteLayout,
       receive(record){return receiveBatch([record]).length===1;},
       selectIsland(id){if(islands.some(i=>i.id===id)&&state.activeIsland!==id)persist({...state,activeIsland:id});},
-      nextIsland(direction){const current=islands.findIndex(i=>i.id===state.activeIsland);this.selectIsland(islands[(current+direction+islands.length)%islands.length].id);},
+      nextIsland(direction){const channels=['red','di','story','my'];const current=channels.indexOf(state.activeIsland);this.selectIsland(channels[(current+direction+channels.length)%channels.length]);},
     };
   }
   const api={createStore,islands,names,eventNames,keyboardAction};

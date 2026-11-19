@@ -7,6 +7,7 @@ import {WeatherPanel} from './weather-panel.jsx';
 import {CapturePanel} from './capture-panel.jsx';
 const captureStatus={processing:'等待 AI 处理',failed:'AI 处理失败 · 已保留原图',unsupported:'目前不支持此物件 · 已保留原图',available:'可登岛'};
 const {store,islands,names,keyboardAction}=window.IsleObserver,bridge=window.IsleGameBridge;
+const toggleActions={world:'TOGGLE_LAYOUT_BOOK',collection:'TOGGLE_COLLECTION',memories:'TOGGLE_MEMORIES'};
 const modes={world:'WORLD',collection:'COLLECTION',memories:'MEMORIES'},residentNames={tantan:'探探',zaozhao:'造造',manman:'慢慢'};
 const A=file=>file?(/^(data:|blob:|https?:)/.test(file)?file:'assets/'+file):null;
 const demoBatch=[
@@ -22,7 +23,7 @@ function CupGlyph(){return <svg className="cup-glyph" viewBox="0 0 90 90" shapeR
 function Sprite({item,type,alt=''}){if(!type&&item?.type==='environment')return <span>环境采集 · 无物件形态</span>;if(!type&&item?.batchId&&!item.importedSprite)return <span>{captureStatus[item.importStatus]}</span>;return item?.glyph==='cup'?<CupGlyph/>:<img className="sprite" draggable="false" src={A(type?type+'.png':item?.importedSprite)} alt={alt}/>;}
 function GameViewport({visible}){const host=useRef(null);useLayoutEffect(()=>{const lab=document.getElementById('legacy-lab');host.current.append(lab);window.dispatchEvent(new Event('resize'));},[]);return createPortal(<div className="game-surface" ref={host} style={{opacity:visible?1:0,pointerEvents:visible?'auto':'none'}} aria-hidden={!visible}/>,document.getElementById('game-portal')); }
 function Header({mode,children}){return <header className="archive-header"><div className="archive-wordmark"><PixelIcon name="folder"/><div><h1><em>isle live</em> / {mode==='collection'?'COLLECTION':'MEMORIES'}</h1><p>{mode==='collection'?'OBJECT ARCHIVE':'ISLAND EVENT ARCHIVE'}</p></div></div>{children}</header>;}
-function Boot({navigate}){return <section className="boot-page" aria-label="Observer Terminal 启动界面"><div className="boot-cosmos"/><div className="native-stars" aria-hidden="true">{[[20,28],[76,22],[88,14],[16,21],[81,11],[90,27],[13,13]].map(([x,y],i)=><i key={i} style={{left:x+'%',top:y+'%',width:i%3?12:22,height:i%3?12:22}}/>)}</div><h1 className="boot-logo">isle live</h1><h2 className="boot-subtitle">OBSERVER TERMINAL</h2><IslandGlyph/><p className="boot-hint">PRESS A KEY TO ENTER</p><div className="mode-keys"><ModeKey n="1" title="ISLAND OBSERVE" icon="eye" onClick={()=>navigate('world')}/><ModeKey n="2" title="COLLECTION" icon="collection" onClick={()=>navigate('collection')}/><ModeKey n="3" title="MEMORIES" icon="memory" onClick={()=>navigate('memories')}/></div></section>;}
+function Boot({navigate}){return <section className="boot-page" aria-label="Observer Terminal 启动界面"><div className="boot-cosmos"/><div className="native-stars" aria-hidden="true">{[[20,28],[76,22],[88,14],[16,21],[81,11],[90,27],[13,13]].map(([x,y],i)=><i key={i} style={{left:x+'%',top:y+'%',width:i%3?12:22,height:i%3?12:22}}/>)}</div><h1 className="boot-logo">isle live</h1><h2 className="boot-subtitle">OBSERVER TERMINAL</h2><IslandGlyph/><p className="boot-hint">PRESS A KEY TO ENTER</p><div className="mode-keys"><ModeKey n="1" title="LAYOUT BOOK" icon="eye" onClick={()=>navigate('world')}/><ModeKey n="2" title="COLLECTION" icon="collection" onClick={()=>navigate('collection')}/><ModeKey n="3" title="MEMORIES" icon="memory" onClick={()=>navigate('memories')}/></div></section>;}
 function WorldHUD({island,time,info,closeResident,tools,action}){return <section className="world-hud" aria-label="World 实时岛屿监视器"><div className="hud-top"><StatusIndicator live>{island.playable?'LIVE':'PREVIEW'} <span>// ISLAND : {island.name.toUpperCase()}</span></StatusIndicator><StatusIndicator>{island.playable?'SIGNAL STABLE · 3 RESIDENTS':'COMING SOON'}</StatusIndicator></div><div className="viewfinder"><i/><i/><i/><i/><span className="center-mark"/></div><div className="camera-id">CAM 01<br/>{time}</div><SignalIndicator/><ResidentInfo info={info} onClose={closeResident}/>{tools&&island.playable&&<div className="game-tools">{[['暂停 / 恢复','pause'],['放置物件','place'],['交互 / 演变','interact'],['扩张','expand'],['Debug','debug'],['重置','reset']].map(([label,id])=><Button w={180} h={60} tone="dark" key={id} onClick={()=>action(id)}>{label}</Button>)}</div>}{!island.playable&&<div className="island-preview"><img src={A(island.image)} alt={island.name+'视觉预览'}/><div><strong>{island.name}</strong><p>VISUAL PREVIEW · 尚未接入可玩地图</p></div></div>}</section>;}
 function PhotoPair({item,view='compare',form}){return <div className={'photo-pair '+view}>{view!=='sprite'&&<div><PhotoFrame src={A(item.originalPhoto)} alt={item.displayName+'现实原图'}/><small>ORIGINAL / {item.demo?'示例照片':'现实原图'}</small></div>}{view!=='original'&&<div><div className="sprite-preview"><Sprite item={item} type={form} alt={item.displayName+'像素转译'}/></div><small>PIXEL TRANSLATION</small></div>}</div>;}
 function Collection({extraHeight,data,begin,openDetail,browse,setBrowse,selected,setSelected,filter,setFilter,toast,openCapture}){const [page,setPage]=useState(0),[phase,setPhase]=useState(1);const all=[...data.discoveries,...extras.filter(e=>!data.discoveries.some(d=>d.objectId===e.objectId))];const seedOrder=['sample-apple','sample-leaf','sample-stone','visual-flower','visual-cup','sample-chair','visual-crystal','sample-cat','visual-cloud'];all.sort((a,b)=>(seedOrder.includes(a.objectId)?seedOrder.indexOf(a.objectId):99)-(seedOrder.includes(b.objectId)?seedOrder.indexOf(b.objectId):99));const instances=id=>Object.values(data.entries).filter(o=>o.sourceId===id&&o.status==='在岛上');const status=i=>i.importStatus==='processing'?'处理中':instances(i.objectId).length?'已放置':'待导入';const pocket=all.filter(i=>i.captureId&&i.type!=='environment'&&!instances(i.objectId).length);
@@ -37,7 +38,7 @@ function Collection({extraHeight,data,begin,openDetail,browse,setBrowse,selected
  </RetroPanel>:browse==='photos'?<RetroPanel w={1610} h={720+extraHeight} className="photo-archive"><h2>PHOTO ARCHIVE <span>现实发现的原始影像</span></h2><div className="photo-grid">{photos.map(i=><button key={i.objectId} onClick={()=>openDetail(i,'original')}><PhotoFrame src={A(i.originalPhoto)} alt={i.displayName}/><strong>{i.displayName}</strong><small>{i.demo?'示例采集':new Date(i.createdAt).toLocaleDateString()}</small></button>)}</div><p>照片保留原始颜色。AI 转译不会替代现实的发现。</p></RetroPanel>:<><RetroPanel w={652} h={720+extraHeight} className="object-grid-panel"><div className="object-grid">{shown.map(i=><ObjectSlot key={i.objectId} item={i} selected={i.objectId===item.objectId} onClick={()=>{setSelected(i.objectId);setPhase(1);}}/>)}{Array.from({length:9-shown.length},(_,i)=><span className="empty-slot" key={'empty'+i}><FrameEdgeStub/></span>)}</div><div className="pagination"><button aria-label="上一页" onClick={()=>setPage(p=>Math.max(0,p-1))} disabled={page===0}>◀</button><span>{Math.min(page,pages-1)+1} / {pages}</span><button aria-label="下一页" onClick={()=>setPage(p=>Math.min(pages-1,p+1))} disabled={page>=pages-1}>▶</button></div></RetroPanel><RetroPanel w={956} h={720+extraHeight} className="object-detail-panel"><div className="object-hero"><div className="detail-sprite"><Sprite item={item} alt={item.displayName}/></div><div className="object-facts"><h2>{item.displayName} <span>{item.type.toUpperCase()}</span></h2><p>类型　物件</p><p>来源　{item.demo?'示例采集':'现实采集'}</p><p>状态　{status(item)}{inWorld.length?' (Story Land)':''}</p></div><button className="detail-photo" aria-label="查看原始照片" onClick={()=>openDetail(item,'original')}><PhotoFrame src={A(item.originalPhoto)} alt={item.displayName+'原始照片'}/></button></div><div className="evolution"><h3>演变方向　({phase+1}/3)</h3><div className="evolution-sequence">{chosenStage.map(([type,label],i)=><React.Fragment key={i}><button className={'evolution-stage stage-'+i} aria-label={'查看'+label} aria-pressed={phase===i} onClick={()=>{setPhase(i);toast(label+(item.type==='apple'?' · 预设演变形态':' · 方向示意'));}}><Sprite item={item} type={item.type==='apple'?type:null} alt={label}/></button>{i<2&&<PixelIcon name="arrow"/>}</React.Fragment>)}</div></div><div className="detail-actions"><Button onClick={()=>openDetail(item)}><PixelIcon name="play"/>查看详情</Button><Button tone="dark" w={420} onClick={()=>begin(item)}>再次放入岛屿 <span>⊕</span></Button></div></RetroPanel></>}</section>;}
 function FrameEdgeStub(){return <div className="empty-slot-edge"/>;}
 function Memories({extraHeight,data,island,openItem}){const [source,setSource]=useState('sample'),[selected,setSelected]=useState(null),[page,setPage]=useState(0);const actual=data.events.filter(e=>e.islandId===island.id).slice().reverse().map(e=>({...e,icon:e.eventType==='WEATHER_APPLIED'?'weather/sky/'+e.toState+'.png':(e.residentId?e.residentId+'-front':e.toState&&names[e.toState]?e.toState:'apple')+'.png',story:e.description||'这件发现又留下了新的故事。'}));const list=source==='sample'?samples:actual;const item=list.find(i=>i.eventId===selected)||list[0];const pageItems=list.slice(page*4,page*4+4);return <section className="memories-page" aria-label="Memories 岛屿回忆"><Header mode="memories"><ArchiveTabs className="memory-source" label="回忆来源" items={[[ 'sample','示例故事'],['actual','真实事件 '+actual.length]]} value={source} onChange={v=>{setSource(v);setSelected(null);setPage(0);}}/></Header><RetroPanel w={527} h={714+extraHeight} className="timeline-panel"><nav className="timeline" aria-label="事件时间轴">{pageItems.map(e=><TimelineItem key={e.eventId} item={e} selected={item?.eventId===e.eventId} onClick={()=>setSelected(e.eventId)}/>)}</nav>{list.length>4&&<div className="timeline-pages"><button disabled={!page} onClick={()=>setPage(p=>p-1)}>◀</button><span>{page+1}/{Math.ceil(list.length/4)}</span><button disabled={(page+1)*4>=list.length} onClick={()=>setPage(p=>p+1)}>▶</button></div>}{!list.length&&<p className="empty-message">这座岛还没有真实记录。<br/>放入一件物品，故事就会开始。</p>}</RetroPanel><RetroPanel w={1092} h={716+extraHeight} className="memory-panel">{item?<><PhotoFrame stacked className="memory-photo" src={item.demo?A(item.image):A(item.icon)} alt={item.title+'静态记忆影像'}><figcaption>{item.demo?'示例静态影像':'物件图示 · 事件未记录截图'}</figcaption></PhotoFrame><article className="memory-story"><h2>{item.title}</h2><p className="memory-meta">{item.demo?'DAY '+item.day:new Date(item.timestamp).toLocaleTimeString('zh-CN')} · {item.demo?'MY LAND':island.name.toUpperCase()}</p><div className="story-divider"/><p className="story-text">{item.story}</p><div className="resident-portraits">{['tantan','zaozhao','manman'].map(id=><img key={id} src={A(id+'-front.png')} alt={residentNames[id]}/>)}</div></article><div className="still-archive"><button aria-label="上一条回忆" onClick={()=>{const i=list.indexOf(item);if(i>0)setSelected(list[i-1].eventId);}} disabled={list.indexOf(item)===0}>◀</button><span>STILL FRAME / 静态影像</span><div className="frame-index">{list.map((e,i)=><button key={e.eventId} aria-label={'选择记忆 '+(i+1)} aria-pressed={e.eventId===item.eventId} onClick={()=>{setPage(Math.floor(i/4));setSelected(e.eventId);}}/>)}</div><button aria-label="查看回忆关联物件" onClick={()=>openItem(item)}><PixelIcon name="full"/></button></div></>:<div className="empty-memory">MEMORY SIGNAL WAITING<br/><span>尚无事件影像</span></div>}</RetroPanel></section>;}
-function ObjectDetail({item,initialView='compare',entries,begin,onClose,openMemory}){const [view,setView]=useState(initialView),[note,setNote]=useState(item.userNote||'');const instances=Object.values(entries).filter(e=>e.sourceId===item.objectId&&e.status==='在岛上');return <TransmissionOverlay title={item.displayName+' / OBJECT ARCHIVE'} onClose={onClose}><div className="modal-detail"><div><ArchiveTabs label="物件图像查看方式" items={[[ 'original','ORIGINAL'],['sprite','SPRITE'],['compare','COMPARE']]} value={view} onChange={setView}/><PhotoPair item={item} view={view}/></div><aside><h3>{item.displayName}</h3><p className="caption">{item.demo?'DEMO CAPTURE / 示例素材':'REAL-WORLD CAPTURE'}</p><label>采集备注<textarea value={note} onChange={e=>setNote(e.target.value)}/></label>{item.batchId&&<p>{captureStatus[item.importStatus]}{item.captureError?' · '+item.captureError:''}</p>}<p>特征：{item.type==='apple'?'圆润 · 果梗 · 暖红色':item.type==='leaf'?'轻薄 · 清晰叶脉':'等待更多发现'}</p><p>{instances.length} 个已放置实例</p><div className="instance-list">{instances.map(i=><button key={i.objectId} onClick={()=>openMemory(i)}>{names[i.form]||item.displayName} · {i.at?.x}, {i.at?.y} ↗</button>)}</div><Button onClick={()=>{store.ingest({...item,userNote:note});onClose();}}>保存备注</Button>{item.type!=='environment'&&<Button tone="dark" disabled={item.batchId&&item.importStatus!=='available'} onClick={()=>begin({...item,userNote:note})}>{instances.length?'复制放置新实例':'放入岛屿'} →</Button>}</aside></div></TransmissionOverlay>;}
+function ObjectDetail({item,initialView='compare',entries,begin,onClose,openMemory,onDirty}){const [view,setView]=useState(initialView),[note,setNote]=useState(item.userNote||'');const instances=Object.values(entries).filter(e=>e.sourceId===item.objectId&&e.status==='在岛上');return <TransmissionOverlay title={item.displayName+' / OBJECT ARCHIVE'} onClose={onClose}><div className="modal-detail"><div><ArchiveTabs label="物件图像查看方式" items={[[ 'original','ORIGINAL'],['sprite','SPRITE'],['compare','COMPARE']]} value={view} onChange={setView}/><PhotoPair item={item} view={view}/></div><aside><h3>{item.displayName}</h3><p className="caption">{item.demo?'DEMO CAPTURE / 示例素材':'REAL-WORLD CAPTURE'}</p><label>采集备注<textarea value={note} onChange={e=>{setNote(e.target.value);onDirty(e.target.value!==(item.userNote||''));}}/></label>{item.batchId&&<p>{captureStatus[item.importStatus]}{item.captureError?' · '+item.captureError:''}</p>}<p>特征：{item.type==='apple'?'圆润 · 果梗 · 暖红色':item.type==='leaf'?'轻薄 · 清晰叶脉':'等待更多发现'}</p><p>{instances.length} 个已放置实例</p><div className="instance-list">{instances.map(i=><button key={i.objectId} onClick={()=>openMemory(i)}>{names[i.form]||item.displayName} · {i.at?.x}, {i.at?.y} ↗</button>)}</div><Button onClick={()=>{store.ingest({...item,userNote:note});onClose();}}>保存备注</Button>{item.type!=='environment'&&<Button tone="dark" disabled={item.batchId&&item.importStatus!=='available'} onClick={()=>begin({...item,userNote:note})}>{instances.length?'复制放置新实例':'放入岛屿'} →</Button>}</aside></div></TransmissionOverlay>;}
 function App(){const data=useSyncExternalStore(store.subscribe,store.getSnapshot),[mode,setMode]=useState(globalThis.IsleArtCalibration?'world':'boot'),[prefs,setPrefs]=useState(readPrefs),[menu,setMenu]=useState(false),[tools,setTools]=useState(false),[selected,setSelected]=useState('sample-apple'),[browse,setBrowse]=useState('objects'),[filter,setFilter]=useState('全部'),[detail,setDetail]=useState(null),[draft,setDraft]=useState(null),[banner,setBanner]=useState(''),[lastKey,setLastKey]=useState(null),[resident,setResident]=useState(null),[time,setTime]=useState(new Date().toLocaleTimeString('en-GB'));
  const [bookOpen,setBookOpen]=useState(false);
  const [weatherOpen,setWeatherOpen]=useState(false),[weatherPreview,setWeatherPreview]=useState(null),[overview,setOverview]=useState(false);
@@ -46,18 +47,75 @@ function App(){const data=useSyncExternalStore(store.subscribe,store.getSnapshot
  const [proposalId,setProposalId]=useState(null),[proposalError,setProposalError]=useState('');
  const proposalEntry=data.entries[proposalId];
  const extraHeight=designHeight-930;
- const current=useRef(null),timer=useRef(null),layer=useRef(null);const island=islands.find(i=>i.id===data.activeIsland)||islands[1];const displayMode=draft?.step==='placing'?'world':mode;current.current={mode,draft,detail,menu,island,proposalId,captureOpen,weatherOpen,bookOpen};
+ const current=useRef(null),timer=useRef(null),layer=useRef(null),audio=useRef(null),dirtyDetail=useRef(null),dirtyBook=useRef(false);const island=islands.find(i=>i.id===data.activeIsland)||islands[1];const displayMode=draft?.step==='placing'?'world':mode;current.current={mode,draft,detail,menu,island,proposalId,captureOpen,weatherOpen,bookOpen,prefs,confirmProposal,weatherPreview,confirmWeather};
  function flash(s){setBanner(s);clearTimeout(timer.current);timer.current=setTimeout(()=>setBanner(''),2800);}
  function cancelDraft(){const d=current.current.draft;if(d?.step==='placing')bridge.command('cancel',d.id);setDraft(null);flash(d?.relocationId?'已取消选址，原叶子保留在陆地':'已取消，未生成成功投放记录');}
  function navigate(next){setBookOpen(false);if(current.current.weatherOpen)cancelWeather();setCaptureOpen(false);if(current.current.draft)cancelDraft();setDetail(null);setProposalId(null);setMenu(false);setMode(next);}
- function rotate(direction){setBookOpen(false);if(current.current.weatherOpen)cancelWeather();setProposalId(null);if(current.current.draft?.step==='placing'){flash('请先确认或取消当前放置');return;}store.nextIsland(direction);flash(islands.find(i=>i.id===store.getSnapshot().activeIsland).name);}
+ function protectedEdit(){
+   const {draft,bookOpen,detail}=current.current;
+   return !!draft||(bookOpen&&dirtyBook.current)||!!(detail&&dirtyDetail.current===detail)||bridge.command('island-locked');
+ }
+ function rotate(direction){
+   if(protectedEdit()){flash('请先保存或取消当前编辑，再切换岛屿');return;}
+   if(current.current.weatherOpen)cancelWeather();
+   setProposalId(null);setDetail(null);
+   store.nextIsland(direction);
+   flash(islands.find(i=>i.id===store.getSnapshot().activeIsland).name);
+ }
+ function confirmSelection(){
+   const {draft,proposalId,confirmProposal,weatherOpen,weatherPreview,confirmWeather}=current.current;
+   if(draft?.step==='placing'&&draft.at&&!draft.error){bridge.command('confirm',draft.id);return true;}
+   if(!draft&&proposalId&&store.getSnapshot().entries[proposalId]?.proposal){confirmProposal();return true;}
+   if(weatherOpen&&weatherPreview){if(!confirmWeather())flash('天气应用失败，请检查本地存储');return true;}
+   return false;
+ }
+ function playInputTone(){
+   if(!current.current.prefs.inputSound)return;
+   try{
+     const context=audio.current??=new AudioContext();
+     const tone=context.createOscillator(), gain=context.createGain();
+     tone.frequency.value=480;
+     gain.gain.value=.035;
+     tone.connect(gain).connect(context.destination);
+     tone.start();
+     tone.stop(context.currentTime+.065);
+     if(context.state==='suspended')context.resume().catch(()=>{});
+   }catch{}
+ }
+ function control(action){
+   const state=current.current;
+   if(action==='ISLAND_PREVIOUS'||action==='ISLAND_NEXT'){rotate(action==='ISLAND_NEXT'?1:-1);}
+   else if(action==='CONFIRM_SELECTION')return confirmSelection();
+   else if(action==='close')return close();
+   else if(action==='transfer')simulate();
+   else{
+     if(action==='TOGGLE_LAYOUT_BOOK'&&state.bookOpen){dirtyBook.current=false;setBookOpen(false);flash('已关闭布置簿');return true;}
+     if(protectedEdit()){flash('请先保存或取消当前编辑');return true;}
+     if(action==='TOGGLE_LAYOUT_BOOK'){
+       dirtyBook.current=false;
+       navigate('world');
+       setBookOpen(true);
+       flash('已打开布置簿');
+     }else if(action==='TOGGLE_IMPORT'){
+       navigate(state.mode==='boot'?'world':state.mode);
+       setCaptureOpen(!state.captureOpen);
+       flash(state.captureOpen?'已关闭导入':'已打开导入');
+     }else{
+       const target=action==='TOGGLE_COLLECTION'?'collection':'memories';
+       const closing=state.mode===target&&!state.captureOpen;
+       navigate(closing?'world':target);
+       flash(closing?'已返回岛屿':modes[target]);
+     }
+   }
+   return true;
+ }
  function close(){if(current.current.bookOpen){setBookOpen(false);return true;}if(current.current.weatherOpen){cancelWeather();return true;}if(current.current.captureOpen){setCaptureOpen(false);return true;}if(current.current.proposalId){setProposalId(null);return true;}if(current.current.draft){cancelDraft();return true;}if(current.current.detail){setDetail(null);return true;}if(current.current.menu){setMenu(false);return true;}return current.current.mode==='world'&&bridge.command('close');}
  function begin(item){if(!item.importedSprite||!['apple','leaf','stone','chair','cat'].includes(item.type)||item.importStatus==='processing'){flash('该示例尚未配置可投放的游戏素材与占地');return;}setDetail(null);setDraft({id:store.unique(),item,type:item.type,step:'preview',at:null,error:''});}
  function receive(payload){
    const captures=Array.isArray(payload)?payload:Array.isArray(payload?.captures)?payload.captures:[payload];
    const accepted=store.receiveBatch(captures);
    if(!accepted.length){flash('没有新的采集照片，重复采集已跳过');return false;}
-   if(!current.current.draft&&!current.current.proposalId){
+   if(!current.current.draft&&!current.current.proposalId&&!protectedEdit()){
      if(current.current.weatherOpen)cancelWeather();
      setBookOpen(false);
      setDetail(null);
@@ -112,7 +170,23 @@ function App(){const data=useSyncExternalStore(store.subscribe,store.getSnapshot
  function gameAction(id){document.getElementById(id)?.click();}
  useEffect(()=>{if(globalThis.IsleArtCalibration)return;try{localStorage.setItem('isle.observer.v10.preferences',JSON.stringify(prefs));}catch{}},[prefs]);
  useEffect(()=>{const interval=setInterval(()=>setTime(new Date().toLocaleTimeString('en-GB')),1000);const obs=new MutationObserver(()=>{const p=document.getElementById('person');const next=p.hidden?null:{name:document.getElementById('person-name').textContent,state:document.getElementById('person-state').textContent,goal:document.getElementById('person-goal').textContent};setResident(old=>JSON.stringify(old)===JSON.stringify(next)?old:next);});obs.observe(document.getElementById('person'),{subtree:true,characterData:true,childList:true,attributes:true,attributeFilter:['hidden']});return()=>{clearInterval(interval);obs.disconnect();};},[]);
- useEffect(()=>{function dispatch(input){const action=keyboardAction(input);if(!action)return false;if(action==='close'&&!close())return false;if(action==='previous'||action==='next')rotate(action==='next'?1:-1);else if(action==='transfer')simulate();else if(action!=='close')navigate(action);setLastKey({...input,action});return true;}function keyboard(e){const editable=e.target?.closest?.('input,textarea,select,[contenteditable="true"],[role="textbox"]');if(dispatch({key:e.key,code:e.code,repeat:e.repeat,editable:!!editable,modified:e.ctrlKey||e.metaKey||e.altKey||e.shiftKey,composing:e.isComposing||e.keyCode===229})){e.preventDefault();e.stopImmediatePropagation();}}
+ useEffect(()=>{
+   function dispatch(input){
+     const action=keyboardAction(input);
+     if(!action||!control(action))return false;
+     playInputTone();
+     setLastKey({...input,action});
+     return true;
+   }
+   function keyboard(e){
+     const editable=e.target?.closest?.('input,textarea,select,[contenteditable]:not([contenteditable="false"]),[role="textbox"]');
+     const input={key:e.key,code:e.code,repeat:e.repeat,editable:!!editable,
+       modified:e.ctrlKey||e.metaKey||e.altKey||e.shiftKey,composing:e.isComposing||e.keyCode===229};
+     // Ignore OS auto-repeat while preserving every discrete rotary keydown.
+     const held=e.repeat&&keyboardAction({...input,repeat:false});
+     const handled=!held&&dispatch(input);
+     if(held||handled||keyboardAction(input)==='CONFIRM_SELECTION'){e.preventDefault();e.stopImmediatePropagation();}
+   }
  function change(event){
    const status=event.detail;
    if(current.current.draft?.id!==status.draftId)return;
@@ -148,21 +222,21 @@ function App(){const data=useSyncExternalStore(store.subscribe,store.getSnapshot
    fit();
    return()=>observer.disconnect();
  },[]);
- const importVisible=draft&&draft.step!=='placing';return <main className="terminal-viewport"><div className="terminal-design" data-mode={displayMode} ref={layer} style={{height:designHeight,'--tablet-extra':extraHeight+'px'}}><CRTShell height={designHeight} level={prefs.crt} debug={prefs.effectDebug}><GameViewport visible={displayMode==='world'&&island.playable}/>{displayMode==='boot'&&<Boot navigate={navigate}/>}<div className={'mode-layer '+displayMode} key={displayMode}>{displayMode==='world'&&<WorldHUD {...{island,time,info:resident,tools}} closeResident={()=>{document.getElementById('close-person').click();}} action={gameAction}/>}{displayMode==='collection'&&<Collection extraHeight={extraHeight} {...{data,begin,browse,setBrowse,selected,setSelected,filter,setFilter,toast:flash}} openCapture={()=>setCaptureOpen(true)} openDetail={(item,view='compare')=>setDetail({item,view})}/>}{displayMode==='memories'&&<Memories extraHeight={extraHeight} data={data} island={island} openItem={e=>{const source=data.entries[e.objectId]?.sourceId||e.objectId||(e.demo?'sample-apple':null),item=data.discoveries.find(i=>i.objectId===source);if(item)setDetail({item,view:'compare'});}}/>}</div>
- <div className="terminal-utility"><button aria-label="终端控制菜单" aria-expanded={menu} onClick={()=>setMenu(v=>!v)}>≡</button>{menu&&<RetroPanel w={450} h={695} tone="dark" className="utility-menu"><h3>OBSERVER / V10.9</h3>{Object.entries(modes).map(([id,label],i)=><button key={id} onClick={()=>navigate(id)}>{i+1} · {label}</button>)}<div className="knob"><button aria-label="上一座岛" onClick={()=>rotate(-1)}>◀</button><span>{island.name}</span><button aria-label="下一座岛" onClick={()=>rotate(1)}>▶</button></div><div className="crt-control">CRT EFFECTS<ArchiveTabs label="CRT 强度" items={[[ 'off','OFF'],['low','LOW'],['medium','MEDIUM']]} value={prefs.crt} onChange={v=>setPrefs(p=>({...p,crt:v}))}/></div><button onClick={()=>setPrefs(p=>({...p,effectDebug:!p.effectDebug}))}>CRT Debug · {prefs.effectDebug?'ON':'OFF'}</button><button onClick={()=>setPrefs(p=>({...p,keyDebug:!p.keyDebug}))}>Keyboard Debug · {prefs.keyDebug?'ON':'OFF'}</button><button onClick={()=>{setTools(v=>!v);setMenu(false);}}>游戏测试工具 · {tools?'ON':'OFF'}</button><button onClick={()=>{setMenu(false);simulate();}}>模拟 Explorer 传输 · T</button><p>1 / 2 / 3 模式选择<br/>Q / E 旋钮模拟</p></RetroPanel>}</div>
+ const importVisible=draft&&draft.step!=='placing';return <main className="terminal-viewport"><div className="terminal-design" data-mode={displayMode} ref={layer} style={{height:designHeight,'--tablet-extra':extraHeight+'px'}}><CRTShell height={designHeight} level={prefs.crt} debug={prefs.effectDebug}><GameViewport visible={displayMode==='world'&&island.playable}/>{displayMode==='boot'&&<Boot navigate={id=>control(toggleActions[id])}/>}<div className={'mode-layer '+displayMode} key={displayMode}>{displayMode==='world'&&<WorldHUD {...{island,time,info:resident,tools}} closeResident={()=>{document.getElementById('close-person').click();}} action={gameAction}/>}{displayMode==='collection'&&<Collection extraHeight={extraHeight} {...{data,begin,browse,setBrowse,selected,setSelected,filter,setFilter,toast:flash}} openCapture={()=>control('TOGGLE_IMPORT')} openDetail={(item,view='compare')=>setDetail({item,view})}/>}{displayMode==='memories'&&<Memories extraHeight={extraHeight} data={data} island={island} openItem={e=>{const source=data.entries[e.objectId]?.sourceId||e.objectId||(e.demo?'sample-apple':null),item=data.discoveries.find(i=>i.objectId===source);if(item)setDetail({item,view:'compare'});}}/>}</div>
+ <div className="terminal-utility"><button aria-label="终端控制菜单" aria-expanded={menu} onClick={()=>setMenu(v=>!v)}>≡</button>{menu&&<RetroPanel w={450} h={695} tone="dark" className="utility-menu"><h3>OBSERVER / V10.9</h3>{Object.entries(modes).map(([id,label],i)=><button key={id} onClick={()=>control(toggleActions[id])}>{i+1} · {id==='world'?'LAYOUT BOOK':label}</button>)}<div className="knob"><button aria-label="上一座岛" onClick={()=>control('ISLAND_PREVIOUS')}>◀</button><span>{island.name}</span><button aria-label="下一座岛" onClick={()=>control('ISLAND_NEXT')}>▶</button></div><div className="crt-control">CRT EFFECTS<ArchiveTabs label="CRT 强度" items={[[ 'off','OFF'],['low','LOW'],['medium','MEDIUM']]} value={prefs.crt} onChange={v=>setPrefs(p=>({...p,crt:v}))}/></div><button onClick={()=>setPrefs(p=>({...p,effectDebug:!p.effectDebug}))}>CRT Debug · {prefs.effectDebug?'ON':'OFF'}</button><button onClick={()=>setPrefs(p=>({...p,keyDebug:!p.keyDebug}))}>Keyboard Debug · {prefs.keyDebug?'ON':'OFF'}</button><button onClick={()=>{setTools(v=>!v);setMenu(false);}}>游戏测试工具 · {tools?'ON':'OFF'}</button><button onClick={()=>{setMenu(false);simulate();}}>模拟 Explorer 传输 · T</button><button onClick={()=>setPrefs(p=>({...p,inputSound:!p.inputSound}))}>按键音 · {prefs.inputSound?'ON':'OFF'}</button><p>1 / 2 / 3 功能切换<br/>← / → 切岛 · Enter 确认</p></RetroPanel>}</div>
  {displayMode==='world'&&island.playable&&!draft&&!proposalId&&<div className="weather-world-tools">
  <button onClick={()=>weatherOpen?cancelWeather():setWeatherOpen(true)} aria-expanded={weatherOpen}>天空 · {IsleSkyConfig.weather.find(item=>item.id===data.weather.weatherId)?.name}</button>
- <button onClick={()=>{if(weatherOpen)cancelWeather();setBookOpen(true);}}>岛屿布置簿</button>
+ <button onClick={()=>control('TOGGLE_LAYOUT_BOOK')}>岛屿布置簿</button>
  <button onClick={toggleOverview} aria-pressed={overview}>{overview?'Normal':'Island Overview'}</button>
  </div>}
  {weatherOpen&&displayMode==='world'&&island.playable&&!draft&&!proposalId&&<WeatherPanel store={store}
    committed={data.weather} preview={weatherPreview} onPreview={previewWeather} onConfirm={confirmWeather} onCancel={cancelWeather}/>}
- {bookOpen&&<LayoutBook data={data} store={store} bridge={bridge} names={names}
+ {bookOpen&&<LayoutBook key={island.id} island={island} onDirty={value=>{dirtyBook.current=value;}} data={data} store={store} bridge={bridge} names={names}
    skyNames={Object.fromEntries(IsleSkyConfig.weather.map(item=>[item.id,item.name]))}
    lights={prefs.windowLight!==false} onLights={visible=>{setPrefs(p=>({...p,windowLight:visible}));bridge.command('window-light',visible);}}
    onClose={()=>setBookOpen(false)}/>}
- {captureOpen&&<CapturePanel store={store} onClose={()=>setCaptureOpen(false)}/>}
- {detail&&<ObjectDetail item={data.discoveries.find(item=>item.objectId===detail.item.objectId)||detail.item} initialView={detail.view} entries={data.entries} begin={begin} onClose={()=>setDetail(null)} openMemory={instance=>{store.selectIsland(instance.islandId);setDetail(null);setMode('world');bridge.command('inspect',instance.objectId);}}/>}
+ {captureOpen&&<CapturePanel store={store} onClose={()=>control('TOGGLE_IMPORT')}/>}
+ {detail&&<ObjectDetail item={data.discoveries.find(item=>item.objectId===detail.item.objectId)||detail.item} initialView={detail.view} onDirty={dirty=>{dirtyDetail.current=dirty?detail:null;}} entries={data.entries} begin={begin} onClose={()=>setDetail(null)} openMemory={instance=>{if(protectedEdit()){flash('请先保存或取消当前编辑');return;}store.selectIsland(instance.islandId);setDetail(null);setMode('world');bridge.command('inspect',instance.objectId);}}/>}
  {importVisible&&<TransmissionOverlay title={draft.item.displayName+' · 登岛预览'} onClose={cancelDraft}>
  <div className="import-sheet"><PhotoPair item={draft.item}/><aside>
  <p className="caption">{draft.item.demo?'示例采集':'EXPLORER'}</p>
@@ -183,10 +257,10 @@ function App(){const data=useSyncExternalStore(store.subscribe,store.getSnapshot
  <p>{proposalEntry.proposal.description}</p>
  <div className="living-forms"><img src={A(proposalEntry.form+'.png')} alt={names[proposalEntry.form]}/><span>→</span><img src={A(proposalEntry.proposal.toState+'.png')} alt={names[proposalEntry.proposal.toState]}/></div>
  {proposalError&&<p role="alert">{proposalError}</p>}
- <div className="living-proposal-actions"><Button onClick={()=>setProposalId(null)}>暂不改变</Button><Button tone="dark" onClick={confirmProposal}>{proposalEntry.proposal.requiresLocation?'选择水岸位置':'确认用途并演变'}</Button></div>
+ <div className="living-proposal-actions"><Button onClick={()=>setProposalId(null)}>暂不改变</Button><Button tone="dark" onClick={()=>control('CONFIRM_SELECTION')}>{proposalEntry.proposal.requiresLocation?'选择水岸位置':'确认用途并演变'}</Button></div>
  </div></TransmissionOverlay>}
 
- {draft?.step==='placing'&&<div className="placement-controls" data-placement={draft.error?'invalid':draft.at?'valid':'selecting'}><div><strong>{draft.item.displayName} / {draft.relocationId?'水域选址':'PLACING'}</strong><p role="status">{draft.error||(draft.at?`位置 ${draft.at.x}, ${draft.at.y} · 可确认`:draft.relocationId?'请选择相邻两格水面，靠近居民可到达的岸边':'轻触或拖动预览，选择落点')}</p></div><Button tone="dark" disabled={!draft.at||!!draft.error} onClick={()=>bridge.command('confirm',draft.id)}>{draft.relocationId?'确认入水':'确认投放'}</Button><Button onClick={cancelDraft}>取消</Button></div>}
+ {draft?.step==='placing'&&<div className="placement-controls" data-placement={draft.error?'invalid':draft.at?'valid':'selecting'}><div><strong>{draft.item.displayName} / {draft.relocationId?'水域选址':'PLACING'}</strong><p role="status">{draft.error||(draft.at?`位置 ${draft.at.x}, ${draft.at.y} · 可确认`:draft.relocationId?'请选择相邻两格水面，靠近居民可到达的岸边':'轻触或拖动预览，选择落点')}</p></div><Button tone="dark" disabled={!draft.at||!!draft.error} onClick={()=>control('CONFIRM_SELECTION')}>{draft.relocationId?'确认入水':'确认投放'}</Button><Button onClick={cancelDraft}>取消</Button></div>}
  {prefs.keyDebug&&<output className="keyboard-debug">{lastKey?`KEY ${lastKey.key} / ${lastKey.code} → ${lastKey.action}`:'等待键盘输入'} · {displayMode.toUpperCase()}</output>}{banner&&<div className="terminal-toast" role="status">{banner}</div>}
  </CRTShell></div></main>;}
 createRoot(document.getElementById('observer-v10-root')).render(<App/>);

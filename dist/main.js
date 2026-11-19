@@ -88,6 +88,37 @@
         events:this.eventTrace,
       };
     }
+    restoreLayout(layoutId){
+      const layout=IsleObserver.store.getSnapshot().layouts.find(item=>item.layoutId===layoutId&&item.islandId==='story');
+      const world=this.world;
+      if(!bridge.active()||!layout||this.placing||this.actions.pending)return '请结束当前放置或改造，再恢复布局。';
+      const saved=new Map(layout.objects.map(item=>[item.objectInstanceId,item]));
+      if(layout.expanded!==world.expanded||saved.size!==world.objects.length||
+         world.objects.some(object=>saved.get(object.collectionId)?.objectFormId!==object.type)){
+        return '岛屿范围、物件清单或形态已改变。此页仍可预览。';
+      }
+      const candidate=this.newWorld();
+      if(world.expanded)candidate.expand();
+      candidate.sequence=world.sequence;
+      candidate.residents=world.residents;
+      candidate.objects=world.objects.map(object=>({...object,at:{...saved.get(object.collectionId).position}}));
+      const moved=[];
+      for(const [i,object] of candidate.objects.entries()){
+        const previous=world.objects[i];
+        if(equal(object.at,previous.at))continue;
+        const result=candidate.checkPlacement(object.at,object.type,object);
+        if(result.error)return result.error;
+        object.floating=result.floating;
+        moved.push(object.id);
+      }
+      if(!moved.length)return '';
+      if(!bridge.restoreLayout(layoutId,candidate))return '恢复失败，请检查存储空间。';
+      world.objects=candidate.objects;
+      for(const id of moved)world.stopExploration(id);
+      world.recompute();
+      this.refreshEntities();
+      return '';
+    }
     layoutSnapshot(){
       const state=IsleObserver.store.getSnapshot();
       const skyStateId=state.weather.weatherId;
@@ -313,6 +344,10 @@
         event.detail.snapshot=this.layoutSnapshot();
         event.preventDefault();
       });
+      window.addEventListener('isle:observer-layout-restore',event=>{
+        event.detail.error=this.restoreLayout(event.detail.layoutId);
+        event.preventDefault();
+      });
       window.addEventListener('isle:observer-window-light',event=>{
         this.hideWindowLight=!event.detail;
         event.preventDefault();
@@ -336,6 +371,9 @@
         this.showPanel('interaction',object.id);event.preventDefault();
       });
       watch('cancel',()=>this.cancel());
+      window.addEventListener('isle:observer-island-locked',event=>{
+        if(this.placing||this.actions.pending)event.preventDefault();
+      });
       watch('confirm',()=>{if(this.placing&&this.hover)this.drop(this.hover);});
       watch('close-panel',()=>this.closePanel());
       watch('close-person',()=>{this.inspectId=null;});

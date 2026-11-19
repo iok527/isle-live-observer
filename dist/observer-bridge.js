@@ -126,7 +126,7 @@
     store.commit({islandId,events});
   }
   globalThis.IsleGameBridge={
-    restore,placed,evolutionTarget,confirmEvolution,resident,
+    restore,restoreLayout:(id,world)=>store.restoreLayout(id,snapshot(world)),placed,evolutionTarget,confirmEvolution,resident,
     expanded(world){commit(world,{events:[store.gameEvent(islandId,'ISLAND_EXPANDED',{description:world.cells.size+' 格场地已连通。',fromState:'base',toState:'expanded'})]});},
     removed(world,object){commit(world,{entry:{objectId:collectionId(object),status:'已收回'}});},
     reset(world){commit(world,{archive:(profile()?.objects||[]).map(collectionId).filter(Boolean)});},

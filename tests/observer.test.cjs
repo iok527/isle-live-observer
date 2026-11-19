@@ -23,7 +23,7 @@ test('Island switching and reset do not merge or erase island history',()=>{
   store.commit({events:[story],entry:{objectId:'a',status:'在岛上'}});
   store.commit({events:[red],world:{expanded:true},islandId:'red'});
   store.nextIsland(1);
-  assert.equal(store.getSnapshot().activeIsland,'red');
+  assert.equal(store.getSnapshot().activeIsland,'my');
   store.commit({archive:['a'],world:{expanded:false},islandId:'story'});
   const state=store.getSnapshot();
   assert.equal(state.entries.a.status,'已重置');
@@ -31,10 +31,21 @@ test('Island switching and reset do not merge or erase island history',()=>{
   assert.deepEqual(state.events.map(e=>e.islandId),['story','red']);
 });
 test('Hardware and keyboard mapping share guards for repeat, editable and modifiers',()=>{
-  for(const [key,code,action] of [['1','Digit1','world'],['2','Digit2','collection'],['3','Digit3','memories'],['q','KeyQ','previous'],['e','KeyE','next'],['Escape','Escape','close']]){
+  for(const [key,code,action] of [['1','Digit1','TOGGLE_LAYOUT_BOOK'],['End','Numpad1','TOGGLE_LAYOUT_BOOK'],['2','Digit2','TOGGLE_COLLECTION'],['ArrowDown','Numpad2','TOGGLE_COLLECTION'],['3','Digit3','TOGGLE_MEMORIES'],['PageDown','Numpad3','TOGGLE_MEMORIES'],['ArrowLeft','ArrowLeft','ISLAND_PREVIOUS'],['ArrowRight','ArrowRight','ISLAND_NEXT'],['[','BracketLeft','ISLAND_PREVIOUS'],[']','BracketRight','ISLAND_NEXT'],['Enter','Enter','CONFIRM_SELECTION'],['Enter','NumpadEnter','CONFIRM_SELECTION'],['q','KeyQ','ISLAND_PREVIOUS'],['e','KeyE','ISLAND_NEXT'],['Escape','Escape','close']]){
     assert.equal(keyboardAction({key,code}),action);
     for(const guard of ['repeat','editable','modified'])assert.equal(keyboardAction({key,code,[guard]:true}),null);
   }
+});
+test('Island dial loops through the four channels in both directions',()=>{
+  const store=createStore(storage());
+  store.selectIsland('red');
+  for(const [direction,expected] of [[1,['di','story','my','red']],[-1,['my','story','di','red']]]){
+    for(const id of expected){
+      store.nextIsland(direction);
+      assert.equal(store.getSnapshot().activeIsland,id);
+    }
+  }
+  assert.equal(keyboardAction({key:'AudioVolumeUp',code:'AudioVolumeUp'}),null);
 });
 test('Discovery ingestion upserts capture ID without impersonating seeded history',()=>{
   const store=createStore(storage());
